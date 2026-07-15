@@ -202,9 +202,19 @@
   .menu-thumb{
     aspect-ratio:4/3; display:flex; align-items:center; justify-content:center;
     font-family:'Fraunces',serif; font-size:34px; color:var(--putih); font-weight:700;
+    position:relative; overflow:hidden;
+  }
+  .menu-thumb img{
+    width:100%; height:100%; object-fit:cover; position:absolute; inset:0;
+  }
+  .menu-thumb .fallback{
+    width:100%; height:100%; display:flex; align-items:center; justify-content:center;
   }
   .menu-card .body{padding:14px 16px 18px;}
-  .menu-card .name{font-weight:700; font-size:14.5px; line-height:1.3; min-height:38px;}
+  .menu-card .name{
+    font-weight:700; font-size:13.5px; line-height:1.35; min-height:38px;
+    text-transform:uppercase; letter-spacing:0.01em;
+  }
   .menu-card .tag{font-size:11.5px; opacity:0.55; margin-top:6px; display:flex; align-items:center; gap:5px;}
   .umkm-cta{
     margin-top:32px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:18px;
@@ -445,26 +455,36 @@
 </footer>
 
 <script>
-  // Data menu Hikmah Pia (dari daftar produk yang diberikan)
+  // Data menu Hikmah Pia — nama & nama file PERSIS sesuai daftar file gambar yang diberikan.
+  // Letakkan file gambar aslinya di folder "images/" (satu folder dengan index.html),
+  // dengan nama file yang SAMA PERSIS seperti di bawah ini (huruf besar/kecil ikut berpengaruh di banyak hosting).
   const menu = [
-    { name: "Bolen Pisang Cokelat", color1:"#B85C2E", color2:"#7A3A18" },
-    { name: "Kuping Gajah", color1:"#C79A3F", color2:"#8A6320" },
-    { name: "Mentari", color1:"#D4A93C", color2:"#B85C2E" },
-    { name: "Pastel Isi Abon", color1:"#26402F", color2:"#16261B" },
-    { name: "Pia Cokelat", color1:"#5B3A26", color2:"#2E1D12" },
-    { name: "Pia Cokelat dan Kacang Hijau", color1:"#6E7F3B", color2:"#3E4A20" },
-    { name: "Pia Kacang Hijau", color1:"#8FA34A", color2:"#556B2F" },
-    { name: "Stik Bawang", color1:"#C9B27A", color2:"#8A7440" },
+    { file: "BOLEN_PISANG_COKELAT.png", color1:"#B85C2E", color2:"#7A3A18" },
+    { file: "KUPING_GAJAH.png",         color1:"#C79A3F", color2:"#8A6320" },
+    { file: "MENTARI.png",              color1:"#D4A93C", color2:"#B85C2E" },
+    { file: "PASTEL_IS_ABON.png",       color1:"#26402F", color2:"#16261B" },
+    { file: "PIA_COKELAT.png",          color1:"#5B3A26", color2:"#2E1D12" },
+    { file: "PIA_COKELAT_DAN_KACANG_HIJAU.png", color1:"#6E7F3B", color2:"#3E4A20" },
+    { file: "PIA_KACANG_HIJAU.png",     color1:"#8FA34A", color2:"#556B2F" },
+    { file: "STIK_BAWANG.png",          color1:"#C9B27A", color2:"#8A7440" },
   ];
+  // Nama tampilan dibuat otomatis dari nama file: ganti "_" jadi spasi & hapus ".png"
+  // supaya formatnya tetap identik dengan yang tertulis di daftar file gambar.
+  const toDisplayName = file => file.replace(/\.png$/i, "").replace(/_/g, " ");
   const initials = n => n.split(" ").map(w=>w[0]).slice(0,2).join("");
   const menuGrid = document.getElementById("menu-grid");
   menu.forEach(m=>{
+    const name = toDisplayName(m.file);
     const card = document.createElement("div");
     card.className = "menu-card";
     card.innerHTML = `
-      <div class="menu-thumb" style="background:linear-gradient(135deg, ${m.color1}, ${m.color2});">${initials(m.name)}</div>
+      <div class="menu-thumb" style="background:linear-gradient(135deg, ${m.color1}, ${m.color2});">
+        <img src="images/${m.file}" alt="${name}"
+             onerror="this.remove(); this.parentElement.querySelector('.fallback').style.display='flex';">
+        <div class="fallback" style="display:none;">${initials(name)}</div>
+      </div>
       <div class="body">
-        <div class="name">${m.name}</div>
+        <div class="name">${name}</div>
         <div class="tag">&#128100;&#128100; Produk rumahan</div>
       </div>`;
     menuGrid.appendChild(card);
