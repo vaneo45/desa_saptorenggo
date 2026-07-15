@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desa Saptorenggo · Kecamatan Pakis, Kabupaten Malang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --hijau-sawah: #26402F;
+    --hijau-tua: #16261B;
+    --tanah-liat: #B85C2E;
+    --emas-batik: #C79A3F;
+    --kertas: #F5EFDF;
+    --kertas-terang: #FBF7EC;
+    --tinta: #241F17;
+    --garis: rgba(36,31,23,0.14);
+    --putih: #FFFDF8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--kertas);
+    color:var(--tinta);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    font-size:12px;
+    font-weight:700;
+    color:var(--tanah-liat);
+  }
+
+  /* batik kawung motif - signature element, used as texture strips */
+  .kawung-strip{
+    height:14px;
+    width:100%;
+    background-image: radial-gradient(circle at 12.5px 7px, var(--emas-batik) 0 4px, transparent 4.2px);
+    background-size:25px 14px;
+    background-repeat:repeat-x;
+    opacity:0.9;
+  }
+  .kawung-strip.dark{background-image: radial-gradient(circle at 12.5px 7px, var(--kertas) 0 4px, transparent 4.2px); opacity:0.55;}
+
+  /* NAV */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(245,239,223,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--garis);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px; max-width:1120px; margin:0 auto;
+  }
+  .brand{display:flex; align-items:center; gap:10px; font-weight:700; font-size:17px;}
+  .brand .mark{
+    width:34px;height:34px;border-radius:9px;
+    background:var(--hijau-sawah);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--emas-batik); font-family:'Fraunces',serif; font-weight:700; font-size:16px;
+  }
+  nav.links{display:flex; gap:26px; font-size:14.5px; font-weight:600;}
+  nav.links a{opacity:0.8; transition:opacity .2s;}
+  nav.links a:hover{opacity:1; color:var(--tanah-liat);}
+  .nav-cta{
+    background:var(--tanah-liat); color:var(--putih);
+    padding:9px 18px; border-radius:999px; font-weight:700; font-size:13.5px;
+    display:flex; align-items:center; gap:6px;
+  }
+  .menu-toggle{display:none; background:none; border:none; font-size:22px; cursor:pointer; color:var(--tinta);}
+
+  /* HERO */
+  .hero{
+    position:relative;
+    background:var(--hijau-sawah);
+    color:var(--kertas-terang);
+    padding:88px 0 70px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image: radial-gradient(circle at 18px 9px, rgba(199,154,63,0.35) 0 2.5px, transparent 2.7px);
+    background-size:36px 20px;
+    opacity:0.5;
+  }
+  .hero-inner{position:relative; display:grid; grid-template-columns:1.15fr 0.85fr; gap:48px; align-items:center;}
+  .hero h1{font-size:clamp(38px,5vw,58px); line-height:1.04; margin:14px 0 20px;}
+  .hero h1 em{font-style:italic; color:var(--emas-batik);}
+  .hero p.lead{font-size:17px; max-width:480px; opacity:0.88; margin-bottom:28px;}
+  .hero-stats{display:flex; gap:28px; flex-wrap:wrap; margin-top:8px;}
+  .hero-stats div{border-left:2px solid var(--emas-batik); padding-left:12px;}
+  .hero-stats .num{font-family:'Fraunces',serif; font-size:24px; font-weight:700; display:block;}
+  .hero-stats .lbl{font-size:12.5px; opacity:0.75;}
+  .hero-art{
+    position:relative; aspect-ratio:1/1; border-radius:24px;
+    background:linear-gradient(160deg, #34513C, #1B2E20);
+    border:1px solid rgba(199,154,63,0.4);
+    display:flex; align-items:center; justify-content:center;
+    padding:26px;
+  }
+  .hero-art svg{width:100%;height:100%;}
+
+  .btn-row{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 22px; border-radius:999px; font-weight:700; font-size:14.5px;
+    transition:transform .18s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--emas-batik); color:var(--hijau-tua);}
+  .btn-outline{border:1.5px solid rgba(245,239,223,0.5); color:var(--kertas-terang);}
+
+  section{padding:76px 0;}
+  .section-head{max-width:600px; margin-bottom:44px;}
+  .section-head h2{font-size:clamp(28px,3.4vw,38px); margin-top:10px;}
+  .section-head p{opacity:0.75; margin-top:12px; font-size:15.5px;}
+
+  /* LOKASI */
+  .lokasi-grid{display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:stretch;}
+  .lokasi-card{
+    background:var(--putih); border:1px solid var(--garis); border-radius:18px; overflow:hidden;
+  }
+  .map-embed iframe{width:100%; height:340px; border:0; filter:sepia(8%) saturate(92%);}
+  .lokasi-info{padding:26px;}
+  .lokasi-info h3{font-size:20px; margin-bottom:14px;}
+  .info-row{display:flex; gap:12px; padding:11px 0; border-bottom:1px dashed var(--garis); font-size:14.5px;}
+  .info-row:last-child{border-bottom:none;}
+  .info-row .ico{width:20px; flex-shrink:0; color:var(--tanah-liat); font-weight:800;}
+  .info-row .k{opacity:0.65; min-width:110px;}
+  .batas-list{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px;}
+  .batas-list .b{background:var(--kertas); border-radius:10px; padding:12px 14px; font-size:13.5px;}
+  .batas-list .b b{display:block; font-family:'Fraunces',serif; font-size:14px; margin-bottom:2px;}
+
+  /* STRUKTUR */
+  .struktur-bg{background:var(--hijau-tua); color:var(--kertas-terang);}
+  .struktur-bg .eyebrow{color:var(--emas-batik);}
+  .struktur-bg .section-head p{opacity:0.65;}
+  .kades-card{
+    display:grid; grid-template-columns:180px 1fr; gap:26px; align-items:center;
+    background:linear-gradient(135deg, rgba(199,154,63,0.14), rgba(255,255,255,0.03));
+    border:1px solid rgba(199,154,63,0.35); border-radius:20px; padding:26px;
+    margin-bottom:34px;
+  }
+  .kades-photo{
+    width:100%; aspect-ratio:1/1; border-radius:16px; background:#3A5842;
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+    font-family:'Fraunces',serif; font-size:44px; color:var(--emas-batik); font-weight:700;
+    border:1px solid rgba(199,154,63,0.4);
+  }
+  .kades-name{font-size:26px;}
+  .kades-role{color:var(--emas-batik); font-weight:700; font-size:13px; text-transform:uppercase; letter-spacing:0.08em;}
+  .kades-note{font-size:13.5px; opacity:0.7; margin-top:10px; max-width:480px;}
+  .org-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  .org-card{
+    background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1);
+    border-radius:14px; padding:20px; transition:border-color .2s, background .2s;
+  }
+  .org-card:hover{border-color:var(--emas-batik); background:rgba(255,255,255,0.07);}
+  .org-card .role{font-size:11.5px; text-transform:uppercase; letter-spacing:0.07em; color:var(--emas-batik); font-weight:700; margin-bottom:6px;}
+  .org-card .name{font-family:'Fraunces',serif; font-size:16.5px; font-weight:600;}
+  .org-card .name.tbd{opacity:0.45; font-style:italic; font-family:'Plus Jakarta Sans',sans-serif; font-size:13.5px;}
+
+  /* UMKM */
+  .umkm-head{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap;
+  }
+  .umkm-badge{
+    display:inline-flex; align-items:center; gap:8px; background:var(--tanah-liat); color:var(--putih);
+    padding:6px 14px; border-radius:999px; font-size:12.5px; font-weight:700; margin-bottom:10px;
+  }
+  .umkm-intro{display:grid; grid-template-columns:1fr 1fr; gap:36px; margin-bottom:40px; align-items:center;}
+  .umkm-intro .txt p{font-size:15px; opacity:0.82; margin-bottom:14px;}
+  .umkm-photo{
+    aspect-ratio:16/11; border-radius:18px; background:linear-gradient(135deg,#E4C77E,#C1652F);
+    position:relative; overflow:hidden; border:1px solid var(--garis);
+  }
+  .umkm-photo::after{
+    content:"HIKMAH PIA"; position:absolute; bottom:18px; left:18px; color:var(--putih);
+    font-family:'Fraunces',serif; font-size:26px; font-weight:700; text-shadow:0 2px 10px rgba(0,0,0,0.25);
+  }
+  .menu-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  .menu-card{
+    background:var(--putih); border:1px solid var(--garis); border-radius:16px; overflow:hidden;
+    transition:transform .18s, box-shadow .18s;
+  }
+  .menu-card:hover{transform:translateY(-4px); box-shadow:0 14px 28px -14px rgba(36,31,23,0.35);}
+  .menu-thumb{
+    aspect-ratio:4/3; display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-size:34px; color:var(--putih); font-weight:700;
+  }
+  .menu-card .body{padding:14px 16px 18px;}
+  .menu-card .name{font-weight:700; font-size:14.5px; line-height:1.3; min-height:38px;}
+  .menu-card .tag{font-size:11.5px; opacity:0.55; margin-top:6px; display:flex; align-items:center; gap:5px;}
+  .umkm-cta{
+    margin-top:32px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:18px;
+    background:var(--hijau-sawah); color:var(--kertas-terang); padding:24px 28px; border-radius:18px;
+  }
+  .umkm-cta p{font-size:14.5px; opacity:0.85; max-width:420px;}
+
+  /* LAYANAN */
+  .layanan-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  .layanan-card{
+    background:var(--putih); border:1px solid var(--garis); border-radius:16px; padding:24px;
+    display:flex; flex-direction:column; gap:14px; transition:border-color .2s, transform .2s;
+  }
+  .layanan-card:hover{border-color:var(--tanah-liat); transform:translateY(-3px);}
+  .layanan-icon{
+    width:44px;height:44px;border-radius:12px; background:rgba(184,92,46,0.12); color:var(--tanah-liat);
+    display:flex; align-items:center; justify-content:center; font-size:20px; font-weight:700;
+  }
+  .layanan-card h3{font-size:16.5px;}
+  .layanan-card p{font-size:13.5px; opacity:0.7; flex-grow:1;}
+  .wa-link{
+    display:inline-flex; align-items:center; gap:7px; font-size:13px; font-weight:700; color:#1F7A45;
+  }
+  .wa-link svg{width:16px;height:16px;}
+
+  /* FOOTER */
+  footer{background:var(--hijau-tua); color:rgba(245,239,223,0.7); padding:52px 0 26px;}
+  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:36px; margin-bottom:36px;}
+  footer h4{color:var(--kertas-terang); font-size:14px; margin-bottom:14px; font-family:'Fraunces',serif;}
+  footer .brand{color:var(--kertas-terang); margin-bottom:12px;}
+  footer p.desc{font-size:13.5px; max-width:320px;}
+  footer ul{list-style:none; font-size:13.5px; display:flex; flex-direction:column; gap:9px;}
+  .footer-bottom{border-top:1px solid rgba(245,239,223,0.12); padding-top:20px; font-size:12.5px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
+
+  @media (max-width:860px){
+    nav.links{display:none;}
+    .menu-toggle{display:block;}
+    .hero-inner{grid-template-columns:1fr;}
+    .hero-art{max-width:340px; margin:0 auto;}
+    .lokasi-grid{grid-template-columns:1fr;}
+    .umkm-intro{grid-template-columns:1fr;}
+    .menu-grid{grid-template-columns:repeat(2,1fr);}
+    .org-grid{grid-template-columns:repeat(2,1fr);}
+    .layanan-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+    .kades-card{grid-template-columns:120px 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand"><span class="mark">S</span> Desa Saptorenggo</div>
+    <nav class="links">
+      <a href="#lokasi">Lokasi</a>
+      <a href="#struktur">Pemerintahan</a>
+      <a href="#umkm">UMKM Hikmah Pia</a>
+      <a href="#layanan">Layanan</a>
+    </nav>
+    <a class="nav-cta" href="https://wa.me/6281234567890" target="_blank" rel="noopener">Hubungi Kantor Desa</a>
+    <button class="menu-toggle" aria-label="Menu">&#9776;</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <span class="eyebrow" style="color:#DEC98A">Kecamatan Pakis · Kabupaten Malang · Jawa Timur</span>
+      <h1 class="display">Selamat datang<br>di <em>Saptorenggo</em></h1>
+      <p class="lead">Desa agraris di kaki jalur Tumpang, dikenal dengan wisata kuliner, kerajinan, dan warganya yang mayoritas bekerja sebagai pertukangan dan wiraswasta &mdash; termasuk UMKM camilan rumahan Hikmah Pia.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#umkm">Lihat UMKM Hikmah Pia</a>
+        <a class="btn btn-outline" href="#layanan">Layanan Masyarakat</a>
+      </div>
+      <div class="hero-stats">
+        <div><span class="num">15</span><span class="lbl">Desa di Kec. Pakis</span></div>
+        <div><span class="num">65154</span><span class="lbl">Kode Pos</span></div>
+        <div><span class="num">±20&#8211;30'</span><span class="lbl">dari Terminal Arjosari</span></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="150" cy="150" r="120" fill="none" stroke="#C79A3F" stroke-width="1" opacity="0.5"/>
+        <circle cx="150" cy="150" r="90" fill="none" stroke="#C79A3F" stroke-width="1" opacity="0.35"/>
+        <path d="M60 210 Q90 120 150 130 Q210 120 240 210" fill="none" stroke="#8FA98A" stroke-width="4" stroke-linecap="round"/>
+        <path d="M75 215 Q100 150 150 158 Q200 150 225 215" fill="none" stroke="#C79A3F" stroke-width="3" stroke-linecap="round"/>
+        <g stroke="#DEC98A" stroke-width="2">
+          <line x1="110" y1="205" x2="110" y2="170"/>
+          <line x1="130" y1="205" x2="130" y2="150"/>
+          <line x1="150" y1="205" x2="150" y2="140"/>
+          <line x1="170" y1="205" x2="170" y2="150"/>
+          <line x1="190" y1="205" x2="190" y2="170"/>
+        </g>
+        <circle cx="150" cy="150" r="6" fill="#B85C2E"/>
+        <text x="150" y="255" text-anchor="middle" fill="#F5EFDF" font-family="Fraunces, serif" font-size="15" font-weight="600">-7.9&deg; LS · 112.7&deg; BT</text>
+        <text x="150" y="272" text-anchor="middle" fill="#C79A3F" font-family="Plus Jakarta Sans, sans-serif" font-size="11" letter-spacing="1">DESA SAPTORENGGO</text>
+      </svg>
+    </div>
+  </div>
+</section>
+<div class="kawung-strip"></div>
+
+<section id="lokasi">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Peta &amp; Profil Wilayah</span>
+      <h2 class="display">Di mana Saptorenggo berada</h2>
+      <p>Terletak di Kecamatan Pakis, sisi timur Kabupaten Malang &mdash; dilalui jalur pendakian menuju Tumpang serta akses ke Bandar Udara Abdul Rachman Saleh.</p>
+    </div>
+    <div class="lokasi-grid">
+      <div class="lokasi-card map-embed">
+        <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Desa+Saptorenggo,+Pakis,+Kabupaten+Malang&output=embed"></iframe>
+      </div>
+      <div class="lokasi-card lokasi-info">
+        <h3 class="display">Data Wilayah</h3>
+        <div class="info-row"><span class="ico">&#9679;</span><span class="k">Kecamatan</span><span>Pakis, Kabupaten Malang</span></div>
+        <div class="info-row"><span class="ico">&#9679;</span><span class="k">Provinsi</span><span>Jawa Timur</span></div>
+        <div class="info-row"><span class="ico">&#9679;</span><span class="k">Kode Pos</span><span>65154</span></div>
+        <div class="info-row"><span class="ico">&#9679;</span><span class="k">Email Desa</span><span>saptorenggo.pakis@malangkab.go.id</span></div>
+        <div class="info-row"><span class="ico">&#9679;</span><span class="k">Akses</span><span>±20&#8211;30 menit dari Terminal Arjosari (angkot trayek TA)</span></div>
+        <div class="batas-list">
+          <div class="b"><b>Utara</b>Kec. Singosari</div>
+          <div class="b"><b>Timur</b>Kec. Tumpang</div>
+          <div class="b"><b>Selatan</b>Kec. Kedungkandang, Kota Malang</div>
+          <div class="b"><b>Barat</b>Kec. Blimbing, Kota Malang</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="struktur" class="struktur-bg">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Pemerintahan Desa</span>
+      <h2 class="display">Struktur perangkat desa</h2>
+      <p>Susunan kepala desa dan perangkat yang menjalankan roda pemerintahan serta pelayanan warga Saptorenggo.</p>
+    </div>
+
+    <div class="kades-card">
+      <div class="kades-photo">KS</div>
+      <div>
+        <div class="kades-role">Kepala Desa</div>
+        <div class="kades-name display">(Nama Kepala Desa)</div>
+        <div class="kades-note">Lengkapi dengan nama Kepala Desa aktif sesuai SK terbaru. Kontak resmi kantor desa tersedia melalui tombol WhatsApp di bagian atas halaman.</div>
+      </div>
+    </div>
+
+    <div class="org-grid">
+      <div class="org-card"><div class="role">Sekretaris Desa</div><div class="name">Adi Sudiar Dwi Yanto, S.E.</div></div>
+      <div class="org-card"><div class="role">Ketua BPD</div><div class="name tbd">Badan Permusyawaratan Desa</div></div>
+      <div class="org-card"><div class="role">Kaur Pemerintahan</div><div class="name tbd">Lengkapi nama pejabat</div></div>
+      <div class="org-card"><div class="role">Kaur Pembangunan</div><div class="name tbd">Lengkapi nama pejabat</div></div>
+      <div class="org-card"><div class="role">Kaur Pemberdayaan Masyarakat</div><div class="name tbd">Lengkapi nama pejabat</div></div>
+      <div class="org-card"><div class="role">Kaur Kesejahteraan Rakyat</div><div class="name tbd">Lengkapi nama pejabat</div></div>
+      <div class="org-card"><div class="role">Kaur Umum</div><div class="name tbd">Lengkapi nama pejabat</div></div>
+      <div class="org-card"><div class="role">Kepala Dusun</div><div class="name tbd">Lengkapi nama pejabat</div></div>
+      <div class="org-card"><div class="role">Staf Administrasi</div><div class="name tbd">Lengkapi nama pejabat</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="umkm">
+  <div class="wrap">
+    <div class="umkm-head">
+      <div class="section-head" style="margin-bottom:0;">
+        <span class="umkm-badge">&#9733; UMKM Unggulan Desa</span>
+        <h2 class="display">Hikmah Pia</h2>
+        <p>Usaha rumahan warga Saptorenggo yang memproduksi aneka pia, bolen, dan kudapan kering &mdash; dibuat segar setiap hari dengan resep rumahan.</p>
+      </div>
+    </div>
+
+    <div class="umkm-intro">
+      <div class="umkm-photo"></div>
+      <div class="txt">
+        <p>Hikmah Pia adalah salah satu UMKM binaan Desa Saptorenggo yang mengangkat camilan khas berbahan dasar kacang hijau dan cokelat menjadi pia, bolen, dan stik gurih. Produk dibuat dalam skala rumahan dengan kualitas yang konsisten.</p>
+        <p>Setiap pesanan dapat disesuaikan porsi dan kemasannya untuk kebutuhan oleh-oleh, hajatan, maupun rapat desa.</p>
+        <a class="btn btn-primary" style="background:var(--tanah-liat); color:var(--putih);" href="https://wa.me/6281234567890?text=Halo%20Hikmah%20Pia%2C%20saya%20ingin%20memesan" target="_blank" rel="noopener">Pesan via WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="menu-grid" id="menu-grid"></div>
+
+    <div class="umkm-cta">
+      <div>
+        <h3 class="display" style="font-size:20px; margin-bottom:6px;">Ingin memesan dalam jumlah banyak?</h3>
+        <p>Hikmah Pia menerima pesanan borongan untuk acara desa, arisan, dan hantaran. Hubungi langsung untuk cek ketersediaan dan harga.</p>
+      </div>
+      <a class="btn btn-primary" href="https://wa.me/6281234567890?text=Halo%20Hikmah%20Pia%2C%20saya%20ingin%20tanya%20ketersediaan%20produk" target="_blank" rel="noopener">Chat WhatsApp &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<section id="layanan" style="background:var(--kertas-terang); border-top:1px solid var(--garis); border-bottom:1px solid var(--garis);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Layanan Masyarakat</span>
+      <h2 class="display">Butuh bantuan administrasi?</h2>
+      <p>Pilih jenis layanan di bawah ini, dan Anda akan langsung terhubung ke WhatsApp resmi Kantor Desa Saptorenggo.</p>
+    </div>
+    <div class="layanan-grid" id="layanan-grid"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="brand"><span class="mark">S</span> Desa Saptorenggo</div>
+        <p class="desc">Website informasi resmi Desa Saptorenggo, Kecamatan Pakis, Kabupaten Malang, Provinsi Jawa Timur. Dibuat untuk memudahkan warga mengakses informasi desa, UMKM, dan layanan publik.</p>
+      </div>
+      <div>
+        <h4>Navigasi</h4>
+        <ul>
+          <li><a href="#lokasi">Lokasi Desa</a></li>
+          <li><a href="#struktur">Struktur Pemerintahan</a></li>
+          <li><a href="#umkm">UMKM Hikmah Pia</a></li>
+          <li><a href="#layanan">Layanan Masyarakat</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontak</h4>
+        <ul>
+          <li>saptorenggo.pakis@malangkab.go.id</li>
+          <li>Kode Pos 65154</li>
+          <li><a href="https://wa.me/6281234567890" target="_blank" rel="noopener">WhatsApp Kantor Desa</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="kawung-strip dark"></div>
+    <div class="footer-bottom" style="margin-top:20px;">
+      <span>&copy; 2026 Pemerintah Desa Saptorenggo &mdash; Kecamatan Pakis, Kabupaten Malang.</span>
+      <span>Nomor WhatsApp pada halaman ini adalah contoh, mohon disesuaikan dengan nomor resmi desa.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Data menu Hikmah Pia (dari daftar produk yang diberikan)
+  const menu = [
+    { name: "Bolen Pisang Cokelat", color1:"#B85C2E", color2:"#7A3A18" },
+    { name: "Kuping Gajah", color1:"#C79A3F", color2:"#8A6320" },
+    { name: "Mentari", color1:"#D4A93C", color2:"#B85C2E" },
+    { name: "Pastel Isi Abon", color1:"#26402F", color2:"#16261B" },
+    { name: "Pia Cokelat", color1:"#5B3A26", color2:"#2E1D12" },
+    { name: "Pia Cokelat dan Kacang Hijau", color1:"#6E7F3B", color2:"#3E4A20" },
+    { name: "Pia Kacang Hijau", color1:"#8FA34A", color2:"#556B2F" },
+    { name: "Stik Bawang", color1:"#C9B27A", color2:"#8A7440" },
+  ];
+  const initials = n => n.split(" ").map(w=>w[0]).slice(0,2).join("");
+  const menuGrid = document.getElementById("menu-grid");
+  menu.forEach(m=>{
+    const card = document.createElement("div");
+    card.className = "menu-card";
+    card.innerHTML = `
+      <div class="menu-thumb" style="background:linear-gradient(135deg, ${m.color1}, ${m.color2});">${initials(m.name)}</div>
+      <div class="body">
+        <div class="name">${m.name}</div>
+        <div class="tag">&#128100;&#128100; Produk rumahan</div>
+      </div>`;
+    menuGrid.appendChild(card);
+  });
+
+  // Data layanan masyarakat -> WhatsApp
+  const NOMOR_WA = "6281234567890"; // TODO: ganti dengan nomor resmi Kantor Desa Saptorenggo
+  const layanan = [
+    { icon:"&#128196;", title:"Surat Keterangan Domisili", desc:"Pengajuan surat keterangan tempat tinggal untuk keperluan administrasi.", pesan:"Halo, saya ingin mengajukan Surat Keterangan Domisili." },
+    { icon:"&#128188;", title:"Surat Keterangan Usaha", desc:"Untuk warga yang membutuhkan legalitas usaha kecil atau UMKM.", pesan:"Halo, saya ingin mengajukan Surat Keterangan Usaha." },
+    { icon:"&#128100;", title:"Surat Pengantar KTP/KK", desc:"Pengantar RT/RW untuk pembuatan atau perubahan data kependudukan.", pesan:"Halo, saya ingin mengajukan Surat Pengantar KTP/KK." },
+    { icon:"&#128172;", title:"Pengaduan Warga", desc:"Sampaikan keluhan atau laporan terkait fasilitas dan pelayanan desa.", pesan:"Halo, saya ingin menyampaikan pengaduan warga." },
+    { icon:"&#127974;", title:"Surat Keterangan Tidak Mampu", desc:"Untuk keperluan bantuan sosial, beasiswa, atau keringanan biaya.", pesan:"Halo, saya ingin mengajukan Surat Keterangan Tidak Mampu." },
+    { icon:"&#128203;", title:"Layanan Administrasi Lainnya", desc:"Konsultasi kebutuhan administrasi desa lain di luar daftar di atas.", pesan:"Halo, saya ingin bertanya seputar layanan administrasi desa." },
+  ];
+  const layananGrid = document.getElementById("layanan-grid");
+  layanan.forEach(l=>{
+    const card = document.createElement("div");
+    card.className = "layanan-card";
+    const url = `https://wa.me/${NOMOR_WA}?text=${encodeURIComponent(l.pesan)}`;
+    card.innerHTML = `
+      <div class="layanan-icon">${l.icon}</div>
+      <h3 class="display">${l.title}</h3>
+      <p>${l.desc}</p>
+      <a class="wa-link" href="${url}" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.6-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.5.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5-.1-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.8c.1.2 2 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.6-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+        Hubungi via WhatsApp
+      </a>`;
+    layananGrid.appendChild(card);
+  });
+</script>
+</body>
+</html>
