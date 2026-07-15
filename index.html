@@ -398,7 +398,113 @@
       </div>
     </div>
 
-    <div class="menu-grid" id="menu-grid"></div>
+    <div class="menu-grid">
+
+      <!-- Kartu 1: Bolen Pisang Cokelat -->
+      <div class="menu-card">
+        <div class="menu-thumb" style="background:linear-gradient(135deg,#B85C2E,#7A3A18);">
+          <img src="images/BOLEN_PISANG_COKELAT.png" alt="Bolen Pisang Cokelat"
+               onerror="this.remove(); this.parentElement.querySelector('.fallback').style.display='flex';">
+          <div class="fallback" style="display:none;">BP</div>
+        </div>
+        <div class="body">
+          <div class="name">BOLEN PISANG COKELAT</div>
+          <div class="tag">&#128100;&#128100; Produk rumahan</div>
+        </div>
+      </div>
+
+      <!-- Kartu 2: Kuping Gajah -->
+      <div class="menu-card">
+        <div class="menu-thumb" style="background:linear-gradient(135deg,#C79A3F,#8A6320);">
+          <img src="images/KUPING_GAJAH.png" alt="Kuping Gajah"
+               onerror="this.remove(); this.parentElement.querySelector('.fallback').style.display='flex';">
+          <div class="fallback" style="display:none;">KG</div>
+        </div>
+        <div class="body">
+          <div class="name">KUPING GAJAH</div>
+          <div class="tag">&#128100;&#128100; Produk rumahan</div>
+        </div>
+      </div>
+
+      <!-- Kartu 3: Mentari -->
+      <div class="menu-card">
+        <div class="menu-thumb" style="background:linear-gradient(135deg,#D4A93C,#B85C2E);">
+          <img src="images/MENTARI.png" alt="Mentari"
+               onerror="this.remove(); this.parentElement.querySelector('.fallback').style.display='flex';">
+          <div class="fallback" style="display:none;">M</div>
+        </div>
+        <div class="body">
+          <div class="name">MENTARI</div>
+          <div class="tag">&#128100;&#128100; Produk rumahan</div>
+        </div>
+      </div>
+
+      <!-- Kartu 4: Pastel Is Abon -->
+      <div class="menu-card">
+        <div class="menu-thumb" style="background:linear-gradient(135deg,#26402F,#16261B);">
+          <img src="images/PASTEL_IS_ABON.png" alt="Pastel Is Abon"
+               onerror="this.remove(); this.parentElement.querySelector('.fallback').style.display='flex';">
+          <div class="fallback" style="display:none;">PA</div>
+        </div>
+        <div class="body">
+          <div class="name">PASTEL IS ABON</div>
+          <div class="tag">&#128100;&#128100; Produk rumahan</div>
+        </div>
+      </div>
+
+      <!-- Kartu 5: Pia Cokelat -->
+      <div class="menu-card">
+        <div class="menu-thumb" style="background:linear-gradient(135deg,#5B3A26,#2E1D12);">
+          <img src="images/PIA_COKELAT.png" alt="Pia Cokelat"
+               onerror="this.remove(); this.parentElement.querySelector('.fallback').style.display='flex';">
+          <div class="fallback" style="display:none;">PC</div>
+        </div>
+        <div class="body">
+          <div class="name">PIA COKELAT</div>
+          <div class="tag">&#128100;&#128100; Produk rumahan</div>
+        </div>
+      </div>
+
+      <!-- Kartu 6: Pia Cokelat dan Kacang Hijau -->
+      <div class="menu-card">
+        <div class="menu-thumb" style="background:linear-gradient(135deg,#6E7F3B,#3E4A20);">
+          <img src="images/PIA_COKELAT_DAN_KACANG_HIJAU.png" alt="Pia Cokelat dan Kacang Hijau"
+               onerror="this.remove(); this.parentElement.querySelector('.fallback').style.display='flex';">
+          <div class="fallback" style="display:none;">PK</div>
+        </div>
+        <div class="body">
+          <div class="name">PIA COKELAT DAN KACANG HIJAU</div>
+          <div class="tag">&#128100;&#128100; Produk rumahan</div>
+        </div>
+      </div>
+
+      <!-- Kartu 7: Pia Kacang Hijau -->
+      <div class="menu-card">
+        <div class="menu-thumb" style="background:linear-gradient(135deg,#8FA34A,#556B2F);">
+          <img src="images/PIA_KACANG_HIJAU.png" alt="Pia Kacang Hijau"
+               onerror="this.remove(); this.parentElement.querySelector('.fallback').style.display='flex';">
+          <div class="fallback" style="display:none;">PK</div>
+        </div>
+        <div class="body">
+          <div class="name">PIA KACANG HIJAU</div>
+          <div class="tag">&#128100;&#128100; Produk rumahan</div>
+        </div>
+      </div>
+
+      <!-- Kartu 8: Stik Bawang -->
+      <div class="menu-card">
+        <div class="menu-thumb" style="background:linear-gradient(135deg,#C9B27A,#8A7440);">
+          <img src="images/STIK_BAWANG.png" alt="Stik Bawang"
+               onerror="this.remove(); this.parentElement.querySelector('.fallback').style.display='flex';">
+          <div class="fallback" style="display:none;">SB</div>
+        </div>
+        <div class="body">
+          <div class="name">STIK BAWANG</div>
+          <div class="tag">&#128100;&#128100; Produk rumahan</div>
+        </div>
+      </div>
+
+    </div>
 
     <div class="umkm-cta">
       <div>
@@ -455,41 +561,6 @@
 </footer>
 
 <script>
-  // Data menu Hikmah Pia — nama & nama file PERSIS sesuai daftar file gambar yang diberikan.
-  // Letakkan file gambar aslinya di folder "images/" (satu folder dengan index.html),
-  // dengan nama file yang SAMA PERSIS seperti di bawah ini (huruf besar/kecil ikut berpengaruh di banyak hosting).
-  const menu = [
-    { file: "BOLEN_PISANG_COKELAT.png", color1:"#B85C2E", color2:"#7A3A18" },
-    { file: "KUPING_GAJAH.png",         color1:"#C79A3F", color2:"#8A6320" },
-    { file: "MENTARI.png",              color1:"#D4A93C", color2:"#B85C2E" },
-    { file: "PASTEL_IS_ABON.png",       color1:"#26402F", color2:"#16261B" },
-    { file: "PIA_COKELAT.png",          color1:"#5B3A26", color2:"#2E1D12" },
-    { file: "PIA_COKELAT_DAN_KACANG_HIJAU.png", color1:"#6E7F3B", color2:"#3E4A20" },
-    { file: "PIA_KACANG_HIJAU.png",     color1:"#8FA34A", color2:"#556B2F" },
-    { file: "STIK_BAWANG.png",          color1:"#C9B27A", color2:"#8A7440" },
-  ];
-  // Nama tampilan dibuat otomatis dari nama file: ganti "_" jadi spasi & hapus ".png"
-  // supaya formatnya tetap identik dengan yang tertulis di daftar file gambar.
-  const toDisplayName = file => file.replace(/\.png$/i, "").replace(/_/g, " ");
-  const initials = n => n.split(" ").map(w=>w[0]).slice(0,2).join("");
-  const menuGrid = document.getElementById("menu-grid");
-  menu.forEach(m=>{
-    const name = toDisplayName(m.file);
-    const card = document.createElement("div");
-    card.className = "menu-card";
-    card.innerHTML = `
-      <div class="menu-thumb" style="background:linear-gradient(135deg, ${m.color1}, ${m.color2});">
-        <img src="images/${m.file}" alt="${name}"
-             onerror="this.remove(); this.parentElement.querySelector('.fallback').style.display='flex';">
-        <div class="fallback" style="display:none;">${initials(name)}</div>
-      </div>
-      <div class="body">
-        <div class="name">${name}</div>
-        <div class="tag">&#128100;&#128100; Produk rumahan</div>
-      </div>`;
-    menuGrid.appendChild(card);
-  });
-
   // Data layanan masyarakat -> WhatsApp
   const NOMOR_WA = "6281234567890"; // TODO: ganti dengan nomor resmi Kantor Desa Saptorenggo
   const layanan = [
