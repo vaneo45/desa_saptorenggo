@@ -116,7 +116,7 @@
         
         .menu-grid-admin {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 16px;
             margin-top: 16px;
         }
@@ -459,7 +459,6 @@
                 const raw = localStorage.getItem('saptorenggo_data');
                 if (raw) {
                     const data = JSON.parse(raw);
-                    // Merge dengan default (pastikan semua key ada)
                     return { ...DEFAULT_DATA, ...data, umkm: data.umkm || DEFAULT_DATA.umkm };
                 }
             } catch (e) { console.warn('Load data error', e); }
@@ -474,7 +473,7 @@
         let data = loadData();
         let currentModalType = null;
         let currentEditId = null;
-        let tempImageData = null; // Untuk menyimpan base64 sementara
+        let tempImageData = null;
 
         // ============================================================
         // 3. TOAST
@@ -615,9 +614,10 @@
         }
 
         // ============================================================
-        // 7. MODAL - dengan Upload Gambar
+        // 7. MODAL - dengan Upload Gambar (FIXED)
         // ============================================================
         function openModal(type, editId = null) {
+            // Reset semua state
             currentModalType = type;
             currentEditId = editId;
             tempImageData = null;
@@ -631,12 +631,12 @@
             if (type === 'umkm') {
                 const item = editId ? data.umkm.find(i => i.id === editId) : null;
                 title.textContent = editId ? '✏️ Edit Produk' : '➕ Tambah Produk';
-                const hasImage = item?.imageUrl && item.imageUrl.length > 0;
+                const hasImage = item?.imageUrl && item.imageUrl.length > 0 && item.imageUrl.startsWith('data:');
                 
                 html = `
                     <div class="form-group">
-                        <label>Nama Produk</label>
-                        <input type="text" id="f-umkm-name" value="${item ? item.name : ''}" placeholder="Contoh: Pia Cokelat">
+                        <label>Nama Produk <span style="color:red;">*</span></label>
+                        <input type="text" id="f-umkm-name" value="${item ? item.name : ''}" placeholder="Contoh: Pia Cokelat" required>
                     </div>
                     <div class="form-group">
                         <label>Tag / Keterangan</label>
@@ -645,16 +645,18 @@
                     <div class="form-group">
                         <label>Warna (hex)</label>
                         <input type="text" id="f-umkm-color" value="${item ? item.color : '#26402F'}" placeholder="#26402F">
+                        <div class="help-text">Warna background jika gambar tidak tersedia</div>
                     </div>
                     <div class="form-group">
-                        <label>Upload Gambar Produk</label>
+                        <label>📷 Upload Gambar Produk</label>
                         <input type="file" id="f-umkm-image" accept="image/*" onchange="previewImage(event)">
-                        <div class="help-text">Upload gambar produk (opsional). Ukuran ideal: 400x300px.</div>
+                        <div class="help-text">Upload gambar produk (opsional). Ukuran ideal: 400x300px. Maks 2MB.</div>
                         <div id="image-preview-container" class="image-preview-container" style="${hasImage ? 'display:inline-block;' : 'display:none;'}">
                             <img id="preview-img" src="${item?.imageUrl || ''}" alt="Preview">
                             <button class="remove-image" onclick="removeImage()">✕</button>
                         </div>
-                        ${hasImage ? `<div class="help-text">Gambar saat ini: <a href="${item.imageUrl}" target="_blank">Lihat gambar</a></div>` : ''}
+                        ${hasImage ? `<div class="help-text">✅ Gambar saat ini tersimpan</div>` : ''}
+                        ${!hasImage && item?.imageUrl ? `<div class="help-text">⚠️ Gambar sebelumnya: <a href="${item.imageUrl}" target="_blank">Lihat gambar (eksternal)</a></div>` : ''}
                     </div>
                 `;
             } else if (type === 'perangkat') {
@@ -662,12 +664,12 @@
                 title.textContent = editId ? '✏️ Edit Perangkat' : '➕ Tambah Perangkat';
                 html = `
                     <div class="form-group">
-                        <label>Jabatan</label>
-                        <input type="text" id="f-perangkat-role" value="${item ? item.role : ''}" placeholder="Contoh: Kaur Pembangunan">
+                        <label>Jabatan <span style="color:red;">*</span></label>
+                        <input type="text" id="f-perangkat-role" value="${item ? item.role : ''}" placeholder="Contoh: Kaur Pembangunan" required>
                     </div>
                     <div class="form-group">
-                        <label>Nama</label>
-                        <input type="text" id="f-perangkat-name" value="${item ? item.name : ''}" placeholder="Nama lengkap">
+                        <label>Nama <span style="color:red;">*</span></label>
+                        <input type="text" id="f-perangkat-name" value="${item ? item.name : ''}" placeholder="Nama lengkap" required>
                     </div>
                 `;
             } else if (type === 'layanan') {
@@ -679,8 +681,8 @@
                         <input type="text" id="f-layanan-icon" value="${item ? item.icon : '📄'}" placeholder="📄">
                     </div>
                     <div class="form-group">
-                        <label>Judul Layanan</label>
-                        <input type="text" id="f-layanan-title" value="${item ? item.title : ''}" placeholder="Surat Keterangan Domisili">
+                        <label>Judul Layanan <span style="color:red;">*</span></label>
+                        <input type="text" id="f-layanan-title" value="${item ? item.title : ''}" placeholder="Surat Keterangan Domisili" required>
                     </div>
                     <div class="form-group">
                         <label>Deskripsi</label>
@@ -704,6 +706,13 @@
         function previewImage(event) {
             const file = event.target.files[0];
             if (file) {
+                // Validasi ukuran file (max 2MB)
+                if (file.size > 2 * 1024 * 1024) {
+                    showToast('Ukuran gambar terlalu besar! Maksimal 2MB.', 'error');
+                    event.target.value = '';
+                    return;
+                }
+                
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     tempImageData = e.target.result;
@@ -724,49 +733,91 @@
             const fileInput = document.getElementById('f-umkm-image');
             if (previewContainer) previewContainer.style.display = 'none';
             if (fileInput) fileInput.value = '';
-            // Tandai untuk menghapus gambar
-            document.getElementById('f-umkm-remove-image')?.remove();
-            const hidden = document.createElement('input');
-            hidden.type = 'hidden';
-            hidden.id = 'f-umkm-remove-image';
-            hidden.value = 'true';
-            document.getElementById('modal-body').appendChild(hidden);
+            
+            // Tandai untuk menghapus gambar (untuk edit)
+            const removeFlag = document.getElementById('f-umkm-remove-image');
+            if (!removeFlag) {
+                const hidden = document.createElement('input');
+                hidden.type = 'hidden';
+                hidden.id = 'f-umkm-remove-image';
+                hidden.value = 'true';
+                document.getElementById('modal-body').appendChild(hidden);
+            } else {
+                removeFlag.value = 'true';
+            }
         }
 
-        // Save modal
+        // ============================================================
+        // 8. SAVE MODAL (FIXED - Reset tempImageData setelah save)
+        // ============================================================
         function saveModal() {
             if (currentModalType === 'umkm') {
-                const name = document.getElementById('f-umkm-name').value.trim();
-                const tag = document.getElementById('f-umkm-tag').value.trim();
-                const color = document.getElementById('f-umkm-color').value.trim();
+                const nameInput = document.getElementById('f-umkm-name');
+                const tagInput = document.getElementById('f-umkm-tag');
+                const colorInput = document.getElementById('f-umkm-color');
+                
+                const name = nameInput ? nameInput.value.trim() : '';
+                const tag = tagInput ? tagInput.value.trim() : 'Produk rumahan';
+                const color = colorInput ? colorInput.value.trim() : '#26402F';
                 const removeImageFlag = document.getElementById('f-umkm-remove-image')?.value === 'true';
                 
-                if (!name) { showToast('Nama produk wajib diisi!', 'error'); return; }
+                if (!name) { 
+                    showToast('⚠️ Nama produk wajib diisi!', 'error');
+                    nameInput?.focus();
+                    return; 
+                }
 
                 // Tentukan imageUrl
                 let imageUrl = null;
+                
+                // Jika ada gambar baru diupload (tempImageData)
                 if (tempImageData) {
                     imageUrl = tempImageData;
-                } else if (!removeImageFlag && currentEditId) {
+                } 
+                // Jika tidak ada gambar baru dan tidak dihapus, pertahankan gambar lama
+                else if (!removeImageFlag && currentEditId) {
                     const existing = data.umkm.find(i => i.id === currentEditId);
-                    if (existing) imageUrl = existing.imageUrl;
+                    if (existing && existing.imageUrl) {
+                        imageUrl = existing.imageUrl;
+                    }
                 }
+                // Jika removeImageFlag true, imageUrl tetap null (gambar dihapus)
 
                 if (currentEditId) {
                     const idx = data.umkm.findIndex(i => i.id === currentEditId);
                     if (idx !== -1) {
-                        data.umkm[idx] = { ...data.umkm[idx], name, tag, color, imageUrl };
+                        data.umkm[idx] = { 
+                            ...data.umkm[idx], 
+                            name, 
+                            tag, 
+                            color, 
+                            imageUrl: imageUrl // null jika dihapus
+                        };
                     }
                 } else {
                     const maxId = data.umkm.reduce((max, i) => Math.max(max, i.id || 0), 0);
-                    data.umkm.push({ id: maxId + 1, name, tag, color, imageUrl });
+                    data.umkm.push({ 
+                        id: maxId + 1, 
+                        name, 
+                        tag, 
+                        color, 
+                        imageUrl: imageUrl 
+                    });
                 }
+                
                 saveData(data);
                 showToast('✅ Produk berhasil disimpan!');
+                
             } else if (currentModalType === 'perangkat') {
-                const role = document.getElementById('f-perangkat-role').value.trim();
-                const name = document.getElementById('f-perangkat-name').value.trim();
-                if (!role || !name) { showToast('Jabatan dan nama wajib diisi!', 'error'); return; }
+                const roleInput = document.getElementById('f-perangkat-role');
+                const nameInput = document.getElementById('f-perangkat-name');
+                const role = roleInput ? roleInput.value.trim() : '';
+                const name = nameInput ? nameInput.value.trim() : '';
+                
+                if (!role || !name) { 
+                    showToast('⚠️ Jabatan dan nama wajib diisi!', 'error');
+                    return; 
+                }
 
                 if (currentEditId) {
                     const idx = data.perangkat.findIndex(i => i.id === currentEditId);
@@ -779,11 +830,20 @@
                 }
                 saveData(data);
                 showToast('✅ Perangkat berhasil disimpan!');
+                
             } else if (currentModalType === 'layanan') {
-                const icon = document.getElementById('f-layanan-icon').value.trim();
-                const title = document.getElementById('f-layanan-title').value.trim();
-                const desc = document.getElementById('f-layanan-desc').value.trim();
-                if (!title) { showToast('Judul layanan wajib diisi!', 'error'); return; }
+                const iconInput = document.getElementById('f-layanan-icon');
+                const titleInput = document.getElementById('f-layanan-title');
+                const descInput = document.getElementById('f-layanan-desc');
+                
+                const icon = iconInput ? iconInput.value.trim() : '📄';
+                const title = titleInput ? titleInput.value.trim() : '';
+                const desc = descInput ? descInput.value.trim() : '';
+                
+                if (!title) { 
+                    showToast('⚠️ Judul layanan wajib diisi!', 'error');
+                    return; 
+                }
 
                 if (currentEditId) {
                     const idx = data.layanan.findIndex(i => i.id === currentEditId);
@@ -797,12 +857,14 @@
                 saveData(data);
                 showToast('✅ Layanan berhasil disimpan!');
             }
+            
+            // RESET semua state setelah save
             closeModal();
             renderAll();
         }
 
         // ============================================================
-        // 8. CRUD FUNCTIONS
+        // 9. CRUD FUNCTIONS
         // ============================================================
         function editUMKM(id) { openModal('umkm', id); }
         function deleteUMKM(id) {
@@ -873,7 +935,7 @@
         }
 
         // ============================================================
-        // 9. EXPORT / BACKUP
+        // 10. EXPORT / BACKUP
         // ============================================================
         function exportData() {
             const json = JSON.stringify(data, null, 2);
@@ -911,7 +973,7 @@
         }
 
         // ============================================================
-        // 10. INIT
+        // 11. INIT
         // ============================================================
         renderAll();
 
