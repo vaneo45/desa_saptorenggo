@@ -44,7 +44,6 @@
     color:var(--tanah-liat);
   }
 
-  /* batik kawung motif - signature element, used as texture strips */
   .kawung-strip{
     height:14px;
     width:100%;
@@ -55,7 +54,6 @@
   }
   .kawung-strip.dark{background-image: radial-gradient(circle at 12.5px 7px, var(--kertas) 0 4px, transparent 4.2px); opacity:0.55;}
 
-  /* NAV */
   header.nav{
     position:sticky; top:0; z-index:50;
     background:rgba(245,239,223,0.92);
@@ -83,7 +81,6 @@
   }
   .menu-toggle{display:none; background:none; border:none; font-size:22px; cursor:pointer; color:var(--tinta);}
 
-  /* HERO */
   .hero{
     position:relative;
     background:var(--hijau-sawah);
@@ -130,7 +127,6 @@
   .section-head h2{font-size:clamp(28px,3.4vw,38px); margin-top:10px;}
   .section-head p{opacity:0.75; margin-top:12px; font-size:15.5px;}
 
-  /* LOKASI */
   .lokasi-grid{display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:stretch;}
   .lokasi-card{
     background:var(--putih); border:1px solid var(--garis); border-radius:18px; overflow:hidden;
@@ -146,7 +142,6 @@
   .batas-list .b{background:var(--kertas); border-radius:10px; padding:12px 14px; font-size:13.5px;}
   .batas-list .b b{display:block; font-family:'Fraunces',serif; font-size:14px; margin-bottom:2px;}
 
-  /* STRUKTUR */
   .struktur-bg{background:var(--hijau-tua); color:var(--kertas-terang);}
   .struktur-bg .eyebrow{color:var(--emas-batik);}
   .struktur-bg .section-head p{opacity:0.65;}
@@ -175,7 +170,6 @@
   .org-card .name{font-family:'Fraunces',serif; font-size:16.5px; font-weight:600;}
   .org-card .name.tbd{opacity:0.45; font-style:italic; font-family:'Plus Jakarta Sans',sans-serif; font-size:13.5px;}
 
-  /* UMKM */
   .umkm-head{
     display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap;
   }
@@ -209,6 +203,7 @@
   }
   .menu-thumb .fallback{
     width:100%; height:100%; display:flex; align-items:center; justify-content:center;
+    position:relative; z-index:1;
   }
   .menu-card .body{padding:14px 16px 18px;}
   .menu-card .name{
@@ -222,7 +217,6 @@
   }
   .umkm-cta p{font-size:14.5px; opacity:0.85; max-width:420px;}
 
-  /* LAYANAN */
   .layanan-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
   .layanan-card{
     background:var(--putih); border:1px solid var(--garis); border-radius:16px; padding:24px;
@@ -240,7 +234,6 @@
   }
   .wa-link svg{width:16px;height:16px;}
 
-  /* FOOTER */
   footer{background:var(--hijau-tua); color:rgba(245,239,223,0.7); padding:52px 0 26px;}
   .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:36px; margin-bottom:36px;}
   footer h4{color:var(--kertas-terang); font-size:14px; margin-bottom:14px; font-family:'Fraunces',serif;}
@@ -248,6 +241,17 @@
   footer p.desc{font-size:13.5px; max-width:320px;}
   footer ul{list-style:none; font-size:13.5px; display:flex; flex-direction:column; gap:9px;}
   .footer-bottom{border-top:1px solid rgba(245,239,223,0.12); padding-top:20px; font-size:12.5px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
+
+  /* Admin Link di Footer */
+  .admin-link {
+    color: var(--emas-batik);
+    opacity: 0.5;
+    font-size: 12px;
+    transition: opacity 0.2s;
+  }
+  .admin-link:hover {
+    opacity: 1;
+  }
 
   @media (max-width:860px){
     nav.links{display:none;}
@@ -275,7 +279,7 @@
       <a href="#umkm">UMKM Hikmah Pia</a>
       <a href="#layanan">Layanan</a>
     </nav>
-    <a class="nav-cta" href="https://wa.me/6281234567890" target="_blank" rel="noopener">Hubungi Kantor Desa</a>
+    <a class="nav-cta" href="#" id="nav-wa-link" target="_blank" rel="noopener">Hubungi Kantor Desa</a>
     <button class="menu-toggle" aria-label="Menu">&#9776;</button>
   </div>
 </header>
@@ -285,7 +289,7 @@
     <div>
       <span class="eyebrow" style="color:#DEC98A">Kecamatan Pakis · Kabupaten Malang · Jawa Timur</span>
       <h1 class="display">Selamat datang<br>di <em>Saptorenggo</em></h1>
-      <p class="lead">Desa agraris di kaki jalur Tumpang, dikenal dengan wisata kuliner, kerajinan, dan warganya yang mayoritas bekerja sebagai pertukangan dan wiraswasta &mdash; termasuk UMKM camilan rumahan Hikmah Pia.</p>
+      <p class="lead" id="hero-lead">Desa agraris di kaki jalur Tumpang, dikenal dengan wisata kuliner, kerajinan, dan warganya yang mayoritas bekerja sebagai pertukangan dan wiraswasta &mdash; termasuk UMKM camilan rumahan Hikmah Pia.</p>
       <div class="btn-row">
         <a class="btn btn-primary" href="#umkm">Lihat UMKM Hikmah Pia</a>
         <a class="btn btn-outline" href="#layanan">Layanan Masyarakat</a>
@@ -357,15 +361,15 @@
     </div>
 
     <div class="kades-card">
-      <div class="kades-photo">KS</div>
+      <div class="kades-photo" id="kades-photo">KS</div>
       <div>
         <div class="kades-role">Kepala Desa</div>
-        <div class="kades-name display">(Nama Kepala Desa)</div>
+        <div class="kades-name display" id="kades-name">(Nama Kepala Desa)</div>
         <div class="kades-note">Lengkapi dengan nama Kepala Desa aktif sesuai SK terbaru. Kontak resmi kantor desa tersedia melalui tombol WhatsApp di bagian atas halaman.</div>
       </div>
     </div>
 
-    <div class="org-grid">
+    <div class="org-grid" id="org-grid">
       <div class="org-card"><div class="role">Sekretaris Desa</div><div class="name">Adi Sudiar Dwi Yanto, S.E.</div></div>
       <div class="org-card"><div class="role">Ketua BPD</div><div class="name tbd">Badan Permusyawaratan Desa</div></div>
       <div class="org-card"><div class="role">Kaur Pemerintahan</div><div class="name tbd">Lengkapi nama pejabat</div></div>
@@ -385,7 +389,7 @@
       <div class="section-head" style="margin-bottom:0;">
         <span class="umkm-badge">&#9733; UMKM Unggulan Desa</span>
         <h2 class="display">Hikmah Pia</h2>
-        <p>Usaha rumahan warga Saptorenggo yang memproduksi aneka pia, bolen, dan kudapan kering &mdash; dibuat segar setiap hari dengan resep rumahan.</p>
+        <p id="umkm-desc">Usaha rumahan warga Saptorenggo yang memproduksi aneka pia, bolen, dan kudapan kering &mdash; dibuat segar setiap hari dengan resep rumahan.</p>
       </div>
     </div>
 
@@ -394,116 +398,12 @@
       <div class="txt">
         <p>Hikmah Pia adalah salah satu UMKM binaan Desa Saptorenggo yang mengangkat camilan khas berbahan dasar kacang hijau dan cokelat menjadi pia, bolen, dan stik gurih. Produk dibuat dalam skala rumahan dengan kualitas yang konsisten.</p>
         <p>Setiap pesanan dapat disesuaikan porsi dan kemasannya untuk kebutuhan oleh-oleh, hajatan, maupun rapat desa.</p>
-        <a class="btn btn-primary" style="background:var(--tanah-liat); color:var(--putih);" href="https://wa.me/6281234567890?text=Halo%20Hikmah%20Pia%2C%20saya%20ingin%20memesan" target="_blank" rel="noopener">Pesan via WhatsApp</a>
+        <a class="btn btn-primary" style="background:var(--tanah-liat); color:var(--putih);" href="#" id="umkm-wa-link" target="_blank" rel="noopener">Pesan via WhatsApp</a>
       </div>
     </div>
 
-    <div class="menu-grid">
-
-      <!-- Kartu 1: Bolen Pisang Cokelat -->
-      <div class="menu-card">
-        <div class="menu-thumb" style="background:linear-gradient(135deg,#B85C2E,#7A3A18);">
-          <img src="BOLEN_PISANG_COKELAT.png" alt="Bolen Pisang Cokelat"
-               onerror="this.remove(); this.parentElement.querySelector('.fallback').style.display='flex';">
-          <div class="fallback" style="display:none;">BP</div>
-        </div>
-        <div class="body">
-          <div class="name">BOLEN PISANG COKELAT</div>
-          <div class="tag">&#128100;&#128100; Produk rumahan</div>
-        </div>
-      </div>
-
-      <!-- Kartu 2: Kuping Gajah -->
-      <div class="menu-card">
-        <div class="menu-thumb" style="background:linear-gradient(135deg,#C79A3F,#8A6320);">
-          <img src="KUPING_GAJAH.png" alt="Kuping Gajah"
-               onerror="this.remove(); this.parentElement.querySelector('.fallback').style.display='flex';">
-          <div class="fallback" style="display:none;">KG</div>
-        </div>
-        <div class="body">
-          <div class="name">KUPING GAJAH</div>
-          <div class="tag">&#128100;&#128100; Produk rumahan</div>
-        </div>
-      </div>
-
-      <!-- Kartu 3: Mentari -->
-      <div class="menu-card">
-        <div class="menu-thumb" style="background:linear-gradient(135deg,#D4A93C,#B85C2E);">
-          <img src="MENTARI.png" alt="Mentari"
-               onerror="this.remove(); this.parentElement.querySelector('.fallback').style.display='flex';">
-          <div class="fallback" style="display:none;">M</div>
-        </div>
-        <div class="body">
-          <div class="name">MENTARI</div>
-          <div class="tag">&#128100;&#128100; Produk rumahan</div>
-        </div>
-      </div>
-
-      <!-- Kartu 4: Pastel Is Abon -->
-      <div class="menu-card">
-        <div class="menu-thumb" style="background:linear-gradient(135deg,#26402F,#16261B);">
-          <img src="PASTEL_IS_ABON.png" alt="Pastel Is Abon"
-               onerror="this.remove(); this.parentElement.querySelector('.fallback').style.display='flex';">
-          <div class="fallback" style="display:none;">PA</div>
-        </div>
-        <div class="body">
-          <div class="name">PASTEL IS ABON</div>
-          <div class="tag">&#128100;&#128100; Produk rumahan</div>
-        </div>
-      </div>
-
-      <!-- Kartu 5: Pia Cokelat -->
-      <div class="menu-card">
-        <div class="menu-thumb" style="background:linear-gradient(135deg,#5B3A26,#2E1D12);">
-          <img src="PIA_COKELAT.png" alt="Pia Cokelat"
-               onerror="this.remove(); this.parentElement.querySelector('.fallback').style.display='flex';">
-          <div class="fallback" style="display:none;">PC</div>
-        </div>
-        <div class="body">
-          <div class="name">PIA COKELAT</div>
-          <div class="tag">&#128100;&#128100; Produk rumahan</div>
-        </div>
-      </div>
-
-      <!-- Kartu 6: Pia Cokelat dan Kacang Hijau -->
-      <div class="menu-card">
-        <div class="menu-thumb" style="background:linear-gradient(135deg,#6E7F3B,#3E4A20);">
-          <img src="PIA_COKELAT_DAN_KACANG_HIJAU.png" alt="Pia Cokelat dan Kacang Hijau"
-               onerror="this.remove(); this.parentElement.querySelector('.fallback').style.display='flex';">
-          <div class="fallback" style="display:none;">PK</div>
-        </div>
-        <div class="body">
-          <div class="name">PIA COKELAT DAN KACANG HIJAU</div>
-          <div class="tag">&#128100;&#128100; Produk rumahan</div>
-        </div>
-      </div>
-
-      <!-- Kartu 7: Pia Kacang Hijau -->
-      <div class="menu-card">
-        <div class="menu-thumb" style="background:linear-gradient(135deg,#8FA34A,#556B2F);">
-          <img src="PIA_KACANG_HIJAU.png" alt="Pia Kacang Hijau"
-               onerror="this.remove(); this.parentElement.querySelector('.fallback').style.display='flex';">
-          <div class="fallback" style="display:none;">PK</div>
-        </div>
-        <div class="body">
-          <div class="name">PIA KACANG HIJAU</div>
-          <div class="tag">&#128100;&#128100; Produk rumahan</div>
-        </div>
-      </div>
-
-      <!-- Kartu 8: Stik Bawang -->
-      <div class="menu-card">
-        <div class="menu-thumb" style="background:linear-gradient(135deg,#C9B27A,#8A7440);">
-          <img src="STIK_BAWANG.png" alt="Stik Bawang"
-               onerror="this.remove(); this.parentElement.querySelector('.fallback').style.display='flex';">
-          <div class="fallback" style="display:none;">SB</div>
-        </div>
-        <div class="body">
-          <div class="name">STIK BAWANG</div>
-          <div class="tag">&#128100;&#128100; Produk rumahan</div>
-        </div>
-      </div>
-
+    <div class="menu-grid" id="menu-grid">
+      <!-- Akan diisi oleh JavaScript dari data admin -->
     </div>
 
     <div class="umkm-cta">
@@ -511,7 +411,7 @@
         <h3 class="display" style="font-size:20px; margin-bottom:6px;">Ingin memesan dalam jumlah banyak?</h3>
         <p>Hikmah Pia menerima pesanan borongan untuk acara desa, arisan, dan hantaran. Hubungi langsung untuk cek ketersediaan dan harga.</p>
       </div>
-      <a class="btn btn-primary" href="https://wa.me/6281234567890?text=Halo%20Hikmah%20Pia%2C%20saya%20ingin%20tanya%20ketersediaan%20produk" target="_blank" rel="noopener">Chat WhatsApp &rarr;</a>
+      <a class="btn btn-primary" href="#" id="umkm-cta-wa" target="_blank" rel="noopener">Chat WhatsApp &rarr;</a>
     </div>
   </div>
 </section>
@@ -548,44 +448,265 @@
         <ul>
           <li>saptorenggo.pakis@malangkab.go.id</li>
           <li>Kode Pos 65154</li>
-          <li><a href="https://wa.me/6281234567890" target="_blank" rel="noopener">WhatsApp Kantor Desa</a></li>
+          <li><a href="#" id="footer-wa-link" target="_blank" rel="noopener">WhatsApp Kantor Desa</a></li>
         </ul>
       </div>
     </div>
     <div class="kawung-strip dark"></div>
     <div class="footer-bottom" style="margin-top:20px;">
       <span>&copy; 2026 Pemerintah Desa Saptorenggo &mdash; Kecamatan Pakis, Kabupaten Malang.</span>
-      <span>Nomor WhatsApp pada halaman ini adalah contoh, mohon disesuaikan dengan nomor resmi desa.</span>
+      <a href="admin.html" class="admin-link">⚙️ Kelola Konten (Admin)</a>
     </div>
   </div>
 </footer>
 
 <script>
-  // Data layanan masyarakat -> WhatsApp
-  const NOMOR_WA = "6281234567890"; // TODO: ganti dengan nomor resmi Kantor Desa Saptorenggo
-  const layanan = [
-    { icon:"&#128196;", title:"Surat Keterangan Domisili", desc:"Pengajuan surat keterangan tempat tinggal untuk keperluan administrasi.", pesan:"Halo, saya ingin mengajukan Surat Keterangan Domisili." },
-    { icon:"&#128188;", title:"Surat Keterangan Usaha", desc:"Untuk warga yang membutuhkan legalitas usaha kecil atau UMKM.", pesan:"Halo, saya ingin mengajukan Surat Keterangan Usaha." },
-    { icon:"&#128100;", title:"Surat Pengantar KTP/KK", desc:"Pengantar RT/RW untuk pembuatan atau perubahan data kependudukan.", pesan:"Halo, saya ingin mengajukan Surat Pengantar KTP/KK." },
-    { icon:"&#128172;", title:"Pengaduan Warga", desc:"Sampaikan keluhan atau laporan terkait fasilitas dan pelayanan desa.", pesan:"Halo, saya ingin menyampaikan pengaduan warga." },
-    { icon:"&#127974;", title:"Surat Keterangan Tidak Mampu", desc:"Untuk keperluan bantuan sosial, beasiswa, atau keringanan biaya.", pesan:"Halo, saya ingin mengajukan Surat Keterangan Tidak Mampu." },
-    { icon:"&#128203;", title:"Layanan Administrasi Lainnya", desc:"Konsultasi kebutuhan administrasi desa lain di luar daftar di atas.", pesan:"Halo, saya ingin bertanya seputar layanan administrasi desa." },
-  ];
-  const layananGrid = document.getElementById("layanan-grid");
-  layanan.forEach(l=>{
-    const card = document.createElement("div");
-    card.className = "layanan-card";
-    const url = `https://wa.me/${NOMOR_WA}?text=${encodeURIComponent(l.pesan)}`;
-    card.innerHTML = `
-      <div class="layanan-icon">${l.icon}</div>
-      <h3 class="display">${l.title}</h3>
-      <p>${l.desc}</p>
-      <a class="wa-link" href="${url}" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.6-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.5.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5-.1-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.8c.1.2 2 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.6-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
-        Hubungi via WhatsApp
-      </a>`;
-    layananGrid.appendChild(card);
-  });
+// ============================================================
+// 1. AMBIL DATA DARI LOCALSTORAGE (dari admin panel)
+// ============================================================
+function getWebsiteData() {
+    try {
+        const raw = localStorage.getItem('saptorenggo_data');
+        if (raw) {
+            const data = JSON.parse(raw);
+            return data;
+        }
+    } catch (e) {}
+    return null;
+}
+
+const adminData = getWebsiteData();
+
+// ============================================================
+// 2. DEFAULT DATA (jika tidak ada data dari admin)
+// ============================================================
+const defaultData = {
+    umkm: [
+        { id: 1, name: "BOLEN PISANG COKELAT", tag: "Produk rumahan", color: "#B85C2E", imageUrl: null },
+        { id: 2, name: "KUPING GAJAH", tag: "Produk rumahan", color: "#C79A3F", imageUrl: null },
+        { id: 3, name: "MENTARI", tag: "Produk rumahan", color: "#D4A93C", imageUrl: null },
+        { id: 4, name: "PASTEL IS ABON", tag: "Produk rumahan", color: "#26402F", imageUrl: null },
+        { id: 5, name: "PIA COKELAT", tag: "Produk rumahan", color: "#5B3A26", imageUrl: null },
+        { id: 6, name: "PIA COKELAT DAN KACANG HIJAU", tag: "Produk rumahan", color: "#6E7F3B", imageUrl: null },
+        { id: 7, name: "PIA KACANG HIJAU", tag: "Produk rumahan", color: "#8FA34A", imageUrl: null },
+        { id: 8, name: "STIK BAWANG", tag: "Produk rumahan", color: "#C9B27A", imageUrl: null }
+    ],
+    perangkat: [
+        { id: 1, role: "Sekretaris Desa", name: "Adi Sudiar Dwi Yanto, S.E." },
+        { id: 2, role: "Ketua BPD", name: "Badan Permusyawaratan Desa" },
+        { id: 3, role: "Kaur Pemerintahan", name: "Lengkapi nama pejabat" },
+        { id: 4, role: "Kaur Pembangunan", name: "Lengkapi nama pejabat" },
+        { id: 5, role: "Kaur Pemberdayaan Masyarakat", name: "Lengkapi nama pejabat" },
+        { id: 6, role: "Kaur Kesejahteraan Rakyat", name: "Lengkapi nama pejabat" },
+        { id: 7, role: "Kaur Umum", name: "Lengkapi nama pejabat" },
+        { id: 8, role: "Kepala Dusun", name: "Lengkapi nama pejabat" },
+        { id: 9, role: "Staf Administrasi", name: "Lengkapi nama pejabat" }
+    ],
+    layanan: [
+        { id: 1, icon: "📄", title: "Surat Keterangan Domisili", desc: "Pengajuan surat keterangan tempat tinggal untuk keperluan administrasi." },
+        { id: 2, icon: "💼", title: "Surat Keterangan Usaha", desc: "Untuk warga yang membutuhkan legalitas usaha kecil atau UMKM." },
+        { id: 3, icon: "👤", title: "Surat Pengantar KTP/KK", desc: "Pengantar RT/RW untuk pembuatan atau perubahan data kependudukan." },
+        { id: 4, icon: "💬", title: "Pengaduan Warga", desc: "Sampaikan keluhan atau laporan terkait fasilitas dan pelayanan desa." },
+        { id: 5, icon: "🏺", title: "Surat Keterangan Tidak Mampu", desc: "Untuk keperluan bantuan sosial, beasiswa, atau keringanan biaya." },
+        { id: 6, icon: "📋", title: "Layanan Administrasi Lainnya", desc: "Konsultasi kebutuhan administrasi desa lain di luar daftar di atas." }
+    ],
+    kades: { name: "(Nama Kepala Desa)", photo: "KS" },
+    umum: {
+        heroDesc: "Desa agraris di kaki jalur Tumpang, dikenal dengan wisata kuliner, kerajinan, dan warganya yang mayoritas bekerja sebagai pertukangan dan wiraswasta — termasuk UMKM camilan rumahan Hikmah Pia.",
+        umkmDesc: "Usaha rumahan warga Saptorenggo yang memproduksi aneka pia, bolen, dan kudapan kering — dibuat segar setiap hari dengan resep rumahan."
+    },
+    waNumber: "6281234567890"
+};
+
+// Gabungkan data admin dengan default (admin data lebih prioritas)
+let data = { ...defaultData, ...adminData };
+
+// ============================================================
+// 3. HELPER FUNCTIONS
+// ============================================================
+function getInitials(name) {
+    if (!name) return '??';
+    const words = name.split(' ');
+    if (words.length === 1) return name.substring(0, 2).toUpperCase();
+    return words.slice(0, 2).map(w => w[0]).join('').toUpperCase();
+}
+
+function adjustColor(hex, percent) {
+    let r, g, b;
+    if (hex.length === 4) {
+        r = parseInt(hex.slice(1,2), 16) * 17;
+        g = parseInt(hex.slice(2,3), 16) * 17;
+        b = parseInt(hex.slice(3,4), 16) * 17;
+    } else {
+        r = parseInt(hex.slice(1,3), 16);
+        g = parseInt(hex.slice(3,5), 16);
+        b = parseInt(hex.slice(5,7), 16);
+    }
+    r = Math.max(0, Math.min(255, r + percent));
+    g = Math.max(0, Math.min(255, g + percent));
+    b = Math.max(0, Math.min(255, b + percent));
+    return `#${r.toString(16).padStart(2,'0')}${g.toString(16).padStart(2,'0')}${b.toString(16).padStart(2,'0')}`;
+}
+
+function buildWaUrl(waNumber, message) {
+    const clean = waNumber.replace(/[^0-9]/g, '');
+    if (!clean) return '#';
+    return `https://wa.me/${clean}?text=${encodeURIComponent(message || '')}`;
+}
+
+// ============================================================
+// 4. RENDER FUNCTIONS
+// ============================================================
+
+// 4.1 Update Hero
+function renderHero() {
+    const lead = document.getElementById('hero-lead');
+    if (lead && data.umum?.heroDesc) {
+        lead.textContent = data.umum.heroDesc;
+    }
+}
+
+// 4.2 Update UMKM Description
+function renderUmkmDesc() {
+    const desc = document.getElementById('umkm-desc');
+    if (desc && data.umum?.umkmDesc) {
+        desc.textContent = data.umum.umkmDesc;
+    }
+}
+
+// 4.3 Update UMKM Products (dengan gambar)
+function renderUmkmProducts() {
+    const container = document.getElementById('menu-grid');
+    if (!container) return;
+    
+    const products = data.umkm || [];
+    if (products.length === 0) {
+        container.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:40px;opacity:0.5;">Belum ada produk UMKM.</p>';
+        return;
+    }
+
+    container.innerHTML = products.map(item => {
+        const hasImage = item.imageUrl && item.imageUrl.length > 0;
+        const bgColor = item.color || '#26402F';
+        
+        return `
+            <div class="menu-card">
+                <div class="menu-thumb" style="background:linear-gradient(135deg,${bgColor},${adjustColor(bgColor, -30)});">
+                    ${hasImage ? `<img src="${item.imageUrl}" alt="${item.name}" loading="lazy" onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex';">` : ''}
+                    <div class="fallback" style="${hasImage ? 'display:none;' : 'display:flex;'}">${getInitials(item.name)}</div>
+                </div>
+                <div class="body">
+                    <div class="name">${item.name}</div>
+                    <div class="tag">👨‍👩‍👦‍👦 ${item.tag || 'Produk rumahan'}</div>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+// 4.4 Update Perangkat Desa
+function renderPerangkat() {
+    const container = document.getElementById('org-grid');
+    if (!container) return;
+    
+    const perangkat = data.perangkat || [];
+    if (perangkat.length === 0) return;
+
+    container.innerHTML = perangkat.map(item => {
+        const isTbd = item.name.includes('Lengkapi') || item.name.includes('Badan');
+        return `
+            <div class="org-card">
+                <div class="role">${item.role}</div>
+                <div class="name ${isTbd ? 'tbd' : ''}">${item.name}</div>
+            </div>
+        `;
+    }).join('');
+}
+
+// 4.5 Update Kepala Desa
+function renderKades() {
+    const nameEl = document.getElementById('kades-name');
+    const photoEl = document.getElementById('kades-photo');
+    if (nameEl && data.kades?.name) {
+        nameEl.textContent = data.kades.name;
+    }
+    if (photoEl && data.kades?.photo) {
+        photoEl.textContent = data.kades.photo;
+    }
+}
+
+// 4.6 Update Layanan
+function renderLayanan() {
+    const container = document.getElementById('layanan-grid');
+    if (!container) return;
+    
+    const waNumber = data.waNumber || '6281234567890';
+    const layananList = data.layanan || [];
+    
+    if (layananList.length === 0) {
+        container.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:20px;opacity:0.5;">Belum ada layanan.</p>';
+        return;
+    }
+
+    container.innerHTML = layananList.map(item => {
+        const message = `Halo, saya ingin mengajukan ${item.title}`;
+        const url = buildWaUrl(waNumber, message);
+        return `
+            <div class="layanan-card">
+                <div class="layanan-icon">${item.icon || '📄'}</div>
+                <h3 class="display">${item.title}</h3>
+                <p>${item.desc || ''}</p>
+                <a class="wa-link" href="${url}" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                        <path d="M17.5 14.4c-.3-.1-1.6-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.5.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5-.1-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.8c.1.2 2 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.6-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/>
+                        <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/>
+                    </svg>
+                    Hubungi via WhatsApp
+                </a>
+            </div>
+        `;
+    }).join('');
+}
+
+// 4.7 Update semua link WhatsApp
+function renderWaLinks() {
+    const waNumber = data.waNumber || '6281234567890';
+    const links = [
+        { id: 'nav-wa-link', msg: 'Halo, saya ingin menghubungi Kantor Desa Saptorenggo' },
+        { id: 'umkm-wa-link', msg: 'Halo Hikmah Pia, saya ingin memesan produk' },
+        { id: 'umkm-cta-wa', msg: 'Halo Hikmah Pia, saya ingin tanya ketersediaan produk' },
+        { id: 'footer-wa-link', msg: 'Halo, saya ingin menghubungi Kantor Desa Saptorenggo' }
+    ];
+    
+    links.forEach(({id, msg}) => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.href = buildWaUrl(waNumber, msg);
+        }
+    });
+}
+
+// ============================================================
+// 5. RENDER ALL
+// ============================================================
+function renderAll() {
+    renderHero();
+    renderUmkmDesc();
+    renderUmkmProducts();
+    renderPerangkat();
+    renderKades();
+    renderLayanan();
+    renderWaLinks();
+}
+
+// ============================================================
+// 6. INIT
+// ============================================================
+renderAll();
+
+console.log('✅ Dashboard Saptorenggo siap!');
+console.log('📦 Data dari admin panel:', data);
+console.log('💡 Untuk mengelola konten, buka admin.html');
 </script>
 </body>
 </html>
