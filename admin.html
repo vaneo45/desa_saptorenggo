@@ -20,11 +20,7 @@
             --danger: #c0392b;
             --success: #27ae60;
         }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background: var(--kertas);
             color: var(--tinta);
@@ -32,16 +28,9 @@
             line-height: 1.6;
             padding: 20px;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        h1,
-        h2,
-        h3 {
-            font-family: 'Fraunces', serif;
-            font-weight: 600;
-        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1, h2, h3 { font-family: 'Fraunces', serif; font-weight: 600; }
+        
         .admin-header {
             background: var(--hijau-sawah);
             color: var(--putih);
@@ -54,9 +43,7 @@
             flex-wrap: wrap;
             gap: 15px;
         }
-        .admin-header h1 {
-            font-size: 24px;
-        }
+        .admin-header h1 { font-size: 24px; }
         .admin-header .badge {
             background: var(--emas-batik);
             color: var(--hijau-tua);
@@ -79,47 +66,30 @@
             transition: transform 0.2s, opacity 0.2s;
             text-decoration: none;
         }
-        .btn:hover {
-            transform: translateY(-2px);
-        }
-        .btn-primary {
-            background: var(--emas-batik);
-            color: var(--hijau-tua);
-        }
-        .btn-danger {
-            background: var(--danger);
-            color: white;
-        }
-        .btn-success {
-            background: var(--success);
-            color: white;
-        }
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--tanah-liat);
-            color: var(--tanah-liat);
-        }
-        .btn-sm {
-            padding: 6px 14px;
-            font-size: 12px;
-        }
+        .btn:hover { transform: translateY(-2px); }
+        .btn-primary { background: var(--emas-batik); color: var(--hijau-tua); }
+        .btn-danger { background: var(--danger); color: white; }
+        .btn-success { background: var(--success); color: white; }
+        .btn-outline { background: transparent; border: 2px solid var(--tanah-liat); color: var(--tanah-liat); }
+        .btn-sm { padding: 6px 14px; font-size: 12px; }
+        
         .card {
             background: var(--putih);
             border-radius: 12px;
             padding: 24px;
             margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(36, 31, 23, 0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid rgba(36,31,23,0.1);
         }
         .card h3 {
             margin-bottom: 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
-        .form-group {
-            margin-bottom: 16px;
-        }
+        .form-group { margin-bottom: 16px; }
         .form-group label {
             display: block;
             font-weight: 600;
@@ -127,32 +97,23 @@
             margin-bottom: 5px;
             color: var(--hijau-sawah);
         }
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
+        .form-group input, .form-group textarea, .form-group select {
             width: 100%;
             padding: 10px 14px;
-            border: 2px solid rgba(36, 31, 23, 0.15);
+            border: 2px solid rgba(36,31,23,0.15);
             border-radius: 8px;
             font-family: inherit;
             font-size: 14px;
             background: var(--kertas-terang);
             transition: border-color 0.2s;
         }
-        .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group input:focus, .form-group textarea:focus {
             outline: none;
             border-color: var(--tanah-liat);
         }
-        .form-group textarea {
-            min-height: 80px;
-            resize: vertical;
-        }
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
+        .form-group textarea { min-height: 80px; resize: vertical; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        
         .menu-grid-admin {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -161,7 +122,7 @@
         }
         .menu-item-admin {
             background: var(--kertas-terang);
-            border: 1px solid rgba(36, 31, 23, 0.1);
+            border: 1px solid rgba(36,31,23,0.1);
             border-radius: 10px;
             padding: 16px;
             display: flex;
@@ -169,36 +130,29 @@
             align-items: center;
             gap: 12px;
         }
-        .menu-item-admin .info {
-            flex: 1;
+        .menu-item-admin .info { flex: 1; }
+        .menu-item-admin .info .name { font-weight: 700; font-size: 14px; }
+        .menu-item-admin .info .tag { font-size: 12px; opacity: 0.6; }
+        .menu-item-admin .actions { display: flex; gap: 8px; }
+        .menu-item-admin .thumb-preview {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid rgba(36,31,23,0.1);
+            flex-shrink: 0;
+            background: #f0f0f0;
         }
-        .menu-item-admin .info .name {
-            font-weight: 700;
-            font-size: 14px;
-        }
-        .menu-item-admin .info .tag {
-            font-size: 12px;
-            opacity: 0.6;
-        }
-        .menu-item-admin .actions {
-            display: flex;
-            gap: 8px;
-        }
-        .empty-state {
-            text-align: center;
-            padding: 40px 20px;
-            color: #888;
-        }
-        .empty-state .icon {
-            font-size: 48px;
-            margin-bottom: 12px;
-        }
+        
+        .empty-state { text-align: center; padding: 40px 20px; color: #888; }
+        .empty-state .icon { font-size: 48px; margin-bottom: 12px; }
+        
         .tab-nav {
             display: flex;
             gap: 10px;
             margin-bottom: 24px;
             flex-wrap: wrap;
-            border-bottom: 2px solid rgba(36, 31, 23, 0.1);
+            border-bottom: 2px solid rgba(36,31,23,0.1);
             padding-bottom: 12px;
         }
         .tab-nav button {
@@ -218,15 +172,10 @@
             color: var(--putih);
             opacity: 1;
         }
-        .tab-nav button:hover {
-            opacity: 1;
-        }
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
+        .tab-nav button:hover { opacity: 1; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
         .toast {
             position: fixed;
             bottom: 20px;
@@ -238,74 +187,103 @@
             font-weight: 600;
             z-index: 999;
             animation: slideUp 0.4s ease;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
         }
-        .toast.success {
-            background: var(--success);
-        }
-        .toast.error {
-            background: var(--danger);
-        }
+        .toast.success { background: var(--success); }
+        .toast.error { background: var(--danger); }
         @keyframes slideUp {
-            from {
-                transform: translateY(100px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
+        
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0,0,0,0.5);
             display: none;
             justify-content: center;
             align-items: center;
             z-index: 1000;
             backdrop-filter: blur(4px);
         }
-        .modal-overlay.active {
-            display: flex;
-        }
+        .modal-overlay.active { display: flex; }
         .modal {
             background: var(--putih);
             border-radius: 16px;
             padding: 30px;
-            max-width: 500px;
+            max-width: 550px;
             width: 90%;
             max-height: 90vh;
             overflow-y: auto;
         }
-        .modal h2 {
-            margin-bottom: 20px;
-        }
+        .modal h2 { margin-bottom: 20px; }
         .modal .btn-row {
             display: flex;
             gap: 12px;
             margin-top: 20px;
             justify-content: flex-end;
         }
-        .preview-link {
-            color: var(--tanah-liat);
-            text-decoration: underline;
-            font-weight: 600;
+        
+        .image-preview-container {
+            margin-top: 10px;
+            position: relative;
+            display: inline-block;
         }
+        .image-preview-container img {
+            max-width: 150px;
+            max-height: 150px;
+            border-radius: 8px;
+            border: 2px solid var(--garis);
+        }
+        .image-preview-container .remove-image {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--danger);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            font-size: 14px;
+            line-height: 24px;
+            text-align: center;
+        }
+        .help-text {
+            font-size: 12px;
+            opacity: 0.6;
+            margin-top: 4px;
+        }
+        .help-text a { color: var(--tanah-liat); text-decoration: underline; }
+        
+        .stat-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .stat-item {
+            background: var(--kertas-terang);
+            padding: 16px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-item .num {
+            font-family: 'Fraunces', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--hijau-sawah);
+        }
+        .stat-item .label { font-size: 12px; opacity: 0.6; }
+        
         @media (max-width: 768px) {
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            .menu-grid-admin {
-                grid-template-columns: 1fr;
-            }
-            .admin-header {
-                flex-direction: column;
-                text-align: center;
-            }
+            .form-row { grid-template-columns: 1fr; }
+            .menu-grid-admin { grid-template-columns: 1fr; }
+            .admin-header { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -314,12 +292,19 @@
         <div class="admin-header">
             <div>
                 <h1>🛠️ Admin Panel · Desa Saptorenggo</h1>
-                <span style="font-size:13px; opacity:0.8;">Kelola konten website tanpa ngoding</span>
+                <span style="font-size:13px; opacity:0.8;">Kelola konten website + upload gambar produk</span>
             </div>
             <div style="display:flex; gap:10px; flex-wrap:wrap;">
                 <span class="badge">✨ Edit & Simpan</span>
-                <a href="https://desa-saptorenggo.vercel.app" target="_blank" class="btn btn-primary btn-sm">🔗 Lihat Website</a>
+                <a href="index.html" target="_blank" class="btn btn-primary btn-sm">🔗 Lihat Dashboard</a>
             </div>
+        </div>
+
+        <!-- Statistik -->
+        <div class="stat-box" id="stat-box">
+            <div class="stat-item"><div class="num" id="stat-umkm">0</div><div class="label">Produk UMKM</div></div>
+            <div class="stat-item"><div class="num" id="stat-perangkat">0</div><div class="label">Perangkat Desa</div></div>
+            <div class="stat-item"><div class="num" id="stat-layanan">0</div><div class="label">Layanan</div></div>
         </div>
 
         <!-- Tabs -->
@@ -384,11 +369,11 @@
                 <h3>📝 Edit Info Desa</h3>
                 <div class="form-group">
                     <label>Deskripsi Hero</label>
-                    <textarea id="hero-desc" rows="3">Desa agraris di kaki jalur Tumpang, dikenal dengan wisata kuliner, kerajinan, dan warganya yang mayoritas bekerja sebagai pertukangan dan wiraswasta — termasuk UMKM camilan rumahan Hikmah Pia.</textarea>
+                    <textarea id="hero-desc" rows="3"></textarea>
                 </div>
                 <div class="form-group">
                     <label>Deskripsi UMKM</label>
-                    <textarea id="umkm-desc" rows="3">Usaha rumahan warga Saptorenggo yang memproduksi aneka pia, bolen, dan kudapan kering — dibuat segar setiap hari dengan resep rumahan.</textarea>
+                    <textarea id="umkm-desc" rows="3"></textarea>
                 </div>
                 <button class="btn btn-success" onclick="saveUmum()">💾 Simpan Perubahan</button>
             </div>
@@ -396,6 +381,15 @@
                 <h3>🔄 Reset Data</h3>
                 <p style="margin-bottom:12px; opacity:0.7;">Kembalikan semua data ke default (akan menghapus semua perubahan Anda).</p>
                 <button class="btn btn-danger" onclick="resetData()">⚠️ Reset ke Default</button>
+            </div>
+            <div class="card">
+                <h3>📤 Export / Backup Data</h3>
+                <p style="margin-bottom:12px; opacity:0.7;">Download backup data atau restore dari file backup.</p>
+                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                    <button class="btn btn-primary btn-sm" onclick="exportData()">📥 Download Backup</button>
+                    <button class="btn btn-outline btn-sm" onclick="document.getElementById('restore-input').click()">📤 Restore Backup</button>
+                    <input type="file" id="restore-input" accept=".json" style="display:none;" onchange="restoreData(event)">
+                </div>
             </div>
         </div>
 
@@ -416,17 +410,19 @@
     </div>
 
     <script>
-        // ========== DATA DEFAULT ==========
+        // ============================================================
+        // 1. DATA DEFAULT
+        // ============================================================
         const DEFAULT_DATA = {
             umkm: [
-                { id: 1, name: "BOLEN PISANG COKELAT", tag: "Produk rumahan", color: "#B85C2E" },
-                { id: 2, name: "KUPING GAJAH", tag: "Produk rumahan", color: "#C79A3F" },
-                { id: 3, name: "MENTARI", tag: "Produk rumahan", color: "#D4A93C" },
-                { id: 4, name: "PASTEL IS ABON", tag: "Produk rumahan", color: "#26402F" },
-                { id: 5, name: "PIA COKELAT", tag: "Produk rumahan", color: "#5B3A26" },
-                { id: 6, name: "PIA COKELAT DAN KACANG HIJAU", tag: "Produk rumahan", color: "#6E7F3B" },
-                { id: 7, name: "PIA KACANG HIJAU", tag: "Produk rumahan", color: "#8FA34A" },
-                { id: 8, name: "STIK BAWANG", tag: "Produk rumahan", color: "#C9B27A" }
+                { id: 1, name: "BOLEN PISANG COKELAT", tag: "Produk rumahan", color: "#B85C2E", imageUrl: null },
+                { id: 2, name: "KUPING GAJAH", tag: "Produk rumahan", color: "#C79A3F", imageUrl: null },
+                { id: 3, name: "MENTARI", tag: "Produk rumahan", color: "#D4A93C", imageUrl: null },
+                { id: 4, name: "PASTEL IS ABON", tag: "Produk rumahan", color: "#26402F", imageUrl: null },
+                { id: 5, name: "PIA COKELAT", tag: "Produk rumahan", color: "#5B3A26", imageUrl: null },
+                { id: 6, name: "PIA COKELAT DAN KACANG HIJAU", tag: "Produk rumahan", color: "#6E7F3B", imageUrl: null },
+                { id: 7, name: "PIA KACANG HIJAU", tag: "Produk rumahan", color: "#8FA34A", imageUrl: null },
+                { id: 8, name: "STIK BAWANG", tag: "Produk rumahan", color: "#C9B27A", imageUrl: null }
             ],
             perangkat: [
                 { id: 1, role: "Sekretaris Desa", name: "Adi Sudiar Dwi Yanto, S.E." },
@@ -455,14 +451,16 @@
             waNumber: "6281234567890"
         };
 
-        // ========== STORAGE HELPERS ==========
+        // ============================================================
+        // 2. STORAGE HELPERS
+        // ============================================================
         function loadData() {
             try {
                 const raw = localStorage.getItem('saptorenggo_data');
                 if (raw) {
                     const data = JSON.parse(raw);
-                    // Merge with defaults to ensure all keys exist
-                    return { ...DEFAULT_DATA, ...data };
+                    // Merge dengan default (pastikan semua key ada)
+                    return { ...DEFAULT_DATA, ...data, umkm: data.umkm || DEFAULT_DATA.umkm };
                 }
             } catch (e) { console.warn('Load data error', e); }
             return JSON.parse(JSON.stringify(DEFAULT_DATA));
@@ -470,13 +468,17 @@
 
         function saveData(data) {
             localStorage.setItem('saptorenggo_data', JSON.stringify(data));
+            updateStats(data);
         }
 
         let data = loadData();
         let currentModalType = null;
         let currentEditId = null;
+        let tempImageData = null; // Untuk menyimpan base64 sementara
 
-        // ========== TOAST ==========
+        // ============================================================
+        // 3. TOAST
+        // ============================================================
         function showToast(msg, type = 'success') {
             const toast = document.getElementById('toast');
             toast.textContent = msg;
@@ -486,7 +488,18 @@
             toast._hide = setTimeout(() => { toast.style.display = 'none'; }, 3000);
         }
 
-        // ========== TABS ==========
+        // ============================================================
+        // 4. STATS
+        // ============================================================
+        function updateStats(d) {
+            document.getElementById('stat-umkm').textContent = (d.umkm || []).length;
+            document.getElementById('stat-perangkat').textContent = (d.perangkat || []).length;
+            document.getElementById('stat-layanan').textContent = (d.layanan || []).length;
+        }
+
+        // ============================================================
+        // 5. TABS
+        // ============================================================
         document.querySelectorAll('.tab-nav button').forEach(btn => {
             btn.addEventListener('click', function() {
                 document.querySelectorAll('.tab-nav button').forEach(b => b.classList.remove('active'));
@@ -498,25 +511,33 @@
             });
         });
 
-        // ========== RENDER FUNCTIONS ==========
+        // ============================================================
+        // 6. RENDER FUNCTIONS
+        // ============================================================
         function renderUMKM() {
             const container = document.getElementById('umkm-list');
             if (!data.umkm || data.umkm.length === 0) {
                 container.innerHTML = `<div class="empty-state"><div class="icon">🍰</div><p>Belum ada produk. Klik "Tambah Produk" untuk menambahkan.</p></div>`;
                 return;
             }
-            container.innerHTML = data.umkm.map(item => `
-                <div class="menu-item-admin">
-                    <div class="info">
-                        <div class="name">${item.name}</div>
-                        <div class="tag">${item.tag} · ${item.color}</div>
+            container.innerHTML = data.umkm.map(item => {
+                const hasImage = item.imageUrl && item.imageUrl.length > 0;
+                return `
+                    <div class="menu-item-admin">
+                        <div style="display:flex; align-items:center; gap:12px; flex:1;">
+                            ${hasImage ? `<img src="${item.imageUrl}" class="thumb-preview" alt="${item.name}">` : `<div class="thumb-preview" style="display:flex;align-items:center;justify-content:center;background:${item.color || '#ccc'};color:white;font-weight:700;font-size:14px;">${(item.name||'??').substring(0,2)}</div>`}
+                            <div class="info">
+                                <div class="name">${item.name}</div>
+                                <div class="tag">${item.tag || 'Produk rumahan'} · ${item.color || '#26402F'}</div>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <button class="btn btn-primary btn-sm" onclick="editUMKM(${item.id})">✏️</button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteUMKM(${item.id})">🗑️</button>
+                        </div>
                     </div>
-                    <div class="actions">
-                        <button class="btn btn-primary btn-sm" onclick="editUMKM(${item.id})">✏️</button>
-                        <button class="btn btn-danger btn-sm" onclick="deleteUMKM(${item.id})">🗑️</button>
-                    </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
         function renderPerangkat() {
@@ -548,8 +569,8 @@
             container.innerHTML = data.layanan.map(item => `
                 <div class="menu-item-admin">
                     <div class="info">
-                        <div class="name">${item.icon} ${item.title}</div>
-                        <div class="tag">${item.desc}</div>
+                        <div class="name">${item.icon || '📄'} ${item.title}</div>
+                        <div class="tag">${item.desc || ''}</div>
                     </div>
                     <div class="actions">
                         <button class="btn btn-primary btn-sm" onclick="editLayanan(${item.id})">✏️</button>
@@ -590,20 +611,28 @@
             renderKades();
             renderWA();
             renderUmum();
+            updateStats(data);
         }
 
-        // ========== MODAL ==========
+        // ============================================================
+        // 7. MODAL - dengan Upload Gambar
+        // ============================================================
         function openModal(type, editId = null) {
             currentModalType = type;
             currentEditId = editId;
+            tempImageData = null;
+            
             const modal = document.getElementById('modal');
             const title = document.getElementById('modal-title');
             const body = document.getElementById('modal-body');
 
             let html = '';
+            
             if (type === 'umkm') {
                 const item = editId ? data.umkm.find(i => i.id === editId) : null;
                 title.textContent = editId ? '✏️ Edit Produk' : '➕ Tambah Produk';
+                const hasImage = item?.imageUrl && item.imageUrl.length > 0;
+                
                 html = `
                     <div class="form-group">
                         <label>Nama Produk</label>
@@ -616,6 +645,16 @@
                     <div class="form-group">
                         <label>Warna (hex)</label>
                         <input type="text" id="f-umkm-color" value="${item ? item.color : '#26402F'}" placeholder="#26402F">
+                    </div>
+                    <div class="form-group">
+                        <label>Upload Gambar Produk</label>
+                        <input type="file" id="f-umkm-image" accept="image/*" onchange="previewImage(event)">
+                        <div class="help-text">Upload gambar produk (opsional). Ukuran ideal: 400x300px.</div>
+                        <div id="image-preview-container" class="image-preview-container" style="${hasImage ? 'display:inline-block;' : 'display:none;'}">
+                            <img id="preview-img" src="${item?.imageUrl || ''}" alt="Preview">
+                            <button class="remove-image" onclick="removeImage()">✕</button>
+                        </div>
+                        ${hasImage ? `<div class="help-text">Gambar saat ini: <a href="${item.imageUrl}" target="_blank">Lihat gambar</a></div>` : ''}
                     </div>
                 `;
             } else if (type === 'perangkat') {
@@ -658,23 +697,69 @@
             document.getElementById('modal').classList.remove('active');
             currentModalType = null;
             currentEditId = null;
+            tempImageData = null;
         }
 
+        // Preview gambar
+        function previewImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    tempImageData = e.target.result;
+                    const previewContainer = document.getElementById('image-preview-container');
+                    const previewImg = document.getElementById('preview-img');
+                    if (previewContainer && previewImg) {
+                        previewImg.src = tempImageData;
+                        previewContainer.style.display = 'inline-block';
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function removeImage() {
+            tempImageData = null;
+            const previewContainer = document.getElementById('image-preview-container');
+            const fileInput = document.getElementById('f-umkm-image');
+            if (previewContainer) previewContainer.style.display = 'none';
+            if (fileInput) fileInput.value = '';
+            // Tandai untuk menghapus gambar
+            document.getElementById('f-umkm-remove-image')?.remove();
+            const hidden = document.createElement('input');
+            hidden.type = 'hidden';
+            hidden.id = 'f-umkm-remove-image';
+            hidden.value = 'true';
+            document.getElementById('modal-body').appendChild(hidden);
+        }
+
+        // Save modal
         function saveModal() {
             if (currentModalType === 'umkm') {
                 const name = document.getElementById('f-umkm-name').value.trim();
                 const tag = document.getElementById('f-umkm-tag').value.trim();
                 const color = document.getElementById('f-umkm-color').value.trim();
+                const removeImageFlag = document.getElementById('f-umkm-remove-image')?.value === 'true';
+                
                 if (!name) { showToast('Nama produk wajib diisi!', 'error'); return; }
+
+                // Tentukan imageUrl
+                let imageUrl = null;
+                if (tempImageData) {
+                    imageUrl = tempImageData;
+                } else if (!removeImageFlag && currentEditId) {
+                    const existing = data.umkm.find(i => i.id === currentEditId);
+                    if (existing) imageUrl = existing.imageUrl;
+                }
 
                 if (currentEditId) {
                     const idx = data.umkm.findIndex(i => i.id === currentEditId);
                     if (idx !== -1) {
-                        data.umkm[idx] = { ...data.umkm[idx], name, tag, color };
+                        data.umkm[idx] = { ...data.umkm[idx], name, tag, color, imageUrl };
                     }
                 } else {
                     const maxId = data.umkm.reduce((max, i) => Math.max(max, i.id || 0), 0);
-                    data.umkm.push({ id: maxId + 1, name, tag, color });
+                    data.umkm.push({ id: maxId + 1, name, tag, color, imageUrl });
                 }
                 saveData(data);
                 showToast('✅ Produk berhasil disimpan!');
@@ -716,7 +801,9 @@
             renderAll();
         }
 
-        // ========== CRUD FUNCTIONS ==========
+        // ============================================================
+        // 8. CRUD FUNCTIONS
+        // ============================================================
         function editUMKM(id) { openModal('umkm', id); }
         function deleteUMKM(id) {
             if (confirm('Hapus produk ini?')) {
@@ -785,12 +872,47 @@
             }
         }
 
-        // ========== EXPORT DATA (untuk digunakan di website utama) ==========
-        function getExportData() {
-            return data;
+        // ============================================================
+        // 9. EXPORT / BACKUP
+        // ============================================================
+        function exportData() {
+            const json = JSON.stringify(data, null, 2);
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `saptorenggo_backup_${new Date().toISOString().slice(0,10)}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast('📥 Backup berhasil diunduh!');
         }
 
-        // ========== INIT ==========
+        function restoreData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const restored = JSON.parse(e.target.result);
+                    if (restored.umkm && restored.perangkat && restored.layanan) {
+                        data = restored;
+                        saveData(data);
+                        renderAll();
+                        showToast('📤 Data berhasil direstore!');
+                    } else {
+                        showToast('File backup tidak valid!', 'error');
+                    }
+                } catch (err) {
+                    showToast('Gagal membaca file backup!', 'error');
+                }
+            };
+            reader.readAsText(file);
+            event.target.value = '';
+        }
+
+        // ============================================================
+        // 10. INIT
+        // ============================================================
         renderAll();
 
         // Tutup modal dengan klik overlay
@@ -798,14 +920,13 @@
             if (e.target === this) closeModal();
         });
 
-        // Keyboard shortcut: Escape close modal
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') closeModal();
         });
 
         console.log('✅ Admin Panel Saptorenggo siap digunakan!');
         console.log('📦 Data tersimpan di LocalStorage.');
-        console.log('💡 Buka console untuk melihat data:', getExportData());
+        console.log('💡 Fitur: Upload gambar produk (Base64)');
     </script>
 </body>
 </html>
