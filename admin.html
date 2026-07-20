@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel · Desa Saptorenggo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --hijau-sawah: #26402F;
+            --hijau-tua: #16261B;
+            --tanah-liat: #B85C2E;
+            --emas-batik: #C79A3F;
+            --kertas: #F5EFDF;
+            --kertas-terang: #FBF7EC;
+            --tinta: #241F17;
+            --putih: #FFFDF8;
+            --danger: #c0392b;
+            --success: #27ae60;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: var(--kertas);
+            color: var(--tinta);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1,
+        h2,
+        h3 {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+        }
+        .admin-header {
+            background: var(--hijau-sawah);
+            color: var(--putih);
+            padding: 20px 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .admin-header h1 {
+            font-size: 24px;
+        }
+        .admin-header .badge {
+            background: var(--emas-batik);
+            color: var(--hijau-tua);
+            padding: 5px 15px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform 0.2s, opacity 0.2s;
+            text-decoration: none;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .btn-primary {
+            background: var(--emas-batik);
+            color: var(--hijau-tua);
+        }
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--tanah-liat);
+            color: var(--tanah-liat);
+        }
+        .btn-sm {
+            padding: 6px 14px;
+            font-size: 12px;
+        }
+        .card {
+            background: var(--putih);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(36, 31, 23, 0.1);
+        }
+        .card h3 {
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: var(--hijau-sawah);
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 2px solid rgba(36, 31, 23, 0.15);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            background: var(--kertas-terang);
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--tanah-liat);
+        }
+        .form-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .menu-grid-admin {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .menu-item-admin {
+            background: var(--kertas-terang);
+            border: 1px solid rgba(36, 31, 23, 0.1);
+            border-radius: 10px;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+        .menu-item-admin .info {
+            flex: 1;
+        }
+        .menu-item-admin .info .name {
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .menu-item-admin .info .tag {
+            font-size: 12px;
+            opacity: 0.6;
+        }
+        .menu-item-admin .actions {
+            display: flex;
+            gap: 8px;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #888;
+        }
+        .empty-state .icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+        .tab-nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            border-bottom: 2px solid rgba(36, 31, 23, 0.1);
+            padding-bottom: 12px;
+        }
+        .tab-nav button {
+            padding: 8px 20px;
+            border: none;
+            background: transparent;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 999px;
+            transition: background 0.2s, color 0.2s;
+            color: var(--tinta);
+            opacity: 0.6;
+        }
+        .tab-nav button.active {
+            background: var(--hijau-sawah);
+            color: var(--putih);
+            opacity: 1;
+        }
+        .tab-nav button:hover {
+            opacity: 1;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--hijau-tua);
+            color: var(--putih);
+            padding: 16px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            z-index: 999;
+            animation: slideUp 0.4s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+        .toast.success {
+            background: var(--success);
+        }
+        .toast.error {
+            background: var(--danger);
+        }
+        @keyframes slideUp {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(4px);
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal {
+            background: var(--putih);
+            border-radius: 16px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal h2 {
+            margin-bottom: 20px;
+        }
+        .modal .btn-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            justify-content: flex-end;
+        }
+        .preview-link {
+            color: var(--tanah-liat);
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .menu-grid-admin {
+                grid-template-columns: 1fr;
+            }
+            .admin-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="admin-header">
+            <div>
+                <h1>🛠️ Admin Panel · Desa Saptorenggo</h1>
+                <span style="font-size:13px; opacity:0.8;">Kelola konten website tanpa ngoding</span>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <span class="badge">✨ Edit & Simpan</span>
+                <a href="https://desa-saptorenggo.vercel.app" target="_blank" class="btn btn-primary btn-sm">🔗 Lihat Website</a>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tab-nav">
+            <button class="active" data-tab="umkm">🍰 UMKM Hikmah Pia</button>
+            <button data-tab="struktur">👔 Struktur Desa</button>
+            <button data-tab="layanan">📋 Layanan</button>
+            <button data-tab="umum">⚙️ Info Umum</button>
+        </div>
+
+        <!-- TAB: UMKM -->
+        <div class="tab-content active" id="tab-umkm">
+            <div class="card">
+                <h3>
+                    <span>📦 Daftar Produk UMKM</span>
+                    <button class="btn btn-primary btn-sm" onclick="openModal('umkm')">+ Tambah Produk</button>
+                </h3>
+                <div id="umkm-list" class="menu-grid-admin"></div>
+            </div>
+        </div>
+
+        <!-- TAB: Struktur -->
+        <div class="tab-content" id="tab-struktur">
+            <div class="card">
+                <h3>
+                    <span>👤 Kepala Desa</span>
+                    <button class="btn btn-primary btn-sm" onclick="editKades()">✏️ Edit</button>
+                </h3>
+                <div id="kades-display"></div>
+            </div>
+            <div class="card">
+                <h3>
+                    <span>👔 Perangkat Desa</span>
+                    <button class="btn btn-primary btn-sm" onclick="openModal('perangkat')">+ Tambah Perangkat</button>
+                </h3>
+                <div id="perangkat-list"></div>
+            </div>
+        </div>
+
+        <!-- TAB: Layanan -->
+        <div class="tab-content" id="tab-layanan">
+            <div class="card">
+                <h3>
+                    <span>📋 Layanan Masyarakat</span>
+                    <button class="btn btn-primary btn-sm" onclick="openModal('layanan')">+ Tambah Layanan</button>
+                </h3>
+                <div id="layanan-list"></div>
+            </div>
+            <div class="card">
+                <h3>📱 Nomor WhatsApp Resmi</h3>
+                <div class="form-group">
+                    <label>Nomor WhatsApp (contoh: 6281234567890)</label>
+                    <input type="text" id="wa-number" placeholder="6281234567890">
+                    <button class="btn btn-success btn-sm" style="margin-top:10px;" onclick="saveWANumber()">💾 Simpan Nomor WA</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: Umum -->
+        <div class="tab-content" id="tab-umum">
+            <div class="card">
+                <h3>📝 Edit Info Desa</h3>
+                <div class="form-group">
+                    <label>Deskripsi Hero</label>
+                    <textarea id="hero-desc" rows="3">Desa agraris di kaki jalur Tumpang, dikenal dengan wisata kuliner, kerajinan, dan warganya yang mayoritas bekerja sebagai pertukangan dan wiraswasta — termasuk UMKM camilan rumahan Hikmah Pia.</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Deskripsi UMKM</label>
+                    <textarea id="umkm-desc" rows="3">Usaha rumahan warga Saptorenggo yang memproduksi aneka pia, bolen, dan kudapan kering — dibuat segar setiap hari dengan resep rumahan.</textarea>
+                </div>
+                <button class="btn btn-success" onclick="saveUmum()">💾 Simpan Perubahan</button>
+            </div>
+            <div class="card">
+                <h3>🔄 Reset Data</h3>
+                <p style="margin-bottom:12px; opacity:0.7;">Kembalikan semua data ke default (akan menghapus semua perubahan Anda).</p>
+                <button class="btn btn-danger" onclick="resetData()">⚠️ Reset ke Default</button>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal-overlay" id="modal">
+            <div class="modal">
+                <h2 id="modal-title">Tambah Item</h2>
+                <div id="modal-body"></div>
+                <div class="btn-row">
+                    <button class="btn btn-outline" onclick="closeModal()">Batal</button>
+                    <button class="btn btn-success" id="modal-save-btn" onclick="saveModal()">💾 Simpan</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast -->
+        <div id="toast" class="toast" style="display:none;"></div>
+    </div>
+
+    <script>
+        // ========== DATA DEFAULT ==========
+        const DEFAULT_DATA = {
+            umkm: [
+                { id: 1, name: "BOLEN PISANG COKELAT", tag: "Produk rumahan", color: "#B85C2E" },
+                { id: 2, name: "KUPING GAJAH", tag: "Produk rumahan", color: "#C79A3F" },
+                { id: 3, name: "MENTARI", tag: "Produk rumahan", color: "#D4A93C" },
+                { id: 4, name: "PASTEL IS ABON", tag: "Produk rumahan", color: "#26402F" },
+                { id: 5, name: "PIA COKELAT", tag: "Produk rumahan", color: "#5B3A26" },
+                { id: 6, name: "PIA COKELAT DAN KACANG HIJAU", tag: "Produk rumahan", color: "#6E7F3B" },
+                { id: 7, name: "PIA KACANG HIJAU", tag: "Produk rumahan", color: "#8FA34A" },
+                { id: 8, name: "STIK BAWANG", tag: "Produk rumahan", color: "#C9B27A" }
+            ],
+            perangkat: [
+                { id: 1, role: "Sekretaris Desa", name: "Adi Sudiar Dwi Yanto, S.E." },
+                { id: 2, role: "Ketua BPD", name: "Badan Permusyawaratan Desa" },
+                { id: 3, role: "Kaur Pemerintahan", name: "Lengkapi nama pejabat" },
+                { id: 4, role: "Kaur Pembangunan", name: "Lengkapi nama pejabat" },
+                { id: 5, role: "Kaur Pemberdayaan Masyarakat", name: "Lengkapi nama pejabat" },
+                { id: 6, role: "Kaur Kesejahteraan Rakyat", name: "Lengkapi nama pejabat" },
+                { id: 7, role: "Kaur Umum", name: "Lengkapi nama pejabat" },
+                { id: 8, role: "Kepala Dusun", name: "Lengkapi nama pejabat" },
+                { id: 9, role: "Staf Administrasi", name: "Lengkapi nama pejabat" }
+            ],
+            layanan: [
+                { id: 1, icon: "📄", title: "Surat Keterangan Domisili", desc: "Pengajuan surat keterangan tempat tinggal untuk keperluan administrasi." },
+                { id: 2, icon: "💼", title: "Surat Keterangan Usaha", desc: "Untuk warga yang membutuhkan legalitas usaha kecil atau UMKM." },
+                { id: 3, icon: "👤", title: "Surat Pengantar KTP/KK", desc: "Pengantar RT/RW untuk pembuatan atau perubahan data kependudukan." },
+                { id: 4, icon: "💬", title: "Pengaduan Warga", desc: "Sampaikan keluhan atau laporan terkait fasilitas dan pelayanan desa." },
+                { id: 5, icon: "🏺", title: "Surat Keterangan Tidak Mampu", desc: "Untuk keperluan bantuan sosial, beasiswa, atau keringanan biaya." },
+                { id: 6, icon: "📋", title: "Layanan Administrasi Lainnya", desc: "Konsultasi kebutuhan administrasi desa lain di luar daftar di atas." }
+            ],
+            kades: { name: "(Nama Kepala Desa)", photo: "KS" },
+            umum: {
+                heroDesc: "Desa agraris di kaki jalur Tumpang, dikenal dengan wisata kuliner, kerajinan, dan warganya yang mayoritas bekerja sebagai pertukangan dan wiraswasta — termasuk UMKM camilan rumahan Hikmah Pia.",
+                umkmDesc: "Usaha rumahan warga Saptorenggo yang memproduksi aneka pia, bolen, dan kudapan kering — dibuat segar setiap hari dengan resep rumahan."
+            },
+            waNumber: "6281234567890"
+        };
+
+        // ========== STORAGE HELPERS ==========
+        function loadData() {
+            try {
+                const raw = localStorage.getItem('saptorenggo_data');
+                if (raw) {
+                    const data = JSON.parse(raw);
+                    // Merge with defaults to ensure all keys exist
+                    return { ...DEFAULT_DATA, ...data };
+                }
+            } catch (e) { console.warn('Load data error', e); }
+            return JSON.parse(JSON.stringify(DEFAULT_DATA));
+        }
+
+        function saveData(data) {
+            localStorage.setItem('saptorenggo_data', JSON.stringify(data));
+        }
+
+        let data = loadData();
+        let currentModalType = null;
+        let currentEditId = null;
+
+        // ========== TOAST ==========
+        function showToast(msg, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.className = `toast ${type}`;
+            toast.style.display = 'block';
+            clearTimeout(toast._hide);
+            toast._hide = setTimeout(() => { toast.style.display = 'none'; }, 3000);
+        }
+
+        // ========== TABS ==========
+        document.querySelectorAll('.tab-nav button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.tab-nav button').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                const tabId = this.dataset.tab;
+                document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+                document.getElementById(`tab-${tabId}`).classList.add('active');
+                renderAll();
+            });
+        });
+
+        // ========== RENDER FUNCTIONS ==========
+        function renderUMKM() {
+            const container = document.getElementById('umkm-list');
+            if (!data.umkm || data.umkm.length === 0) {
+                container.innerHTML = `<div class="empty-state"><div class="icon">🍰</div><p>Belum ada produk. Klik "Tambah Produk" untuk menambahkan.</p></div>`;
+                return;
+            }
+            container.innerHTML = data.umkm.map(item => `
+                <div class="menu-item-admin">
+                    <div class="info">
+                        <div class="name">${item.name}</div>
+                        <div class="tag">${item.tag} · ${item.color}</div>
+                    </div>
+                    <div class="actions">
+                        <button class="btn btn-primary btn-sm" onclick="editUMKM(${item.id})">✏️</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteUMKM(${item.id})">🗑️</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderPerangkat() {
+            const container = document.getElementById('perangkat-list');
+            if (!data.perangkat || data.perangkat.length === 0) {
+                container.innerHTML = `<div class="empty-state"><p>Belum ada perangkat desa.</p></div>`;
+                return;
+            }
+            container.innerHTML = data.perangkat.map(item => `
+                <div class="menu-item-admin">
+                    <div class="info">
+                        <div class="name">${item.role}</div>
+                        <div class="tag">${item.name}</div>
+                    </div>
+                    <div class="actions">
+                        <button class="btn btn-primary btn-sm" onclick="editPerangkat(${item.id})">✏️</button>
+                        <button class="btn btn-danger btn-sm" onclick="deletePerangkat(${item.id})">🗑️</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderLayanan() {
+            const container = document.getElementById('layanan-list');
+            if (!data.layanan || data.layanan.length === 0) {
+                container.innerHTML = `<div class="empty-state"><div class="icon">📋</div><p>Belum ada layanan.</p></div>`;
+                return;
+            }
+            container.innerHTML = data.layanan.map(item => `
+                <div class="menu-item-admin">
+                    <div class="info">
+                        <div class="name">${item.icon} ${item.title}</div>
+                        <div class="tag">${item.desc}</div>
+                    </div>
+                    <div class="actions">
+                        <button class="btn btn-primary btn-sm" onclick="editLayanan(${item.id})">✏️</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteLayanan(${item.id})">🗑️</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderKades() {
+            const container = document.getElementById('kades-display');
+            container.innerHTML = `
+                <div style="display:flex; align-items:center; gap:20px; padding:10px 0;">
+                    <div style="width:80px;height:80px;border-radius:50%;background:var(--hijau-sawah);display:flex;align-items:center;justify-content:center;font-size:32px;color:var(--emas-batik);font-weight:700;font-family:'Fraunces',serif;">
+                        ${data.kades.photo || 'KS'}
+                    </div>
+                    <div>
+                        <div style="font-size:13px;opacity:0.6;text-transform:uppercase;letter-spacing:0.05em;">Kepala Desa</div>
+                        <div style="font-size:24px;font-family:'Fraunces',serif;font-weight:600;">${data.kades.name}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderWA() {
+            document.getElementById('wa-number').value = data.waNumber || '6281234567890';
+        }
+
+        function renderUmum() {
+            document.getElementById('hero-desc').value = data.umum?.heroDesc || '';
+            document.getElementById('umkm-desc').value = data.umum?.umkmDesc || '';
+        }
+
+        function renderAll() {
+            renderUMKM();
+            renderPerangkat();
+            renderLayanan();
+            renderKades();
+            renderWA();
+            renderUmum();
+        }
+
+        // ========== MODAL ==========
+        function openModal(type, editId = null) {
+            currentModalType = type;
+            currentEditId = editId;
+            const modal = document.getElementById('modal');
+            const title = document.getElementById('modal-title');
+            const body = document.getElementById('modal-body');
+
+            let html = '';
+            if (type === 'umkm') {
+                const item = editId ? data.umkm.find(i => i.id === editId) : null;
+                title.textContent = editId ? '✏️ Edit Produk' : '➕ Tambah Produk';
+                html = `
+                    <div class="form-group">
+                        <label>Nama Produk</label>
+                        <input type="text" id="f-umkm-name" value="${item ? item.name : ''}" placeholder="Contoh: Pia Cokelat">
+                    </div>
+                    <div class="form-group">
+                        <label>Tag / Keterangan</label>
+                        <input type="text" id="f-umkm-tag" value="${item ? item.tag : 'Produk rumahan'}" placeholder="Produk rumahan">
+                    </div>
+                    <div class="form-group">
+                        <label>Warna (hex)</label>
+                        <input type="text" id="f-umkm-color" value="${item ? item.color : '#26402F'}" placeholder="#26402F">
+                    </div>
+                `;
+            } else if (type === 'perangkat') {
+                const item = editId ? data.perangkat.find(i => i.id === editId) : null;
+                title.textContent = editId ? '✏️ Edit Perangkat' : '➕ Tambah Perangkat';
+                html = `
+                    <div class="form-group">
+                        <label>Jabatan</label>
+                        <input type="text" id="f-perangkat-role" value="${item ? item.role : ''}" placeholder="Contoh: Kaur Pembangunan">
+                    </div>
+                    <div class="form-group">
+                        <label>Nama</label>
+                        <input type="text" id="f-perangkat-name" value="${item ? item.name : ''}" placeholder="Nama lengkap">
+                    </div>
+                `;
+            } else if (type === 'layanan') {
+                const item = editId ? data.layanan.find(i => i.id === editId) : null;
+                title.textContent = editId ? '✏️ Edit Layanan' : '➕ Tambah Layanan';
+                html = `
+                    <div class="form-group">
+                        <label>Icon (emoji)</label>
+                        <input type="text" id="f-layanan-icon" value="${item ? item.icon : '📄'}" placeholder="📄">
+                    </div>
+                    <div class="form-group">
+                        <label>Judul Layanan</label>
+                        <input type="text" id="f-layanan-title" value="${item ? item.title : ''}" placeholder="Surat Keterangan Domisili">
+                    </div>
+                    <div class="form-group">
+                        <label>Deskripsi</label>
+                        <textarea id="f-layanan-desc" rows="2">${item ? item.desc : ''}</textarea>
+                    </div>
+                `;
+            }
+
+            body.innerHTML = html;
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+            currentModalType = null;
+            currentEditId = null;
+        }
+
+        function saveModal() {
+            if (currentModalType === 'umkm') {
+                const name = document.getElementById('f-umkm-name').value.trim();
+                const tag = document.getElementById('f-umkm-tag').value.trim();
+                const color = document.getElementById('f-umkm-color').value.trim();
+                if (!name) { showToast('Nama produk wajib diisi!', 'error'); return; }
+
+                if (currentEditId) {
+                    const idx = data.umkm.findIndex(i => i.id === currentEditId);
+                    if (idx !== -1) {
+                        data.umkm[idx] = { ...data.umkm[idx], name, tag, color };
+                    }
+                } else {
+                    const maxId = data.umkm.reduce((max, i) => Math.max(max, i.id || 0), 0);
+                    data.umkm.push({ id: maxId + 1, name, tag, color });
+                }
+                saveData(data);
+                showToast('✅ Produk berhasil disimpan!');
+            } else if (currentModalType === 'perangkat') {
+                const role = document.getElementById('f-perangkat-role').value.trim();
+                const name = document.getElementById('f-perangkat-name').value.trim();
+                if (!role || !name) { showToast('Jabatan dan nama wajib diisi!', 'error'); return; }
+
+                if (currentEditId) {
+                    const idx = data.perangkat.findIndex(i => i.id === currentEditId);
+                    if (idx !== -1) {
+                        data.perangkat[idx] = { ...data.perangkat[idx], role, name };
+                    }
+                } else {
+                    const maxId = data.perangkat.reduce((max, i) => Math.max(max, i.id || 0), 0);
+                    data.perangkat.push({ id: maxId + 1, role, name });
+                }
+                saveData(data);
+                showToast('✅ Perangkat berhasil disimpan!');
+            } else if (currentModalType === 'layanan') {
+                const icon = document.getElementById('f-layanan-icon').value.trim();
+                const title = document.getElementById('f-layanan-title').value.trim();
+                const desc = document.getElementById('f-layanan-desc').value.trim();
+                if (!title) { showToast('Judul layanan wajib diisi!', 'error'); return; }
+
+                if (currentEditId) {
+                    const idx = data.layanan.findIndex(i => i.id === currentEditId);
+                    if (idx !== -1) {
+                        data.layanan[idx] = { ...data.layanan[idx], icon, title, desc };
+                    }
+                } else {
+                    const maxId = data.layanan.reduce((max, i) => Math.max(max, i.id || 0), 0);
+                    data.layanan.push({ id: maxId + 1, icon, title, desc });
+                }
+                saveData(data);
+                showToast('✅ Layanan berhasil disimpan!');
+            }
+            closeModal();
+            renderAll();
+        }
+
+        // ========== CRUD FUNCTIONS ==========
+        function editUMKM(id) { openModal('umkm', id); }
+        function deleteUMKM(id) {
+            if (confirm('Hapus produk ini?')) {
+                data.umkm = data.umkm.filter(i => i.id !== id);
+                saveData(data);
+                renderAll();
+                showToast('🗑️ Produk dihapus');
+            }
+        }
+
+        function editPerangkat(id) { openModal('perangkat', id); }
+        function deletePerangkat(id) {
+            if (confirm('Hapus perangkat ini?')) {
+                data.perangkat = data.perangkat.filter(i => i.id !== id);
+                saveData(data);
+                renderAll();
+                showToast('🗑️ Perangkat dihapus');
+            }
+        }
+
+        function editLayanan(id) { openModal('layanan', id); }
+        function deleteLayanan(id) {
+            if (confirm('Hapus layanan ini?')) {
+                data.layanan = data.layanan.filter(i => i.id !== id);
+                saveData(data);
+                renderAll();
+                showToast('🗑️ Layanan dihapus');
+            }
+        }
+
+        function editKades() {
+            const newName = prompt('Masukkan nama Kepala Desa:', data.kades.name);
+            if (newName !== null && newName.trim()) {
+                data.kades.name = newName.trim();
+                saveData(data);
+                renderAll();
+                showToast('✅ Nama Kepala Desa diupdate');
+            }
+        }
+
+        function saveWANumber() {
+            const wa = document.getElementById('wa-number').value.trim();
+            if (wa) {
+                data.waNumber = wa;
+                saveData(data);
+                showToast('✅ Nomor WhatsApp disimpan!');
+            } else {
+                showToast('Masukkan nomor WhatsApp yang valid', 'error');
+            }
+        }
+
+        function saveUmum() {
+            const heroDesc = document.getElementById('hero-desc').value;
+            const umkmDesc = document.getElementById('umkm-desc').value;
+            data.umum = { heroDesc, umkmDesc };
+            saveData(data);
+            showToast('✅ Info umum disimpan!');
+        }
+
+        function resetData() {
+            if (confirm('⚠️ Yakin ingin mereset semua data ke default? Semua perubahan Anda akan hilang!')) {
+                data = JSON.parse(JSON.stringify(DEFAULT_DATA));
+                saveData(data);
+                renderAll();
+                showToast('🔄 Data direset ke default');
+            }
+        }
+
+        // ========== EXPORT DATA (untuk digunakan di website utama) ==========
+        function getExportData() {
+            return data;
+        }
+
+        // ========== INIT ==========
+        renderAll();
+
+        // Tutup modal dengan klik overlay
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // Keyboard shortcut: Escape close modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        console.log('✅ Admin Panel Saptorenggo siap digunakan!');
+        console.log('📦 Data tersimpan di LocalStorage.');
+        console.log('💡 Buka console untuk melihat data:', getExportData());
+    </script>
+</body>
+</html>
