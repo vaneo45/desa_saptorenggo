@@ -9,20 +9,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --hijau-sawah: #26402F;
-            --hijau-tua: #16261B;
-            --tanah-liat: #B85C2E;
-            --emas-batik: #C79A3F;
-            --kertas: #F5EFDF;
-            --kertas-terang: #FBF7EC;
-            --tinta: #241F17;
-            --putih: #FFFDF8;
+            --hijau: #1E4438;
+            --hijau-tua: #10241C;
+            --karat: #C1502C;
+            --emas: #D6A247;
+            --krem: #F6EFDD;
+            --krem-terang: #FCF8ED;
+            --tinta: #201F19;
+            --putih: #FFFFFF;
             --danger: #c0392b;
-            --success: #27ae60;
+            --success: #1F9D55;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background: var(--kertas);
+            background: var(--krem);
             color: var(--tinta);
             font-family: 'Plus Jakarta Sans', sans-serif;
             line-height: 1.6;
@@ -30,12 +30,12 @@
         }
         .container { max-width: 1200px; margin: 0 auto; }
         h1, h2, h3 { font-family: 'Fraunces', serif; font-weight: 600; }
-        
+
         .admin-header {
-            background: var(--hijau-sawah);
+            background: var(--hijau);
             color: var(--putih);
             padding: 20px 30px;
-            border-radius: 12px;
+            border-radius: 16px;
             margin-bottom: 30px;
             display: flex;
             justify-content: space-between;
@@ -45,7 +45,7 @@
         }
         .admin-header h1 { font-size: 24px; }
         .admin-header .badge {
-            background: var(--emas-batik);
+            background: var(--emas);
             color: var(--hijau-tua);
             padding: 5px 15px;
             border-radius: 999px;
@@ -67,20 +67,20 @@
             text-decoration: none;
         }
         .btn:hover { transform: translateY(-2px); }
-        .btn-primary { background: var(--emas-batik); color: var(--hijau-tua); }
+        .btn-primary { background: var(--emas); color: var(--hijau-tua); }
         .btn-danger { background: var(--danger); color: white; }
         .btn-success { background: var(--success); color: white; }
-        .btn-outline { background: transparent; border: 2px solid var(--tanah-liat); color: var(--tanah-liat); }
+        .btn-outline { background: transparent; border: 2px solid var(--karat); color: var(--karat); }
         .btn-sm { padding: 6px 14px; font-size: 12px; }
         .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; }
-        
+
         .card {
             background: var(--putih);
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 24px;
             margin-bottom: 20px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            border: 1px solid rgba(36,31,23,0.1);
+            border: 1px solid rgba(32,31,25,0.1);
         }
         .card h3 {
             margin-bottom: 16px;
@@ -96,25 +96,25 @@
             font-weight: 600;
             font-size: 14px;
             margin-bottom: 5px;
-            color: var(--hijau-sawah);
+            color: var(--hijau);
         }
         .form-group input, .form-group textarea, .form-group select {
             width: 100%;
             padding: 10px 14px;
-            border: 2px solid rgba(36,31,23,0.15);
+            border: 2px solid rgba(32,31,25,0.15);
             border-radius: 8px;
             font-family: inherit;
             font-size: 14px;
-            background: var(--kertas-terang);
+            background: var(--krem-terang);
             transition: border-color 0.2s;
         }
         .form-group input:focus, .form-group textarea:focus {
             outline: none;
-            border-color: var(--tanah-liat);
+            border-color: var(--karat);
         }
         .form-group textarea { min-height: 80px; resize: vertical; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-        
+
         .menu-grid-admin {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -122,9 +122,9 @@
             margin-top: 16px;
         }
         .menu-item-admin {
-            background: var(--kertas-terang);
-            border: 1px solid rgba(36,31,23,0.1);
-            border-radius: 10px;
+            background: var(--krem-terang);
+            border: 1px solid rgba(32,31,25,0.1);
+            border-radius: 12px;
             padding: 16px;
             display: flex;
             justify-content: space-between;
@@ -134,26 +134,27 @@
         .menu-item-admin .info { flex: 1; }
         .menu-item-admin .info .name { font-weight: 700; font-size: 14px; }
         .menu-item-admin .info .tag { font-size: 12px; opacity: 0.6; }
+        .menu-item-admin .info .contact-flags { font-size: 12px; margin-top: 4px; display:flex; gap:10px; }
         .menu-item-admin .actions { display: flex; gap: 8px; }
         .menu-item-admin .thumb-preview {
             width: 50px;
             height: 50px;
-            border-radius: 8px;
+            border-radius: 10px;
             object-fit: cover;
-            border: 1px solid rgba(36,31,23,0.1);
+            border: 1px solid rgba(32,31,25,0.1);
             flex-shrink: 0;
             background: #f0f0f0;
         }
-        
+
         .empty-state { text-align: center; padding: 40px 20px; color: #888; }
         .empty-state .icon { font-size: 48px; margin-bottom: 12px; }
-        
+
         .tab-nav {
             display: flex;
             gap: 10px;
             margin-bottom: 24px;
             flex-wrap: wrap;
-            border-bottom: 2px solid rgba(36,31,23,0.1);
+            border-bottom: 2px solid rgba(32,31,25,0.1);
             padding-bottom: 12px;
         }
         .tab-nav button {
@@ -169,14 +170,14 @@
             opacity: 0.6;
         }
         .tab-nav button.active {
-            background: var(--hijau-sawah);
+            background: var(--hijau);
             color: var(--putih);
             opacity: 1;
         }
         .tab-nav button:hover { opacity: 1; }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
-        
+
         .toast {
             position: fixed;
             bottom: 20px;
@@ -184,7 +185,7 @@
             background: var(--hijau-tua);
             color: var(--putih);
             padding: 16px 24px;
-            border-radius: 10px;
+            border-radius: 12px;
             font-weight: 600;
             z-index: 999;
             animation: slideUp 0.4s ease;
@@ -198,14 +199,14 @@
             from { transform: translateY(100px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
-        
+
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
+            background: rgba(16,36,28,0.55);
             display: none;
             justify-content: center;
             align-items: center;
@@ -215,7 +216,7 @@
         .modal-overlay.active { display: flex; }
         .modal {
             background: var(--putih);
-            border-radius: 16px;
+            border-radius: 18px;
             padding: 30px;
             max-width: 550px;
             width: 90%;
@@ -229,7 +230,7 @@
             margin-top: 20px;
             justify-content: flex-end;
         }
-        
+
         .image-preview-container {
             margin-top: 10px;
             position: relative;
@@ -238,7 +239,7 @@
         .image-preview-container img {
             max-width: 150px;
             max-height: 150px;
-            border-radius: 8px;
+            border-radius: 10px;
             border: 2px solid #ddd;
         }
         .image-preview-container .remove-image {
@@ -261,8 +262,8 @@
             opacity: 0.6;
             margin-top: 4px;
         }
-        .help-text a { color: var(--tanah-liat); text-decoration: underline; }
-        
+        .help-text a { color: var(--karat); text-decoration: underline; }
+
         .stat-box {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -270,32 +271,19 @@
             margin-bottom: 20px;
         }
         .stat-item {
-            background: var(--kertas-terang);
+            background: var(--krem-terang);
             padding: 16px;
-            border-radius: 10px;
+            border-radius: 12px;
             text-align: center;
         }
         .stat-item .num {
             font-family: 'Fraunces', serif;
             font-size: 28px;
             font-weight: 700;
-            color: var(--hijau-sawah);
+            color: var(--hijau);
         }
         .stat-item .label { font-size: 12px; opacity: 0.6; }
-        
-        .loading {
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            border: 2px solid #fff;
-            border-radius: 50%;
-            border-top-color: transparent;
-            animation: spin 0.8s linear infinite;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
+
         .compress-progress {
             margin-top: 8px;
             padding: 8px 12px;
@@ -307,13 +295,13 @@
         .compress-progress.active { display: block; }
         .compress-progress .bar {
             height: 4px;
-            background: var(--hijau-sawah);
+            background: var(--hijau);
             border-radius: 2px;
             margin-top: 4px;
             width: 0%;
             transition: width 0.3s;
         }
-        
+
         .size-info {
             font-size: 12px;
             color: #666;
@@ -321,7 +309,7 @@
         }
         .size-info .original { color: var(--danger); }
         .size-info .compressed { color: var(--success); }
-        
+
         @media (max-width: 768px) {
             .form-row { grid-template-columns: 1fr; }
             .menu-grid-admin { grid-template-columns: 1fr; }
@@ -338,20 +326,20 @@
             </div>
             <div style="display:flex; gap:10px; flex-wrap:wrap;">
                 <span class="badge">✨ Edit & Simpan</span>
-                <a href="index.html" target="_blank" class="btn btn-primary btn-sm">🔗 Lihat Dashboard</a>
+                <a href="index.html" target="_blank" class="btn btn-primary btn-sm">🔗 Lihat Website</a>
             </div>
         </div>
 
         <!-- Statistik -->
         <div class="stat-box" id="stat-box">
-            <div class="stat-item"><div class="num" id="stat-umkm">0</div><div class="label">Produk UMKM</div></div>
+            <div class="stat-item"><div class="num" id="stat-umkm">0</div><div class="label">UMKM Terdaftar</div></div>
             <div class="stat-item"><div class="num" id="stat-perangkat">0</div><div class="label">Perangkat Desa</div></div>
             <div class="stat-item"><div class="num" id="stat-layanan">0</div><div class="label">Layanan</div></div>
         </div>
 
         <!-- Tabs -->
         <div class="tab-nav">
-            <button class="active" data-tab="umkm">🍰 UMKM Hikmah Pia</button>
+            <button class="active" data-tab="umkm">🏪 UMKM Desa</button>
             <button data-tab="struktur">👔 Struktur Desa</button>
             <button data-tab="layanan">📋 Layanan</button>
             <button data-tab="umum">⚙️ Info Umum</button>
@@ -361,8 +349,8 @@
         <div class="tab-content active" id="tab-umkm">
             <div class="card">
                 <h3>
-                    <span>📦 Daftar Produk UMKM</span>
-                    <button class="btn btn-primary btn-sm" onclick="openModal('umkm')">+ Tambah Produk</button>
+                    <span>🏪 Daftar UMKM</span>
+                    <button class="btn btn-primary btn-sm" onclick="openModal('umkm')">+ Tambah UMKM</button>
                 </h3>
                 <div id="umkm-list" class="menu-grid-admin"></div>
             </div>
@@ -396,10 +384,11 @@
                 <div id="layanan-list"></div>
             </div>
             <div class="card">
-                <h3>📱 Nomor WhatsApp Resmi</h3>
+                <h3>📱 Nomor WhatsApp Kantor Desa</h3>
                 <div class="form-group">
                     <label>Nomor WhatsApp (contoh: 6281234567890)</label>
                     <input type="text" id="wa-number" placeholder="6281234567890">
+                    <div class="help-text">Nomor ini dipakai untuk tombol "Hubungi Kantor Desa" dan tombol layanan &mdash; berbeda dari nomor WhatsApp masing-masing UMKM.</div>
                     <button class="btn btn-success btn-sm" style="margin-top:10px;" onclick="saveWANumber()">💾 Simpan Nomor WA</button>
                 </div>
             </div>
@@ -421,7 +410,7 @@
             </div>
             <div class="card">
                 <h3>🔄 Reset Data</h3>
-                <p style="margin-bottom:12px; opacity:0.7;">Kembalikan semua data ke default (akan menghapus semua perubahan Anda).</p>
+                <p style="margin-bottom:12px; opacity:0.7;">Kembalikan semua data ke default (akan menghapus semua perubahan Anda, termasuk semua UMKM).</p>
                 <button class="btn btn-danger" onclick="resetData()">⚠️ Reset ke Default</button>
             </div>
             <div class="card">
@@ -460,16 +449,7 @@
         // 1. DATA DEFAULT
         // ============================================================
         const DEFAULT_DATA = {
-            umkm: [
-                { id: 1, name: "BOLEN PISANG COKELAT", tag: "Produk rumahan", color: "#B85C2E", imageUrl: null },
-                { id: 2, name: "KUPING GAJAH", tag: "Produk rumahan", color: "#C79A3F", imageUrl: null },
-                { id: 3, name: "MENTARI", tag: "Produk rumahan", color: "#D4A93C", imageUrl: null },
-                { id: 4, name: "PASTEL IS ABON", tag: "Produk rumahan", color: "#26402F", imageUrl: null },
-                { id: 5, name: "PIA COKELAT", tag: "Produk rumahan", color: "#5B3A26", imageUrl: null },
-                { id: 6, name: "PIA COKELAT DAN KACANG HIJAU", tag: "Produk rumahan", color: "#6E7F3B", imageUrl: null },
-                { id: 7, name: "PIA KACANG HIJAU", tag: "Produk rumahan", color: "#8FA34A", imageUrl: null },
-                { id: 8, name: "STIK BAWANG", tag: "Produk rumahan", color: "#C9B27A", imageUrl: null }
-            ],
+            umkm: [],
             perangkat: [
                 { id: 1, role: "Sekretaris Desa", name: "Adi Sudiar Dwi Yanto, S.E." },
                 { id: 2, role: "Ketua BPD", name: "Badan Permusyawaratan Desa" },
@@ -489,10 +469,10 @@
                 { id: 5, icon: "🏺", title: "Surat Keterangan Tidak Mampu", desc: "Untuk keperluan bantuan sosial, beasiswa, atau keringanan biaya." },
                 { id: 6, icon: "📋", title: "Layanan Administrasi Lainnya", desc: "Konsultasi kebutuhan administrasi desa lain di luar daftar di atas." }
             ],
-            kades: { name: "(Nama Kepala Desa)", photo: "KS" },
+            kades: { name: "(Nama Kepala Desa)", photo: "KS", imageUrl: null },
             umum: {
-                heroDesc: "Desa agraris di kaki jalur Tumpang, dikenal dengan wisata kuliner, kerajinan, dan warganya yang mayoritas bekerja sebagai pertukangan dan wiraswasta — termasuk UMKM camilan rumahan Hikmah Pia.",
-                umkmDesc: "Usaha rumahan warga Saptorenggo yang memproduksi aneka pia, bolen, dan kudapan kering — dibuat segar setiap hari dengan resep rumahan."
+                heroDesc: "Desa agraris di kaki jalur Tumpang, dikenal dengan wisata kuliner, kerajinan, dan warganya yang mayoritas bekerja sebagai pertukangan dan wiraswasta.",
+                umkmDesc: "Direktori usaha mikro, kecil, dan menengah milik warga Saptorenggo. Hubungi langsung pelaku usaha melalui WhatsApp atau kunjungi lokasinya via Google Maps."
             },
             waNumber: "6281234567890"
         };
@@ -508,8 +488,19 @@
                     if (data.umkm) {
                         data.umkm = data.umkm.map(item => ({
                             ...item,
+                            imageUrl: item.imageUrl || null,
+                            mapsUrl: item.mapsUrl || '',
+                            waNumber: item.waNumber || ''
+                        }));
+                    }
+                    if (data.perangkat) {
+                        data.perangkat = data.perangkat.map(item => ({
+                            ...item,
                             imageUrl: item.imageUrl || null
                         }));
+                    }
+                    if (data.kades) {
+                        data.kades = { photo: 'KS', imageUrl: null, ...data.kades };
                     }
                     return { ...DEFAULT_DATA, ...data, umkm: data.umkm || DEFAULT_DATA.umkm };
                 }
@@ -557,10 +548,10 @@
                     <span style="color:${percent > 80 ? 'var(--danger)' : 'var(--success)'};">${percent.toFixed(0)}%</span>
                 </div>
                 <div style="width:100%;height:6px;background:#eee;border-radius:3px;margin-top:6px;">
-                    <div style="width:${percent}%;height:100%;background:${percent > 80 ? 'var(--danger)' : 'var(--hijau-sawah)'};border-radius:3px;transition:width 0.3s;"></div>
+                    <div style="width:${percent}%;height:100%;background:${percent > 80 ? 'var(--danger)' : 'var(--hijau)'};border-radius:3px;transition:width 0.3s;"></div>
                 </div>
                 <div style="margin-top:6px;font-size:12px;opacity:0.6;">
-                    💡 Tips: Kompres gambar atau hapus produk yang tidak digunakan
+                    💡 Tips: Kompres gambar atau hapus UMKM yang tidak aktif
                 </div>
             `;
         }
@@ -612,18 +603,24 @@
         function renderUMKM() {
             const container = document.getElementById('umkm-list');
             if (!data.umkm || data.umkm.length === 0) {
-                container.innerHTML = `<div class="empty-state"><div class="icon">🍰</div><p>Belum ada produk. Klik "Tambah Produk" untuk menambahkan.</p></div>`;
+                container.innerHTML = `<div class="empty-state"><div class="icon">🏪</div><p>Belum ada UMKM terdaftar. Klik "Tambah UMKM" untuk menambahkan.</p></div>`;
                 return;
             }
             container.innerHTML = data.umkm.map(item => {
                 const hasImage = item.imageUrl && item.imageUrl.length > 0;
+                const hasMaps = item.mapsUrl && item.mapsUrl.trim().length > 0;
+                const hasWa = item.waNumber && item.waNumber.trim().length > 0;
                 return `
                     <div class="menu-item-admin">
                         <div style="display:flex; align-items:center; gap:12px; flex:1;">
                             ${hasImage ? `<img src="${item.imageUrl}" class="thumb-preview" alt="${item.name}">` : `<div class="thumb-preview" style="display:flex;align-items:center;justify-content:center;background:${item.color || '#ccc'};color:white;font-weight:700;font-size:14px;">${(item.name||'??').substring(0,2)}</div>`}
                             <div class="info">
                                 <div class="name">${item.name}</div>
-                                <div class="tag">${item.tag || 'Produk rumahan'} · ${item.color || '#26402F'}</div>
+                                <div class="tag">${item.category || 'UMKM Warga'}</div>
+                                <div class="contact-flags">
+                                    <span style="color:${hasMaps ? 'var(--success)' : '#999'};">${hasMaps ? '📍 Maps ✔' : '📍 Maps —'}</span>
+                                    <span style="color:${hasWa ? 'var(--success)' : '#999'};">${hasWa ? '💬 WA ✔' : '💬 WA —'}</span>
+                                </div>
                             </div>
                         </div>
                         <div class="actions">
@@ -641,18 +638,24 @@
                 container.innerHTML = `<div class="empty-state"><p>Belum ada perangkat desa.</p></div>`;
                 return;
             }
-            container.innerHTML = data.perangkat.map(item => `
+            container.innerHTML = data.perangkat.map(item => {
+                const hasImage = item.imageUrl && item.imageUrl.length > 0;
+                return `
                 <div class="menu-item-admin">
-                    <div class="info">
-                        <div class="name">${item.role}</div>
-                        <div class="tag">${item.name}</div>
+                    <div style="display:flex; align-items:center; gap:12px; flex:1;">
+                        ${hasImage ? `<img src="${item.imageUrl}" class="thumb-preview" style="border-radius:50%;" alt="${item.name}">` : `<div class="thumb-preview" style="border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--hijau);color:var(--emas);font-weight:700;font-size:14px;">${(item.name||'??').substring(0,2)}</div>`}
+                        <div class="info">
+                            <div class="name">${item.role}</div>
+                            <div class="tag">${item.name}</div>
+                        </div>
                     </div>
                     <div class="actions">
                         <button class="btn btn-primary btn-sm" onclick="editPerangkat(${item.id})">✏️</button>
                         <button class="btn btn-danger btn-sm" onclick="deletePerangkat(${item.id})">🗑️</button>
                     </div>
                 </div>
-            `).join('');
+            `;
+            }).join('');
         }
 
         function renderLayanan() {
@@ -677,11 +680,13 @@
 
         function renderKades() {
             const container = document.getElementById('kades-display');
+            const hasImage = data.kades.imageUrl && data.kades.imageUrl.length > 0;
+            const avatar = hasImage
+                ? `<img src="${data.kades.imageUrl}" alt="${data.kades.name}" style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:1px solid rgba(32,31,25,0.1);">`
+                : `<div style="width:80px;height:80px;border-radius:50%;background:var(--hijau);display:flex;align-items:center;justify-content:center;font-size:32px;color:var(--emas);font-weight:700;font-family:'Fraunces',serif;">${data.kades.photo || 'KS'}</div>`;
             container.innerHTML = `
                 <div style="display:flex; align-items:center; gap:20px; padding:10px 0;">
-                    <div style="width:80px;height:80px;border-radius:50%;background:var(--hijau-sawah);display:flex;align-items:center;justify-content:center;font-size:32px;color:var(--emas-batik);font-weight:700;font-family:'Fraunces',serif;">
-                        ${data.kades.photo || 'KS'}
-                    </div>
+                    ${avatar}
                     <div>
                         <div style="font-size:13px;opacity:0.6;text-transform:uppercase;letter-spacing:0.05em;">Kepala Desa</div>
                         <div style="font-size:24px;font-family:'Fraunces',serif;font-weight:600;">${data.kades.name}</div>
@@ -713,16 +718,15 @@
         // ============================================================
         // 7. KOMPRES GAMBAR (Tanpa Library Eksternal)
         // ============================================================
-        function compressImage(file, maxWidth = 400, maxHeight = 300, quality = 0.7) {
+        function compressImage(file, maxWidth = 500, maxHeight = 400, quality = 0.7) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     const img = new Image();
                     img.onload = function() {
-                        // Hitung dimensi baru
                         let width = img.width;
                         let height = img.height;
-                        
+
                         if (width > maxWidth) {
                             height = (maxWidth / width) * height;
                             width = maxWidth;
@@ -731,22 +735,20 @@
                             width = (maxHeight / height) * width;
                             height = maxHeight;
                         }
-                        
-                        // Canvas untuk kompresi
+
                         const canvas = document.createElement('canvas');
                         canvas.width = Math.round(width);
                         canvas.height = Math.round(height);
                         const ctx = canvas.getContext('2d');
                         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                        
-                        // Kompres ke JPEG
+
                         const compressed = canvas.toDataURL('image/jpeg', quality);
                         const originalSize = file.size;
                         const compressedSize = compressed.length;
                         const ratio = (compressedSize / originalSize * 100).toFixed(1);
-                        
+
                         console.log(`📸 Kompresi: ${(originalSize/1024).toFixed(0)}KB → ${(compressedSize/1024).toFixed(0)}KB (${ratio}%)`);
-                        
+
                         resolve({
                             dataUrl: compressed,
                             originalSize: originalSize,
@@ -771,35 +773,49 @@
             currentEditId = editId;
             tempCompressedImage = null;
             isCompressing = false;
-            
+
             const modal = document.getElementById('modal');
             const title = document.getElementById('modal-title');
             const body = document.getElementById('modal-body');
 
             let html = '';
-            
+
             if (type === 'umkm') {
                 const item = editId ? data.umkm.find(i => i.id === editId) : null;
-                title.textContent = editId ? '✏️ Edit Produk' : '➕ Tambah Produk';
+                title.textContent = editId ? '✏️ Edit UMKM' : '➕ Tambah UMKM';
                 const hasImage = item?.imageUrl && item.imageUrl.length > 0;
-                
+
                 html = `
                     <div class="form-group">
-                        <label>Nama Produk <span style="color:red;">*</span></label>
-                        <input type="text" id="f-umkm-name" value="${item ? item.name : ''}" placeholder="Contoh: Pia Cokelat" required>
+                        <label>Nama Usaha <span style="color:red;">*</span></label>
+                        <input type="text" id="f-umkm-name" value="${item ? item.name : ''}" placeholder="Contoh: Warung Bu Sri">
                     </div>
                     <div class="form-group">
-                        <label>Tag / Keterangan</label>
-                        <input type="text" id="f-umkm-tag" value="${item ? item.tag : 'Produk rumahan'}" placeholder="Produk rumahan">
+                        <label>Kategori</label>
+                        <input type="text" id="f-umkm-category" value="${item ? (item.category || '') : 'UMKM Warga'}" placeholder="Contoh: Kuliner, Kerajinan, Jasa">
+                    </div>
+                    <div class="form-group">
+                        <label>Deskripsi Singkat</label>
+                        <textarea id="f-umkm-desc" rows="2" placeholder="Ceritakan singkat produk/jasa yang ditawarkan">${item ? (item.desc || '') : ''}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Link Google Maps</label>
+                        <input type="text" id="f-umkm-maps" value="${item ? (item.mapsUrl || '') : ''}" placeholder="https://maps.app.goo.gl/...">
+                        <div class="help-text">Buka lokasi di Google Maps → tombol Bagikan → salin link, lalu tempel di sini.</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Nomor WhatsApp</label>
+                        <input type="text" id="f-umkm-wa" value="${item ? (item.waNumber || '') : ''}" placeholder="6281234567890">
+                        <div class="help-text">Gunakan format 62xxxxxxxxxx (tanpa spasi/simbol).</div>
                     </div>
                     <div class="form-group">
                         <label>Warna (hex)</label>
-                        <input type="text" id="f-umkm-color" value="${item ? item.color : '#26402F'}" placeholder="#26402F">
+                        <input type="text" id="f-umkm-color" value="${item ? item.color : '#1E4438'}" placeholder="#1E4438">
                         <div class="help-text">Warna background jika gambar tidak tersedia</div>
                     </div>
                     <div class="form-group">
-                        <label>📷 Upload Gambar Produk</label>
-                        <input type="file" id="f-umkm-image" accept="image/*">
+                        <label>📷 Upload Foto Usaha</label>
+                        <input type="file" id="f-photo-input" accept="image/*">
                         <div class="help-text">Gambar akan dikompres otomatis ke ukuran ~100-200KB</div>
                         <div class="compress-progress" id="compress-progress">
                             ⏳ Mengkompres gambar...
@@ -816,6 +832,7 @@
             } else if (type === 'perangkat') {
                 const item = editId ? data.perangkat.find(i => i.id === editId) : null;
                 title.textContent = editId ? '✏️ Edit Perangkat' : '➕ Tambah Perangkat';
+                const hasImage = item?.imageUrl && item.imageUrl.length > 0;
                 html = `
                     <div class="form-group">
                         <label>Jabatan <span style="color:red;">*</span></label>
@@ -824,6 +841,50 @@
                     <div class="form-group">
                         <label>Nama <span style="color:red;">*</span></label>
                         <input type="text" id="f-perangkat-name" value="${item ? item.name : ''}" placeholder="Nama lengkap" required>
+                    </div>
+                    <div class="form-group">
+                        <label>📷 Upload Foto (opsional)</label>
+                        <input type="file" id="f-photo-input" accept="image/*">
+                        <div class="help-text">Gambar akan dikompres otomatis. Jika tidak diisi, akan ditampilkan inisial nama.</div>
+                        <div class="compress-progress" id="compress-progress">
+                            ⏳ Mengkompres gambar...
+                            <div class="bar" id="compress-bar"></div>
+                        </div>
+                        <div id="image-size-info" class="size-info"></div>
+                        <div id="image-preview-container" class="image-preview-container" style="${hasImage ? 'display:inline-block;' : 'display:none;'}">
+                            <img id="preview-img" src="${item?.imageUrl || ''}" alt="Preview">
+                            <button class="remove-image" onclick="removeImage()">✕</button>
+                        </div>
+                        ${hasImage ? `<div class="help-text">✅ Gambar saat ini tersimpan</div>` : ''}
+                    </div>
+                `;
+            } else if (type === 'kades') {
+                const item = data.kades;
+                title.textContent = '✏️ Edit Kepala Desa';
+                const hasImage = item?.imageUrl && item.imageUrl.length > 0;
+                html = `
+                    <div class="form-group">
+                        <label>Nama Kepala Desa <span style="color:red;">*</span></label>
+                        <input type="text" id="f-kades-name" value="${item ? item.name : ''}" placeholder="Nama lengkap" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Inisial (ditampilkan jika tanpa foto)</label>
+                        <input type="text" id="f-kades-initial" value="${item ? (item.photo || 'KS') : 'KS'}" maxlength="3" placeholder="KS">
+                    </div>
+                    <div class="form-group">
+                        <label>📷 Upload Foto Kepala Desa</label>
+                        <input type="file" id="f-photo-input" accept="image/*">
+                        <div class="help-text">Gambar akan dikompres otomatis ke ukuran ~100-200KB</div>
+                        <div class="compress-progress" id="compress-progress">
+                            ⏳ Mengkompres gambar...
+                            <div class="bar" id="compress-bar"></div>
+                        </div>
+                        <div id="image-size-info" class="size-info"></div>
+                        <div id="image-preview-container" class="image-preview-container" style="${hasImage ? 'display:inline-block;' : 'display:none;'}">
+                            <img id="preview-img" src="${item?.imageUrl || ''}" alt="Preview">
+                            <button class="remove-image" onclick="removeImage()">✕</button>
+                        </div>
+                        ${hasImage ? `<div class="help-text">✅ Gambar saat ini tersimpan</div>` : ''}
                     </div>
                 `;
             } else if (type === 'layanan') {
@@ -848,8 +909,7 @@
             body.innerHTML = html;
             modal.classList.add('active');
 
-            // Attach event listener untuk upload
-            const fileInput = document.getElementById('f-umkm-image');
+            const fileInput = document.getElementById('f-photo-input');
             if (fileInput) {
                 const newFileInput = fileInput.cloneNode(true);
                 fileInput.parentNode.replaceChild(newFileInput, fileInput);
@@ -871,11 +931,10 @@
                 return;
             }
 
-            // Tampilkan progress
             const progressEl = document.getElementById('compress-progress');
             const barEl = document.getElementById('compress-bar');
             const sizeInfoEl = document.getElementById('image-size-info');
-            
+
             if (progressEl) progressEl.classList.add('active');
             if (barEl) barEl.style.width = '30%';
 
@@ -883,36 +942,32 @@
             document.getElementById('modal-save-btn').disabled = true;
 
             try {
-                // Kompres gambar
                 const result = await compressImage(file, 500, 400, 0.7);
-                
+
                 if (barEl) barEl.style.width = '100%';
-                
-                // Simpan hasil kompresi
+
                 tempCompressedImage = result.dataUrl;
-                
-                // Tampilkan info ukuran
+
                 if (sizeInfoEl) {
                     const originalKB = (result.originalSize / 1024).toFixed(0);
                     const compressedKB = (result.compressedSize / 1024).toFixed(0);
                     const ratio = (result.compressedSize / result.originalSize * 100).toFixed(1);
                     sizeInfoEl.innerHTML = `
-                        <span class="original">📁 Original: ${originalKB}KB</span> → 
+                        <span class="original">📁 Original: ${originalKB}KB</span> →
                         <span class="compressed">📦 Kompres: ${compressedKB}KB (${ratio}%)</span>
                         <span style="margin-left:10px;font-size:11px;">${result.width}×${result.height}px</span>
                     `;
                 }
-                
-                // Tampilkan preview
+
                 const previewContainer = document.getElementById('image-preview-container');
                 const previewImg = document.getElementById('preview-img');
                 if (previewContainer && previewImg) {
                     previewImg.src = result.dataUrl;
                     previewContainer.style.display = 'inline-block';
                 }
-                
+
                 showToast(`✅ Gambar berhasil dikompres! ${(result.originalSize/1024).toFixed(0)}KB → ${(result.compressedSize/1024).toFixed(0)}KB`, 'success');
-                
+
             } catch (error) {
                 console.error('Compress error:', error);
                 showToast('❌ Gagal kompres gambar: ' + error.message, 'error');
@@ -935,18 +990,18 @@
         function removeImage() {
             tempCompressedImage = null;
             const previewContainer = document.getElementById('image-preview-container');
-            const fileInput = document.getElementById('f-umkm-image');
+            const fileInput = document.getElementById('f-photo-input');
             const sizeInfo = document.getElementById('image-size-info');
-            
+
             if (previewContainer) previewContainer.style.display = 'none';
             if (fileInput) fileInput.value = '';
             if (sizeInfo) sizeInfo.innerHTML = '';
-            
-            const removeFlag = document.getElementById('f-umkm-remove-image');
+
+            const removeFlag = document.getElementById('f-remove-image');
             if (!removeFlag) {
                 const hidden = document.createElement('input');
                 hidden.type = 'hidden';
-                hidden.id = 'f-umkm-remove-image';
+                hidden.id = 'f-remove-image';
                 hidden.value = 'true';
                 document.getElementById('modal-body').appendChild(hidden);
             } else {
@@ -966,23 +1021,28 @@
 
             if (currentModalType === 'umkm') {
                 const nameInput = document.getElementById('f-umkm-name');
-                const tagInput = document.getElementById('f-umkm-tag');
+                const categoryInput = document.getElementById('f-umkm-category');
+                const descInput = document.getElementById('f-umkm-desc');
+                const mapsInput = document.getElementById('f-umkm-maps');
+                const waInput = document.getElementById('f-umkm-wa');
                 const colorInput = document.getElementById('f-umkm-color');
-                
+
                 const name = nameInput ? nameInput.value.trim() : '';
-                const tag = tagInput ? tagInput.value.trim() : 'Produk rumahan';
-                const color = colorInput ? colorInput.value.trim() : '#26402F';
-                const removeImageFlag = document.getElementById('f-umkm-remove-image')?.value === 'true';
-                
-                if (!name) { 
-                    showToast('⚠️ Nama produk wajib diisi!', 'error');
+                const category = categoryInput ? categoryInput.value.trim() : 'UMKM Warga';
+                const desc = descInput ? descInput.value.trim() : '';
+                const mapsUrl = mapsInput ? mapsInput.value.trim() : '';
+                const waNumber = waInput ? waInput.value.trim() : '';
+                const color = colorInput ? colorInput.value.trim() : '#1E4438';
+                const removeImageFlag = document.getElementById('f-remove-image')?.value === 'true';
+
+                if (!name) {
+                    showToast('⚠️ Nama usaha wajib diisi!', 'error');
                     nameInput?.focus();
-                    return; 
+                    return;
                 }
 
                 let imageUrl = null;
-                
-                // Gunakan gambar yang sudah dikompres
+
                 if (tempCompressedImage) {
                     imageUrl = tempCompressedImage;
                     console.log('✅ Menggunakan gambar terkompres');
@@ -997,53 +1057,86 @@
                 if (currentEditId) {
                     const idx = data.umkm.findIndex(i => i.id === currentEditId);
                     if (idx !== -1) {
-                        data.umkm[idx] = { ...data.umkm[idx], name, tag, color, imageUrl };
+                        data.umkm[idx] = { ...data.umkm[idx], name, category, desc, mapsUrl, waNumber, color, imageUrl };
                     }
                 } else {
                     const maxId = data.umkm.reduce((max, i) => Math.max(max, i.id || 0), 0);
-                    data.umkm.push({ id: maxId + 1, name, tag, color, imageUrl });
+                    data.umkm.push({ id: maxId + 1, name, category, desc, mapsUrl, waNumber, color, imageUrl });
                 }
-                
+
                 if (saveData(data)) {
-                    showToast('✅ Produk berhasil disimpan!');
+                    showToast('✅ UMKM berhasil disimpan!');
                 }
-                
+
             } else if (currentModalType === 'perangkat') {
                 const roleInput = document.getElementById('f-perangkat-role');
                 const nameInput = document.getElementById('f-perangkat-name');
                 const role = roleInput ? roleInput.value.trim() : '';
                 const name = nameInput ? nameInput.value.trim() : '';
-                
-                if (!role || !name) { 
+                const removeImageFlag = document.getElementById('f-remove-image')?.value === 'true';
+
+                if (!role || !name) {
                     showToast('⚠️ Jabatan dan nama wajib diisi!', 'error');
-                    return; 
+                    return;
+                }
+
+                let imageUrl = null;
+                if (tempCompressedImage) {
+                    imageUrl = tempCompressedImage;
+                } else if (!removeImageFlag && currentEditId) {
+                    const existing = data.perangkat.find(i => i.id === currentEditId);
+                    if (existing && existing.imageUrl) imageUrl = existing.imageUrl;
                 }
 
                 if (currentEditId) {
                     const idx = data.perangkat.findIndex(i => i.id === currentEditId);
                     if (idx !== -1) {
-                        data.perangkat[idx] = { ...data.perangkat[idx], role, name };
+                        data.perangkat[idx] = { ...data.perangkat[idx], role, name, imageUrl };
                     }
                 } else {
                     const maxId = data.perangkat.reduce((max, i) => Math.max(max, i.id || 0), 0);
-                    data.perangkat.push({ id: maxId + 1, role, name });
+                    data.perangkat.push({ id: maxId + 1, role, name, imageUrl });
                 }
                 if (saveData(data)) {
                     showToast('✅ Perangkat berhasil disimpan!');
                 }
-                
+
+            } else if (currentModalType === 'kades') {
+                const nameInput = document.getElementById('f-kades-name');
+                const initialInput = document.getElementById('f-kades-initial');
+                const name = nameInput ? nameInput.value.trim() : '';
+                const photo = initialInput ? (initialInput.value.trim() || 'KS') : 'KS';
+                const removeImageFlag = document.getElementById('f-remove-image')?.value === 'true';
+
+                if (!name) {
+                    showToast('⚠️ Nama Kepala Desa wajib diisi!', 'error');
+                    return;
+                }
+
+                let imageUrl = null;
+                if (tempCompressedImage) {
+                    imageUrl = tempCompressedImage;
+                } else if (!removeImageFlag && data.kades.imageUrl) {
+                    imageUrl = data.kades.imageUrl;
+                }
+
+                data.kades = { name, photo, imageUrl };
+                if (saveData(data)) {
+                    showToast('✅ Kepala Desa berhasil disimpan!');
+                }
+
             } else if (currentModalType === 'layanan') {
                 const iconInput = document.getElementById('f-layanan-icon');
                 const titleInput = document.getElementById('f-layanan-title');
                 const descInput = document.getElementById('f-layanan-desc');
-                
+
                 const icon = iconInput ? iconInput.value.trim() : '📄';
                 const title = titleInput ? titleInput.value.trim() : '';
                 const desc = descInput ? descInput.value.trim() : '';
-                
-                if (!title) { 
+
+                if (!title) {
                     showToast('⚠️ Judul layanan wajib diisi!', 'error');
-                    return; 
+                    return;
                 }
 
                 if (currentEditId) {
@@ -1059,7 +1152,7 @@
                     showToast('✅ Layanan berhasil disimpan!');
                 }
             }
-            
+
             closeModal();
             renderAll();
         }
@@ -1069,11 +1162,11 @@
         // ============================================================
         function editUMKM(id) { openModal('umkm', id); }
         function deleteUMKM(id) {
-            if (confirm('Hapus produk ini?')) {
+            if (confirm('Hapus UMKM ini?')) {
                 data.umkm = data.umkm.filter(i => i.id !== id);
                 saveData(data);
                 renderAll();
-                showToast('🗑️ Produk dihapus');
+                showToast('🗑️ UMKM dihapus');
             }
         }
 
@@ -1098,13 +1191,7 @@
         }
 
         function editKades() {
-            const newName = prompt('Masukkan nama Kepala Desa:', data.kades.name);
-            if (newName !== null && newName.trim()) {
-                data.kades.name = newName.trim();
-                saveData(data);
-                renderAll();
-                showToast('✅ Nama Kepala Desa diupdate');
-            }
+            openModal('kades');
         }
 
         function saveWANumber() {
@@ -1127,7 +1214,7 @@
         }
 
         function resetData() {
-            if (confirm('⚠️ Yakin ingin mereset semua data ke default?')) {
+            if (confirm('⚠️ Yakin ingin mereset semua data ke default? Semua UMKM akan terhapus.')) {
                 data = JSON.parse(JSON.stringify(DEFAULT_DATA));
                 saveData(data);
                 renderAll();
