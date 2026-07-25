@@ -9,20 +9,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --hijau-sawah: #26402F;
-    --hijau-tua: #16261B;
-    --tanah-liat: #B85C2E;
-    --emas-batik: #C79A3F;
-    --kertas: #F5EFDF;
-    --kertas-terang: #FBF7EC;
-    --tinta: #241F17;
-    --garis: rgba(36,31,23,0.14);
-    --putih: #FFFDF8;
+    --hijau: #1E4438;
+    --hijau-tua: #10241C;
+    --karat: #C1502C;
+    --emas: #D6A247;
+    --krem: #F6EFDD;
+    --krem-terang: #FCF8ED;
+    --tinta: #201F19;
+    --garis: rgba(32,31,25,0.13);
+    --putih: #FFFFFF;
+    --wa: #1F9D55;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
-    background:var(--kertas);
+    background:var(--krem);
     color:var(--tinta);
     font-family:'Plus Jakarta Sans', sans-serif;
     line-height:1.6;
@@ -35,80 +36,78 @@
   }
   a{color:inherit;text-decoration:none;}
   img{max-width:100%;display:block;}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 28px;}
   .eyebrow{
     text-transform:uppercase;
     letter-spacing:0.16em;
     font-size:12px;
     font-weight:700;
-    color:var(--tanah-liat);
+    color:var(--karat);
   }
 
   .kawung-strip{
-    height:14px;
-    width:100%;
-    background-image: radial-gradient(circle at 12.5px 7px, var(--emas-batik) 0 4px, transparent 4.2px);
-    background-size:25px 14px;
-    background-repeat:repeat-x;
-    opacity:0.9;
+    height:14px; width:100%;
+    background-image: radial-gradient(circle at 12.5px 7px, var(--emas) 0 4px, transparent 4.2px);
+    background-size:25px 14px; background-repeat:repeat-x; opacity:0.9;
   }
-  .kawung-strip.dark{background-image: radial-gradient(circle at 12.5px 7px, var(--kertas) 0 4px, transparent 4.2px); opacity:0.55;}
+  .kawung-strip.dark{background-image: radial-gradient(circle at 12.5px 7px, var(--krem) 0 4px, transparent 4.2px); opacity:0.5;}
 
   header.nav{
     position:sticky; top:0; z-index:50;
-    background:rgba(245,239,223,0.92);
-    backdrop-filter:blur(6px);
+    background:rgba(246,239,221,0.9);
+    backdrop-filter:blur(8px);
     border-bottom:1px solid var(--garis);
   }
   .nav-inner{
     display:flex; align-items:center; justify-content:space-between;
-    padding:16px 28px; max-width:1120px; margin:0 auto;
+    padding:14px 28px; max-width:1140px; margin:0 auto;
   }
   .brand{display:flex; align-items:center; gap:10px; font-weight:700; font-size:17px;}
   .brand .mark{
-    width:34px;height:34px;border-radius:9px;
-    background:var(--hijau-sawah);
+    width:36px;height:36px;border-radius:50%;
+    background:var(--hijau);
     display:flex;align-items:center;justify-content:center;
-    color:var(--emas-batik); font-family:'Fraunces',serif; font-weight:700; font-size:16px;
+    color:var(--emas); font-family:'Fraunces',serif; font-weight:700; font-size:16px;
+    border:2px solid var(--emas);
   }
-  nav.links{display:flex; gap:26px; font-size:14.5px; font-weight:600;}
-  nav.links a{opacity:0.8; transition:opacity .2s;}
-  nav.links a:hover{opacity:1; color:var(--tanah-liat);}
+  nav.links{display:flex; gap:28px; font-size:14.5px; font-weight:600;}
+  nav.links a{opacity:0.75; transition:opacity .2s;}
+  nav.links a:hover{opacity:1; color:var(--karat);}
   .nav-cta{
-    background:var(--tanah-liat); color:var(--putih);
-    padding:9px 18px; border-radius:999px; font-weight:700; font-size:13.5px;
+    background:var(--karat); color:var(--putih);
+    padding:10px 20px; border-radius:999px; font-weight:700; font-size:13.5px;
     display:flex; align-items:center; gap:6px;
+    box-shadow:0 6px 16px -6px rgba(193,80,44,0.55);
   }
   .menu-toggle{display:none; background:none; border:none; font-size:22px; cursor:pointer; color:var(--tinta);}
 
   .hero{
-    position:relative;
-    background:var(--hijau-sawah);
-    color:var(--kertas-terang);
-    padding:88px 0 70px;
-    overflow:hidden;
+    position:relative; background:var(--hijau); color:var(--krem-terang);
+    padding:92px 0 74px; overflow:hidden;
   }
   .hero::before{
-    content:"";
-    position:absolute; inset:0;
-    background-image: radial-gradient(circle at 18px 9px, rgba(199,154,63,0.35) 0 2.5px, transparent 2.7px);
-    background-size:36px 20px;
-    opacity:0.5;
+    content:""; position:absolute; inset:0;
+    background-image: radial-gradient(circle at 18px 9px, rgba(214,162,71,0.32) 0 2.5px, transparent 2.7px);
+    background-size:36px 20px; opacity:0.55;
+  }
+  .hero::after{
+    content:""; position:absolute; right:-140px; top:-140px; width:420px; height:420px; border-radius:50%;
+    background:radial-gradient(circle, rgba(193,80,44,0.35), transparent 70%);
   }
   .hero-inner{position:relative; display:grid; grid-template-columns:1.15fr 0.85fr; gap:48px; align-items:center;}
   .hero h1{font-size:clamp(38px,5vw,58px); line-height:1.04; margin:14px 0 20px;}
-  .hero h1 em{font-style:italic; color:var(--emas-batik);}
+  .hero h1 em{font-style:italic; color:var(--emas);}
   .hero p.lead{font-size:17px; max-width:480px; opacity:0.88; margin-bottom:28px;}
-  .hero-stats{display:flex; gap:28px; flex-wrap:wrap; margin-top:8px;}
-  .hero-stats div{border-left:2px solid var(--emas-batik); padding-left:12px;}
+  .hero-stats{display:flex; gap:26px; flex-wrap:wrap; margin-top:8px;}
+  .hero-stats div{border-left:2px solid var(--emas); padding-left:12px;}
   .hero-stats .num{font-family:'Fraunces',serif; font-size:24px; font-weight:700; display:block;}
   .hero-stats .lbl{font-size:12.5px; opacity:0.75;}
   .hero-art{
-    position:relative; aspect-ratio:1/1; border-radius:24px;
-    background:linear-gradient(160deg, #34513C, #1B2E20);
-    border:1px solid rgba(199,154,63,0.4);
-    display:flex; align-items:center; justify-content:center;
-    padding:26px;
+    position:relative; aspect-ratio:1/1;
+    border-radius:42% 58% 54% 46% / 46% 42% 58% 54%;
+    background:linear-gradient(160deg, #2B5A48, #142E24);
+    border:1px solid rgba(214,162,71,0.4);
+    display:flex; align-items:center; justify-content:center; padding:26px;
   }
   .hero-art svg{width:100%;height:100%;}
 
@@ -119,139 +118,139 @@
     transition:transform .18s ease;
   }
   .btn:hover{transform:translateY(-2px);}
-  .btn-primary{background:var(--emas-batik); color:var(--hijau-tua);}
-  .btn-outline{border:1.5px solid rgba(245,239,223,0.5); color:var(--kertas-terang);}
+  .btn-primary{background:var(--emas); color:var(--hijau-tua);}
+  .btn-solid{background:var(--karat); color:var(--putih);}
+  .btn-outline{border:1.5px solid rgba(246,239,221,0.5); color:var(--krem-terang);}
+  .btn-wa{background:var(--wa); color:var(--putih);}
 
-  section{padding:76px 0;}
+  section{padding:80px 0;}
   .section-head{max-width:600px; margin-bottom:44px;}
   .section-head h2{font-size:clamp(28px,3.4vw,38px); margin-top:10px;}
   .section-head p{opacity:0.75; margin-top:12px; font-size:15.5px;}
 
   .lokasi-grid{display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:stretch;}
-  .lokasi-card{
-    background:var(--putih); border:1px solid var(--garis); border-radius:18px; overflow:hidden;
-  }
+  .lokasi-card{background:var(--putih); border:1px solid var(--garis); border-radius:20px; overflow:hidden;}
   .map-embed iframe{width:100%; height:340px; border:0; filter:sepia(8%) saturate(92%);}
   .lokasi-info{padding:26px;}
   .lokasi-info h3{font-size:20px; margin-bottom:14px;}
   .info-row{display:flex; gap:12px; padding:11px 0; border-bottom:1px dashed var(--garis); font-size:14.5px;}
   .info-row:last-child{border-bottom:none;}
-  .info-row .ico{width:20px; flex-shrink:0; color:var(--tanah-liat); font-weight:800;}
+  .info-row .ico{width:20px; flex-shrink:0; color:var(--karat); font-weight:800;}
   .info-row .k{opacity:0.65; min-width:110px;}
   .batas-list{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px;}
-  .batas-list .b{background:var(--kertas); border-radius:10px; padding:12px 14px; font-size:13.5px;}
+  .batas-list .b{background:var(--krem); border-radius:12px; padding:12px 14px; font-size:13.5px;}
   .batas-list .b b{display:block; font-family:'Fraunces',serif; font-size:14px; margin-bottom:2px;}
 
-  .struktur-bg{background:var(--hijau-tua); color:var(--kertas-terang);}
-  .struktur-bg .eyebrow{color:var(--emas-batik);}
+  .struktur-bg{background:var(--hijau-tua); color:var(--krem-terang);}
+  .struktur-bg .eyebrow{color:var(--emas);}
   .struktur-bg .section-head p{opacity:0.65;}
   .kades-card{
     display:grid; grid-template-columns:180px 1fr; gap:26px; align-items:center;
-    background:linear-gradient(135deg, rgba(199,154,63,0.14), rgba(255,255,255,0.03));
-    border:1px solid rgba(199,154,63,0.35); border-radius:20px; padding:26px;
-    margin-bottom:34px;
+    background:linear-gradient(135deg, rgba(214,162,71,0.14), rgba(255,255,255,0.03));
+    border:1px solid rgba(214,162,71,0.35); border-radius:22px; padding:26px; margin-bottom:34px;
   }
   .kades-photo{
-    width:100%; aspect-ratio:1/1; border-radius:16px; background:#3A5842;
-    display:flex; align-items:center; justify-content:center; overflow:hidden;
-    font-family:'Fraunces',serif; font-size:44px; color:var(--emas-batik); font-weight:700;
-    border:1px solid rgba(199,154,63,0.4);
+    width:100%; aspect-ratio:1/1; border-radius:18px; background:#2B4B3C;
+    position:relative; overflow:hidden;
+    border:1px solid rgba(214,162,71,0.4);
+  }
+  .kades-photo img{width:100%; height:100%; object-fit:cover; position:absolute; inset:0;}
+  .kades-photo .fallback{
+    width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:relative; z-index:1;
+    font-family:'Fraunces',serif; font-size:44px; color:var(--emas); font-weight:700;
   }
   .kades-name{font-size:26px;}
-  .kades-role{color:var(--emas-batik); font-weight:700; font-size:13px; text-transform:uppercase; letter-spacing:0.08em;}
+  .kades-role{color:var(--emas); font-weight:700; font-size:13px; text-transform:uppercase; letter-spacing:0.08em;}
   .kades-note{font-size:13.5px; opacity:0.7; margin-top:10px; max-width:480px;}
   .org-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
   .org-card{
     background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1);
-    border-radius:14px; padding:20px; transition:border-color .2s, background .2s;
+    border-radius:16px; padding:18px; display:flex; align-items:center; gap:14px;
+    transition:border-color .2s, background .2s;
   }
-  .org-card:hover{border-color:var(--emas-batik); background:rgba(255,255,255,0.07);}
-  .org-card .role{font-size:11.5px; text-transform:uppercase; letter-spacing:0.07em; color:var(--emas-batik); font-weight:700; margin-bottom:6px;}
+  .org-card:hover{border-color:var(--emas); background:rgba(255,255,255,0.07);}
+  .org-avatar{
+    width:48px; height:48px; border-radius:50%; flex-shrink:0; overflow:hidden; position:relative;
+    background:#2B4B3C; border:1px solid rgba(214,162,71,0.35);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .org-avatar img{width:100%; height:100%; object-fit:cover; position:absolute; inset:0;}
+  .org-avatar .fallback{
+    font-family:'Fraunces',serif; font-size:15px; font-weight:700; color:var(--emas); position:relative; z-index:1;
+  }
+  .org-card .role{font-size:11.5px; text-transform:uppercase; letter-spacing:0.07em; color:var(--emas); font-weight:700; margin-bottom:4px;}
   .org-card .name{font-family:'Fraunces',serif; font-size:16.5px; font-weight:600;}
   .org-card .name.tbd{opacity:0.45; font-style:italic; font-family:'Plus Jakarta Sans',sans-serif; font-size:13.5px;}
 
-  .umkm-head{
-    display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap;
-  }
-  .umkm-badge{
-    display:inline-flex; align-items:center; gap:8px; background:var(--tanah-liat); color:var(--putih);
-    padding:6px 14px; border-radius:999px; font-size:12.5px; font-weight:700; margin-bottom:10px;
-  }
-  .umkm-intro{display:grid; grid-template-columns:1fr 1fr; gap:36px; margin-bottom:40px; align-items:center;}
-  .umkm-intro .txt p{font-size:15px; opacity:0.82; margin-bottom:14px;}
-  .umkm-photo{
-    aspect-ratio:16/11; border-radius:18px; background:linear-gradient(135deg,#E4C77E,#C1652F);
-    position:relative; overflow:hidden; border:1px solid var(--garis);
-  }
-  .umkm-photo::after{
-    content:"HIKMAH PIA"; position:absolute; bottom:18px; left:18px; color:var(--putih);
-    font-family:'Fraunces',serif; font-size:26px; font-weight:700; text-shadow:0 2px 10px rgba(0,0,0,0.25);
-  }
-  .menu-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
-  .menu-card{
-    background:var(--putih); border:1px solid var(--garis); border-radius:16px; overflow:hidden;
-    transition:transform .18s, box-shadow .18s;
-  }
-  .menu-card:hover{transform:translateY(-4px); box-shadow:0 14px 28px -14px rgba(36,31,23,0.35);}
-  .menu-thumb{
-    aspect-ratio:4/3; display:flex; align-items:center; justify-content:center;
-    font-family:'Fraunces',serif; font-size:34px; color:var(--putih); font-weight:700;
-    position:relative; overflow:hidden;
-  }
-  .menu-thumb img{
-    width:100%; height:100%; object-fit:cover; position:absolute; inset:0;
-  }
-  .menu-thumb .fallback{
-    width:100%; height:100%; display:flex; align-items:center; justify-content:center;
-    position:relative; z-index:1;
-  }
-  .menu-card .body{padding:14px 16px 18px;}
-  .menu-card .name{
-    font-weight:700; font-size:13.5px; line-height:1.35; min-height:38px;
-    text-transform:uppercase; letter-spacing:0.01em;
-  }
-  .menu-card .tag{font-size:11.5px; opacity:0.55; margin-top:6px; display:flex; align-items:center; gap:5px;}
-  .umkm-cta{
-    margin-top:32px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:18px;
-    background:var(--hijau-sawah); color:var(--kertas-terang); padding:24px 28px; border-radius:18px;
-  }
-  .umkm-cta p{font-size:14.5px; opacity:0.85; max-width:420px;}
-
   .layanan-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
   .layanan-card{
-    background:var(--putih); border:1px solid var(--garis); border-radius:16px; padding:24px;
+    background:var(--putih); border:1px solid var(--garis); border-radius:18px; padding:24px;
     display:flex; flex-direction:column; gap:14px; transition:border-color .2s, transform .2s;
   }
-  .layanan-card:hover{border-color:var(--tanah-liat); transform:translateY(-3px);}
+  .layanan-card:hover{border-color:var(--karat); transform:translateY(-3px);}
   .layanan-icon{
-    width:44px;height:44px;border-radius:12px; background:rgba(184,92,46,0.12); color:var(--tanah-liat);
+    width:44px;height:44px;border-radius:14px; background:rgba(193,80,44,0.12); color:var(--karat);
     display:flex; align-items:center; justify-content:center; font-size:20px; font-weight:700;
   }
   .layanan-card h3{font-size:16.5px;}
   .layanan-card p{font-size:13.5px; opacity:0.7; flex-grow:1;}
-  .wa-link{
-    display:inline-flex; align-items:center; gap:7px; font-size:13px; font-weight:700; color:#1F7A45;
-  }
+  .wa-link{display:inline-flex; align-items:center; gap:7px; font-size:13px; font-weight:700; color:var(--wa);}
   .wa-link svg{width:16px;height:16px;}
 
-  footer{background:var(--hijau-tua); color:rgba(245,239,223,0.7); padding:52px 0 26px;}
+  .umkm-badge{
+    display:inline-flex; align-items:center; gap:8px; background:var(--karat); color:var(--putih);
+    padding:6px 14px; border-radius:999px; font-size:12.5px; font-weight:700; margin-bottom:10px;
+  }
+  .umkm-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .umkm-card{
+    background:var(--putih); border:1px solid var(--garis); border-radius:22px; overflow:hidden;
+    display:flex; flex-direction:column; transition:transform .2s, box-shadow .2s;
+  }
+  .umkm-card:hover{transform:translateY(-4px); box-shadow:0 18px 34px -18px rgba(32,31,25,0.32);}
+  .umkm-photo{
+    aspect-ratio:4/3; position:relative; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .umkm-photo img{width:100%; height:100%; object-fit:cover; position:absolute; inset:0;}
+  .umkm-photo .fallback{
+    width:100%; height:100%; display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-size:34px; color:var(--putih); font-weight:700; position:relative; z-index:1;
+  }
+  .umkm-cat{
+    align-self:flex-start; font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em;
+    color:var(--hijau); background:rgba(30,68,56,0.09); padding:4px 12px; border-radius:999px;
+  }
+  .umkm-body{padding:18px 20px 20px; display:flex; flex-direction:column; gap:9px; flex:1;}
+  .umkm-name{font-size:18.5px;}
+  .umkm-desc{font-size:13.5px; opacity:0.72; flex-grow:1;}
+  .umkm-actions{display:flex; gap:8px; margin-top:6px; flex-wrap:wrap;}
+  .umkm-actions a{
+    display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:700;
+    padding:9px 14px; border-radius:999px;
+  }
+  .umkm-actions .maps{background:var(--krem); color:var(--tinta); border:1px solid var(--garis);}
+  .umkm-actions .wa{background:var(--wa); color:var(--putih);}
+  .umkm-empty{
+    grid-column:1/-1; text-align:center; padding:56px 24px; background:var(--putih);
+    border:1px dashed var(--garis); border-radius:20px; opacity:0.7;
+  }
+  .umkm-empty .icon{font-size:38px; margin-bottom:10px;}
+  .umkm-cta{
+    margin-top:36px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:18px;
+    background:var(--hijau); color:var(--krem-terang); padding:26px 30px; border-radius:20px;
+  }
+  .umkm-cta p{font-size:14.5px; opacity:0.85; max-width:440px;}
+
+  footer{background:var(--hijau-tua); color:rgba(246,239,221,0.7); padding:52px 0 26px;}
   .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:36px; margin-bottom:36px;}
-  footer h4{color:var(--kertas-terang); font-size:14px; margin-bottom:14px; font-family:'Fraunces',serif;}
-  footer .brand{color:var(--kertas-terang); margin-bottom:12px;}
+  footer h4{color:var(--krem-terang); font-size:14px; margin-bottom:14px; font-family:'Fraunces',serif;}
+  footer .brand{color:var(--krem-terang); margin-bottom:12px;}
   footer p.desc{font-size:13.5px; max-width:320px;}
   footer ul{list-style:none; font-size:13.5px; display:flex; flex-direction:column; gap:9px;}
-  .footer-bottom{border-top:1px solid rgba(245,239,223,0.12); padding-top:20px; font-size:12.5px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
+  .footer-bottom{border-top:1px solid rgba(246,239,221,0.12); padding-top:20px; font-size:12.5px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
 
-  /* Admin Link di Footer */
-  .admin-link {
-    color: var(--emas-batik);
-    opacity: 0.5;
-    font-size: 12px;
-    transition: opacity 0.2s;
-  }
-  .admin-link:hover {
-    opacity: 1;
-  }
+  .admin-link{color:var(--emas); opacity:0.5; font-size:12px; transition:opacity 0.2s;}
+  .admin-link:hover{opacity:1;}
 
   @media (max-width:860px){
     nav.links{display:none;}
@@ -259,12 +258,14 @@
     .hero-inner{grid-template-columns:1fr;}
     .hero-art{max-width:340px; margin:0 auto;}
     .lokasi-grid{grid-template-columns:1fr;}
-    .umkm-intro{grid-template-columns:1fr;}
-    .menu-grid{grid-template-columns:repeat(2,1fr);}
+    .umkm-grid{grid-template-columns:repeat(2,1fr);}
     .org-grid{grid-template-columns:repeat(2,1fr);}
     .layanan-grid{grid-template-columns:1fr;}
     .footer-grid{grid-template-columns:1fr;}
     .kades-card{grid-template-columns:120px 1fr;}
+  }
+  @media (max-width:560px){
+    .umkm-grid{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -276,8 +277,8 @@
     <nav class="links">
       <a href="#lokasi">Lokasi</a>
       <a href="#struktur">Pemerintahan</a>
-      <a href="#umkm">UMKM Hikmah Pia</a>
       <a href="#layanan">Layanan</a>
+      <a href="#umkm">UMKM Desa</a>
     </nav>
     <a class="nav-cta" href="#" id="nav-wa-link" target="_blank" rel="noopener">Hubungi Kantor Desa</a>
     <button class="menu-toggle" aria-label="Menu">&#9776;</button>
@@ -287,35 +288,36 @@
 <section class="hero">
   <div class="wrap hero-inner">
     <div>
-      <span class="eyebrow" style="color:#DEC98A">Kecamatan Pakis · Kabupaten Malang · Jawa Timur</span>
+      <span class="eyebrow" style="color:#E8D19E">Kecamatan Pakis · Kabupaten Malang · Jawa Timur</span>
       <h1 class="display">Selamat datang<br>di <em>Saptorenggo</em></h1>
-      <p class="lead" id="hero-lead">Desa agraris di kaki jalur Tumpang, dikenal dengan wisata kuliner, kerajinan, dan warganya yang mayoritas bekerja sebagai pertukangan dan wiraswasta &mdash; termasuk UMKM camilan rumahan Hikmah Pia.</p>
+      <p class="lead" id="hero-lead">Desa agraris di kaki jalur Tumpang, dikenal dengan wisata kuliner, kerajinan, dan warganya yang mayoritas bekerja sebagai pertukangan dan wiraswasta.</p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="#umkm">Lihat UMKM Hikmah Pia</a>
+        <a class="btn btn-primary" href="#umkm">Lihat UMKM Desa</a>
         <a class="btn btn-outline" href="#layanan">Layanan Masyarakat</a>
       </div>
       <div class="hero-stats">
         <div><span class="num">15</span><span class="lbl">Desa di Kec. Pakis</span></div>
         <div><span class="num">65154</span><span class="lbl">Kode Pos</span></div>
         <div><span class="num">±20&#8211;30'</span><span class="lbl">dari Terminal Arjosari</span></div>
+        <div><span class="num" id="stat-umkm-count">0</span><span class="lbl">UMKM Terdaftar</span></div>
       </div>
     </div>
     <div class="hero-art">
       <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="150" cy="150" r="120" fill="none" stroke="#C79A3F" stroke-width="1" opacity="0.5"/>
-        <circle cx="150" cy="150" r="90" fill="none" stroke="#C79A3F" stroke-width="1" opacity="0.35"/>
-        <path d="M60 210 Q90 120 150 130 Q210 120 240 210" fill="none" stroke="#8FA98A" stroke-width="4" stroke-linecap="round"/>
-        <path d="M75 215 Q100 150 150 158 Q200 150 225 215" fill="none" stroke="#C79A3F" stroke-width="3" stroke-linecap="round"/>
-        <g stroke="#DEC98A" stroke-width="2">
+        <circle cx="150" cy="150" r="120" fill="none" stroke="#D6A247" stroke-width="1" opacity="0.5"/>
+        <circle cx="150" cy="150" r="90" fill="none" stroke="#D6A247" stroke-width="1" opacity="0.35"/>
+        <path d="M60 210 Q90 120 150 130 Q210 120 240 210" fill="none" stroke="#8FB39F" stroke-width="4" stroke-linecap="round"/>
+        <path d="M75 215 Q100 150 150 158 Q200 150 225 215" fill="none" stroke="#D6A247" stroke-width="3" stroke-linecap="round"/>
+        <g stroke="#E8D19E" stroke-width="2">
           <line x1="110" y1="205" x2="110" y2="170"/>
           <line x1="130" y1="205" x2="130" y2="150"/>
           <line x1="150" y1="205" x2="150" y2="140"/>
           <line x1="170" y1="205" x2="170" y2="150"/>
           <line x1="190" y1="205" x2="190" y2="170"/>
         </g>
-        <circle cx="150" cy="150" r="6" fill="#B85C2E"/>
-        <text x="150" y="255" text-anchor="middle" fill="#F5EFDF" font-family="Fraunces, serif" font-size="15" font-weight="600">-7.9&deg; LS · 112.7&deg; BT</text>
-        <text x="150" y="272" text-anchor="middle" fill="#C79A3F" font-family="Plus Jakarta Sans, sans-serif" font-size="11" letter-spacing="1">DESA SAPTORENGGO</text>
+        <circle cx="150" cy="150" r="6" fill="#C1502C"/>
+        <text x="150" y="255" text-anchor="middle" fill="#F6EFDD" font-family="Fraunces, serif" font-size="15" font-weight="600">-7.9&deg; LS · 112.7&deg; BT</text>
+        <text x="150" y="272" text-anchor="middle" fill="#D6A247" font-family="Plus Jakarta Sans, sans-serif" font-size="11" letter-spacing="1">DESA SAPTORENGGO</text>
       </svg>
     </div>
   </div>
@@ -361,7 +363,10 @@
     </div>
 
     <div class="kades-card">
-      <div class="kades-photo" id="kades-photo">KS</div>
+      <div class="kades-photo" id="kades-photo">
+        <img id="kades-img" alt="Kepala Desa" style="display:none;">
+        <div class="fallback" id="kades-fallback">KS</div>
+      </div>
       <div>
         <div class="kades-role">Kepala Desa</div>
         <div class="kades-name display" id="kades-name">(Nama Kepala Desa)</div>
@@ -369,54 +374,11 @@
       </div>
     </div>
 
-    <div class="org-grid" id="org-grid">
-      <div class="org-card"><div class="role">Sekretaris Desa</div><div class="name">Adi Sudiar Dwi Yanto, S.E.</div></div>
-      <div class="org-card"><div class="role">Ketua BPD</div><div class="name tbd">Badan Permusyawaratan Desa</div></div>
-      <div class="org-card"><div class="role">Kaur Pemerintahan</div><div class="name tbd">Lengkapi nama pejabat</div></div>
-      <div class="org-card"><div class="role">Kaur Pembangunan</div><div class="name tbd">Lengkapi nama pejabat</div></div>
-      <div class="org-card"><div class="role">Kaur Pemberdayaan Masyarakat</div><div class="name tbd">Lengkapi nama pejabat</div></div>
-      <div class="org-card"><div class="role">Kaur Kesejahteraan Rakyat</div><div class="name tbd">Lengkapi nama pejabat</div></div>
-      <div class="org-card"><div class="role">Kaur Umum</div><div class="name tbd">Lengkapi nama pejabat</div></div>
-      <div class="org-card"><div class="role">Kepala Dusun</div><div class="name tbd">Lengkapi nama pejabat</div></div>
-      <div class="org-card"><div class="role">Staf Administrasi</div><div class="name tbd">Lengkapi nama pejabat</div></div>
-    </div>
+    <div class="org-grid" id="org-grid"></div>
   </div>
 </section>
 
-<section id="umkm">
-  <div class="wrap">
-    <div class="umkm-head">
-      <div class="section-head" style="margin-bottom:0;">
-        <span class="umkm-badge">&#9733; UMKM Unggulan Desa</span>
-        <h2 class="display">Hikmah Pia</h2>
-        <p id="umkm-desc">Usaha rumahan warga Saptorenggo yang memproduksi aneka pia, bolen, dan kudapan kering &mdash; dibuat segar setiap hari dengan resep rumahan.</p>
-      </div>
-    </div>
-
-    <div class="umkm-intro">
-      <div class="umkm-photo"></div>
-      <div class="txt">
-        <p>Hikmah Pia adalah salah satu UMKM binaan Desa Saptorenggo yang mengangkat camilan khas berbahan dasar kacang hijau dan cokelat menjadi pia, bolen, dan stik gurih. Produk dibuat dalam skala rumahan dengan kualitas yang konsisten.</p>
-        <p>Setiap pesanan dapat disesuaikan porsi dan kemasannya untuk kebutuhan oleh-oleh, hajatan, maupun rapat desa.</p>
-        <a class="btn btn-primary" style="background:var(--tanah-liat); color:var(--putih);" href="#" id="umkm-wa-link" target="_blank" rel="noopener">Pesan via WhatsApp</a>
-      </div>
-    </div>
-
-    <div class="menu-grid" id="menu-grid">
-      <!-- Akan diisi oleh JavaScript dari data admin -->
-    </div>
-
-    <div class="umkm-cta">
-      <div>
-        <h3 class="display" style="font-size:20px; margin-bottom:6px;">Ingin memesan dalam jumlah banyak?</h3>
-        <p>Hikmah Pia menerima pesanan borongan untuk acara desa, arisan, dan hantaran. Hubungi langsung untuk cek ketersediaan dan harga.</p>
-      </div>
-      <a class="btn btn-primary" href="#" id="umkm-cta-wa" target="_blank" rel="noopener">Chat WhatsApp &rarr;</a>
-    </div>
-  </div>
-</section>
-
-<section id="layanan" style="background:var(--kertas-terang); border-top:1px solid var(--garis); border-bottom:1px solid var(--garis);">
+<section id="layanan" style="background:var(--krem-terang); border-top:1px solid var(--garis); border-bottom:1px solid var(--garis);">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Layanan Masyarakat</span>
@@ -424,6 +386,28 @@
       <p>Pilih jenis layanan di bawah ini, dan Anda akan langsung terhubung ke WhatsApp resmi Kantor Desa Saptorenggo.</p>
     </div>
     <div class="layanan-grid" id="layanan-grid"></div>
+  </div>
+</section>
+
+<section id="umkm">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="umkm-badge">&#9733; Ekonomi Warga</span>
+      <h2 class="display">UMKM Desa Saptorenggo</h2>
+      <p id="umkm-desc">Direktori usaha mikro, kecil, dan menengah milik warga Saptorenggo. Hubungi langsung pelaku usaha melalui WhatsApp atau kunjungi lokasinya via Google Maps.</p>
+    </div>
+
+    <div class="umkm-grid" id="umkm-grid">
+      <!-- Diisi oleh JavaScript dari data admin -->
+    </div>
+
+    <div class="umkm-cta">
+      <div>
+        <h3 class="display" style="font-size:20px; margin-bottom:6px;">Punya usaha di Saptorenggo?</h3>
+        <p>Daftarkan UMKM Anda agar tercantum di website desa. Hubungi Kantor Desa untuk didaftarkan oleh admin.</p>
+      </div>
+      <a class="btn btn-solid" href="#" id="umkm-cta-wa" target="_blank" rel="noopener">Daftarkan UMKM &rarr;</a>
+    </div>
   </div>
 </section>
 
@@ -439,8 +423,8 @@
         <ul>
           <li><a href="#lokasi">Lokasi Desa</a></li>
           <li><a href="#struktur">Struktur Pemerintahan</a></li>
-          <li><a href="#umkm">UMKM Hikmah Pia</a></li>
           <li><a href="#layanan">Layanan Masyarakat</a></li>
+          <li><a href="#umkm">UMKM Desa</a></li>
         </ul>
       </div>
       <div>
@@ -467,10 +451,7 @@
 function getWebsiteData() {
     try {
         const raw = localStorage.getItem('saptorenggo_data');
-        if (raw) {
-            const data = JSON.parse(raw);
-            return data;
-        }
+        if (raw) return JSON.parse(raw);
     } catch (e) {}
     return null;
 }
@@ -481,16 +462,7 @@ const adminData = getWebsiteData();
 // 2. DEFAULT DATA (jika tidak ada data dari admin)
 // ============================================================
 const defaultData = {
-    umkm: [
-        { id: 1, name: "BOLEN PISANG COKELAT", tag: "Produk rumahan", color: "#B85C2E", imageUrl: null },
-        { id: 2, name: "KUPING GAJAH", tag: "Produk rumahan", color: "#C79A3F", imageUrl: null },
-        { id: 3, name: "MENTARI", tag: "Produk rumahan", color: "#D4A93C", imageUrl: null },
-        { id: 4, name: "PASTEL IS ABON", tag: "Produk rumahan", color: "#26402F", imageUrl: null },
-        { id: 5, name: "PIA COKELAT", tag: "Produk rumahan", color: "#5B3A26", imageUrl: null },
-        { id: 6, name: "PIA COKELAT DAN KACANG HIJAU", tag: "Produk rumahan", color: "#6E7F3B", imageUrl: null },
-        { id: 7, name: "PIA KACANG HIJAU", tag: "Produk rumahan", color: "#8FA34A", imageUrl: null },
-        { id: 8, name: "STIK BAWANG", tag: "Produk rumahan", color: "#C9B27A", imageUrl: null }
-    ],
+    umkm: [],
     perangkat: [
         { id: 1, role: "Sekretaris Desa", name: "Adi Sudiar Dwi Yanto, S.E." },
         { id: 2, role: "Ketua BPD", name: "Badan Permusyawaratan Desa" },
@@ -510,16 +482,16 @@ const defaultData = {
         { id: 5, icon: "🏺", title: "Surat Keterangan Tidak Mampu", desc: "Untuk keperluan bantuan sosial, beasiswa, atau keringanan biaya." },
         { id: 6, icon: "📋", title: "Layanan Administrasi Lainnya", desc: "Konsultasi kebutuhan administrasi desa lain di luar daftar di atas." }
     ],
-    kades: { name: "(Nama Kepala Desa)", photo: "KS" },
+    kades: { name: "(Nama Kepala Desa)", photo: "KS", imageUrl: null },
     umum: {
-        heroDesc: "Desa agraris di kaki jalur Tumpang, dikenal dengan wisata kuliner, kerajinan, dan warganya yang mayoritas bekerja sebagai pertukangan dan wiraswasta — termasuk UMKM camilan rumahan Hikmah Pia.",
-        umkmDesc: "Usaha rumahan warga Saptorenggo yang memproduksi aneka pia, bolen, dan kudapan kering — dibuat segar setiap hari dengan resep rumahan."
+        heroDesc: "Desa agraris di kaki jalur Tumpang, dikenal dengan wisata kuliner, kerajinan, dan warganya yang mayoritas bekerja sebagai pertukangan dan wiraswasta.",
+        umkmDesc: "Direktori usaha mikro, kecil, dan menengah milik warga Saptorenggo. Hubungi langsung pelaku usaha melalui WhatsApp atau kunjungi lokasinya via Google Maps."
     },
     waNumber: "6281234567890"
 };
 
-// Gabungkan data admin dengan default (admin data lebih prioritas)
 let data = { ...defaultData, ...adminData };
+if (!data.umkm) data.umkm = [];
 
 // ============================================================
 // 3. HELPER FUNCTIONS
@@ -549,7 +521,7 @@ function adjustColor(hex, percent) {
 }
 
 function buildWaUrl(waNumber, message) {
-    const clean = waNumber.replace(/[^0-9]/g, '');
+    const clean = (waNumber || '').replace(/[^0-9]/g, '');
     if (!clean) return '#';
     return `https://wa.me/${clean}?text=${encodeURIComponent(message || '')}`;
 }
@@ -557,92 +529,107 @@ function buildWaUrl(waNumber, message) {
 // ============================================================
 // 4. RENDER FUNCTIONS
 // ============================================================
-
-// 4.1 Update Hero
 function renderHero() {
     const lead = document.getElementById('hero-lead');
-    if (lead && data.umum?.heroDesc) {
-        lead.textContent = data.umum.heroDesc;
-    }
+    if (lead && data.umum?.heroDesc) lead.textContent = data.umum.heroDesc;
+    const countEl = document.getElementById('stat-umkm-count');
+    if (countEl) countEl.textContent = (data.umkm || []).length;
 }
 
-// 4.2 Update UMKM Description
 function renderUmkmDesc() {
     const desc = document.getElementById('umkm-desc');
-    if (desc && data.umum?.umkmDesc) {
-        desc.textContent = data.umum.umkmDesc;
-    }
+    if (desc && data.umum?.umkmDesc) desc.textContent = data.umum.umkmDesc;
 }
 
-// 4.3 Update UMKM Products (dengan gambar)
-function renderUmkmProducts() {
-    const container = document.getElementById('menu-grid');
+function renderUmkmList() {
+    const container = document.getElementById('umkm-grid');
     if (!container) return;
-    
-    const products = data.umkm || [];
-    if (products.length === 0) {
-        container.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:40px;opacity:0.5;">Belum ada produk UMKM.</p>';
+
+    const list = data.umkm || [];
+    if (list.length === 0) {
+        container.innerHTML = `
+            <div class="umkm-empty">
+                <div class="icon">🏪</div>
+                <p>Belum ada UMKM terdaftar. Kelola melalui halaman admin.</p>
+            </div>`;
         return;
     }
 
-    container.innerHTML = products.map(item => {
+    container.innerHTML = list.map(item => {
         const hasImage = item.imageUrl && item.imageUrl.length > 0;
-        const bgColor = item.color || '#26402F';
-        
+        const bgColor = item.color || '#1E4438';
+        const hasMaps = item.mapsUrl && item.mapsUrl.trim().length > 0;
+        const hasWa = item.waNumber && item.waNumber.trim().length > 0;
+        const waUrl = hasWa ? buildWaUrl(item.waNumber, `Halo, saya tertarik dengan usaha ${item.name}`) : '#';
+
         return `
-            <div class="menu-card">
-                <div class="menu-thumb" style="background:linear-gradient(135deg,${bgColor},${adjustColor(bgColor, -30)});">
+            <div class="umkm-card">
+                <div class="umkm-photo" style="background:linear-gradient(135deg,${bgColor},${adjustColor(bgColor, -30)});">
                     ${hasImage ? `<img src="${item.imageUrl}" alt="${item.name}" loading="lazy" onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex';">` : ''}
                     <div class="fallback" style="${hasImage ? 'display:none;' : 'display:flex;'}">${getInitials(item.name)}</div>
                 </div>
-                <div class="body">
-                    <div class="name">${item.name}</div>
-                    <div class="tag">👨‍👩‍👦‍👦 ${item.tag || 'Produk rumahan'}</div>
+                <div class="umkm-body">
+                    <span class="umkm-cat">${item.category || 'UMKM Warga'}</span>
+                    <div class="umkm-name display">${item.name}</div>
+                    <div class="umkm-desc">${item.desc || ''}</div>
+                    <div class="umkm-actions">
+                        ${hasMaps ? `<a class="maps" href="${item.mapsUrl}" target="_blank" rel="noopener">📍 Lihat Lokasi</a>` : ''}
+                        ${hasWa ? `<a class="wa" href="${waUrl}" target="_blank" rel="noopener">💬 WhatsApp</a>` : ''}
+                    </div>
                 </div>
             </div>
         `;
     }).join('');
 }
 
-// 4.4 Update Perangkat Desa
 function renderPerangkat() {
     const container = document.getElementById('org-grid');
     if (!container) return;
-    
     const perangkat = data.perangkat || [];
-    if (perangkat.length === 0) return;
-
     container.innerHTML = perangkat.map(item => {
         const isTbd = item.name.includes('Lengkapi') || item.name.includes('Badan');
+        const hasImage = item.imageUrl && item.imageUrl.length > 0;
         return `
             <div class="org-card">
-                <div class="role">${item.role}</div>
-                <div class="name ${isTbd ? 'tbd' : ''}">${item.name}</div>
+                <div class="org-avatar">
+                    ${hasImage ? `<img src="${item.imageUrl}" alt="${item.name}" loading="lazy" onerror="this.style.display='none';this.parentElement.querySelector('.fallback').style.display='flex';">` : ''}
+                    <div class="fallback" style="${hasImage ? 'display:none;' : 'display:flex;'}">${getInitials(item.name)}</div>
+                </div>
+                <div>
+                    <div class="role">${item.role}</div>
+                    <div class="name ${isTbd ? 'tbd' : ''}">${item.name}</div>
+                </div>
             </div>
         `;
     }).join('');
 }
 
-// 4.5 Update Kepala Desa
 function renderKades() {
     const nameEl = document.getElementById('kades-name');
-    const photoEl = document.getElementById('kades-photo');
-    if (nameEl && data.kades?.name) {
-        nameEl.textContent = data.kades.name;
-    }
-    if (photoEl && data.kades?.photo) {
-        photoEl.textContent = data.kades.photo;
+    const imgEl = document.getElementById('kades-img');
+    const fallbackEl = document.getElementById('kades-fallback');
+    if (nameEl && data.kades?.name) nameEl.textContent = data.kades.name;
+    if (fallbackEl && data.kades?.photo) fallbackEl.textContent = data.kades.photo;
+
+    const hasImage = data.kades?.imageUrl && data.kades.imageUrl.length > 0;
+    if (imgEl && fallbackEl) {
+        if (hasImage) {
+            imgEl.src = data.kades.imageUrl;
+            imgEl.style.display = 'block';
+            fallbackEl.style.display = 'none';
+        } else {
+            imgEl.style.display = 'none';
+            fallbackEl.style.display = 'flex';
+        }
     }
 }
 
-// 4.6 Update Layanan
 function renderLayanan() {
     const container = document.getElementById('layanan-grid');
     if (!container) return;
-    
     const waNumber = data.waNumber || '6281234567890';
     const layananList = data.layanan || [];
-    
+
     if (layananList.length === 0) {
         container.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:20px;opacity:0.5;">Belum ada layanan.</p>';
         return;
@@ -668,44 +655,32 @@ function renderLayanan() {
     }).join('');
 }
 
-// 4.7 Update semua link WhatsApp
 function renderWaLinks() {
     const waNumber = data.waNumber || '6281234567890';
     const links = [
         { id: 'nav-wa-link', msg: 'Halo, saya ingin menghubungi Kantor Desa Saptorenggo' },
-        { id: 'umkm-wa-link', msg: 'Halo Hikmah Pia, saya ingin memesan produk' },
-        { id: 'umkm-cta-wa', msg: 'Halo Hikmah Pia, saya ingin tanya ketersediaan produk' },
+        { id: 'umkm-cta-wa', msg: 'Halo, saya ingin mendaftarkan UMKM saya ke website Desa Saptorenggo' },
         { id: 'footer-wa-link', msg: 'Halo, saya ingin menghubungi Kantor Desa Saptorenggo' }
     ];
-    
+
     links.forEach(({id, msg}) => {
         const el = document.getElementById(id);
-        if (el) {
-            el.href = buildWaUrl(waNumber, msg);
-        }
+        if (el) el.href = buildWaUrl(waNumber, msg);
     });
 }
 
-// ============================================================
-// 5. RENDER ALL
-// ============================================================
 function renderAll() {
     renderHero();
     renderUmkmDesc();
-    renderUmkmProducts();
+    renderUmkmList();
     renderPerangkat();
     renderKades();
     renderLayanan();
     renderWaLinks();
 }
 
-// ============================================================
-// 6. INIT
-// ============================================================
 renderAll();
-
-console.log('✅ Dashboard Saptorenggo siap!');
-console.log('📦 Data dari admin panel:', data);
+console.log('✅ Website Saptorenggo siap!');
 console.log('💡 Untuk mengelola konten, buka admin.html');
 </script>
 </body>
